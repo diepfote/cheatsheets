@@ -1,0 +1,76 @@
+Ctrl-b "      split pane horizontally
+Ctrl-b %      split pane vertically
+Ctrl-b o      next pane
+Ctrl-b ;      prior pane
+Ctrl-b ←↑→↓   jump to pane
+Ctrl-b Ctrl-o swap panes
+Ctrl-b space  arrange panes
+Ctrl-b-←↑→↓   change pane size
+Ctrl-b !      pop a pane into a new window
+
+bind-key        C-b send-prefix
+bind-key        C-o rotate-window
+bind-key        C-z suspend-client
+bind-key      Space next-layout
+bind-key          ! break-pane
+bind-key          " split-window
+bind-key          # list-buffers
+bind-key          $ command-prompt -I #S "rename-session '%%'"
+bind-key          % split-window -h
+bind-key          & confirm-before -p "kill-window #W? (y/n)" kill-window
+bind-key          ' command-prompt -p index "select-window -t ':%%'"
+bind-key          ( switch-client -p
+bind-key          ) switch-client -n
+bind-key          , command-prompt -I #W "rename-window '%%'"
+bind-key          - delete-buffer
+bind-key          . command-prompt "move-window -t '%%'"
+bind-key          0 select-window -t :0
+bind-key          1 select-window -t :1
+bind-key          2 select-window -t :2
+bind-key          3 select-window -t :3
+bind-key          4 select-window -t :4
+bind-key          5 select-window -t :5
+bind-key          6 select-window -t :6
+bind-key          7 select-window -t :7
+bind-key          8 select-window -t :8
+bind-key          9 select-window -t :9
+bind-key          : command-prompt
+bind-key          ; last-pane
+bind-key          = choose-buffer
+bind-key          ? list-keys
+bind-key          D choose-client
+bind-key          L switch-client -l
+bind-key          [ copy-mode
+bind-key          ] paste-buffer
+bind-key          c new-window
+bind-key          d detach-client
+bind-key          f command-prompt "find-window '%%'"
+bind-key          i display-message
+bind-key          l last-window
+bind-key          n next-window
+bind-key          o select-pane -t :.+
+
+
+ALT+W             copy text to the tmux clipboard
+bind-key ]        copy text from the tmux clipboard
+
+
+
+Key bindings - tmux-yank
+Normal Mode
+
+prefix–y — copies text from the command line to the clipboard.
+
+Works with all popular shells/repls. Tested with:
+
+shells: bash, zsh (with bindkey -e), tcsh
+repls: irb, pry, node, psql, python, php -a, coffee
+remote shells: ssh, mosh
+vim/neovim command line (requires vim-husk or vim-rsi plugin)
+prefix–Y — copy the current pane's current working directory to the clipboard.
+
+Copy Mode
+
+y — copy selection to system clipboard.
+Y (shift-y) — "put" selection. Equivalent to copying a selection, and pasting it to the command line.
+
