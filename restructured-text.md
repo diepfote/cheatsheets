@@ -30,8 +30,9 @@ Create a ref:
 ```
 
 Reference it/use it:
+**Hint**: `_` leading underscore not present on purpose.
 
 ```
-:ref:`_some_label`
+:ref:`some_label`
 ```
 
