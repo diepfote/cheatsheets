@@ -1,4 +1,4 @@
-# rst
+# rst - restructured text
 
 ## literal includes and code blocks
 
@@ -20,3 +20,18 @@ Some more text
     :language: bash
 
 ```
+
+## internal reference - internal cross-reference
+
+Create a ref:
+
+```
+.. _some_label:
+```
+
+Reference it/use it:
+
+```
+:ref:`_some_label`
+```
+
