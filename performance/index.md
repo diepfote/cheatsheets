@@ -17,7 +17,9 @@ mpstat -P 1
 ### memory
 
 ```
-man vmstat
+$ man vmstat
+
+$ free -h
 ```
 
 ### disks
@@ -27,3 +29,27 @@ man vmstat
 $ iostat --human --pretty -d
 ```
 
+### network
+
+```
+# run once
+$ sar -n DEV 1 1
+
+# TCP stack
+$ sar -n TCP,ETCP 1 1
+```
+
+### process usage
+
+```
+pidstat -p <pid>
+
+# global
+pidstat
+```
+
+## kernel errors, no journalctl - no systemd
+
+```
+dmesg | tail
+```
