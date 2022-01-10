@@ -1,3 +1,5 @@
+# Docker containers
+
 ## container defaults
 
 $ podman run --security-opt=no-new-privileges \
@@ -27,4 +29,20 @@ $ podman run --security-opt=no-new-privileges \
              bgruening/planemo
 
 
+## show namespace information (UTS, IPC, CGROUP, ...)
 
+```
+docker ps --ns
+```
+
+## `top` for docker containers
+
+```
+docker stats
+```
+
+## `top` for cgroups
+
+```
+systemd-cgtop
+```
