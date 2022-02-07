@@ -1,5 +1,5 @@
 ```
-[rootless@podman-remote ~]$ ~?
+[rootless@podman-remote ~]$ <return>~?
 Supported escape sequences:
  ~.   - terminate connection (and any multiplexed sessions)
  ~B   - send a BREAK to the remote system
@@ -11,6 +11,5 @@ Supported escape sequences:
  ~&   - background ssh (when waiting for connections to terminate)
  ~?   - this message
  ~~   - send the escape character by typing it twice
-(Note that escapes are only recognized immediately after newline.)
 ```
 
