@@ -16,6 +16,11 @@
   ebook-convert Spying\ on\ a\ Ruby\ process\'s\ memory\ allocations\ with\ eBPF.epub Spying\ on\ a\ Ruby\ process\'s\ memory\ allocations\ with\ eBPF.pdf
   ```
 
+#### batch conversion
+
+```
+find . -name '*.epub' -exec sh -c 'b="$(basename "$0" | sed -r "s#\.epub\$##")"; ebook-convert "$0" "$b".pdf' {} \;
+```
 
 
 ## Website to epub
@@ -36,3 +41,4 @@
    Spying on a Ruby process's memory allocations with eBPF
   ────────────────────────────────────────────────────────
   ```
+
