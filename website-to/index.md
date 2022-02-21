@@ -1,6 +1,6 @@
-## Website to pdf (deprecated)
+## Website to pdf
 
-### Deprecated
+### by hand (deprecated)
 * Save html as is -> https://github.com/gildas-lormeau/SingleFile
 * Change layout via [local browser page](./website-to-pdf.html)
 * print page -> save as PDF
