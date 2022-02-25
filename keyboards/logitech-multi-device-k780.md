@@ -32,3 +32,10 @@ sudo solaar show
 sudo solaar config 3 fn-swap False
 ```
 
+### Mac OS | Darwin
+
+```
+$ defaults write -g com.apple.keyboard.fnState 1
+$ defaults read  | grep keyboard.fnState
+        "com.apple.keyboard.fnState" = 1;
+```
