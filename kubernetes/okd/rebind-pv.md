@@ -15,9 +15,9 @@ DO NOT REMOVE THE `uid` of the pv resource
 
 so entire procedure:
 
-* set pv to reclaimpolicy retain
+* set pv reclaimpolicy to retain
 * delete pvc
 * edit pv ^ (claimref etc.)
 * re-deploy pvc without
- * annotations
+  * annotations
   * verlero labels
