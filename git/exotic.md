@@ -72,6 +72,15 @@ git rebase -r
 ```
 
 
+## rebase onto another branch
+
+snatched from https://nedbatchelder.com/blog/202202/moving_a_git_branch_to_a_new_base.html
+
+```
+git checkout <branch-to-rebase>
+git rebase --onto <new-revision> "$(git merge-base <old-revision> @)"
+```
+
 ## use commit message instead of hash to display information about commit
 
 Snatched from https://twitter.com/offlinemark/status/1387833240321417222
