@@ -16,3 +16,9 @@ search="$value" awk '$0 ~ ENVIRON["search"] {print $1}' "$file"
 awk 'BEGIN{FIELDWIDTHS = "10 25 9"}; {print $3 $2 $1}' file
 ```
 
+## Print column n to last | Print all but column x
+
+e.g. Remove first three columns
+```
+awk '{$1=$2=$3=""; print $0 }' <file>
+```
