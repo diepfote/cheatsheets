@@ -99,10 +99,10 @@ yank inner big word
   e.g. an ip address, yiw on 160.64.56.23 would yank 160
        yiW will yank 160.64.56.23
 
-unlaod multiple buffers listed by :ls
+unload multiple buffers listed by :ls
   :<start>,<end>bd
 
-unlaod current buffer
+unload current buffer
   :bd
 
 unload specific buffer
@@ -117,20 +117,5 @@ display all options
 display specific option
   :set <option>?
 
-fold indentation text object
- zfai
-
-fold paragraph
-  zfap
-
-open unfold
-  zo
-close fold that was just openend
-  zc
-
-open all folds
-  zM
-
-close all folds
-  zR
-
+jump to the end of a search result
+/pattern/e
