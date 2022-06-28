@@ -19,4 +19,6 @@ The pad was 9 for file VIDEO_TS.BUP
   0.15% done, estimate finish Tue Jun 28 21:27:56 2022
   0.30% done, estimate finish Tue Jun 28 21:27:56 2022
   ...
+# dirty cleanup
+$ rm -r /tmp/test-dvd/*
 ```
