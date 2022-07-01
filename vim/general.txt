@@ -119,3 +119,6 @@ display specific option
 
 jump to the end of a search result
 /pattern/e
+
+restore visual selection (run in normal mode)
+  gv
