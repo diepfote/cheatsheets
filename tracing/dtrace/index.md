@@ -156,3 +156,86 @@ sudo dtrace -n 'profile-997hz { @[((struct task *)curthread->t_tro->tro_proc->ta
 ### Cast dtrace object | Casting dtrace object
 
 [Example](#cast-to-struct-task-pointer)
+
+
+## Find origin of `read` system call in mpv on Darwin
+
+### Check if there is a `read` system call + get PID
+
+probefunc = syscall in this case
+
+```
+sudo dtrace -n 'syscall:::entry /execname == "mpv"/ { @[pid, probefunc] = count(); }'
+```
+
+### List functions to trace for `read`
+
+Checked if `syscall::*read*:entry` would find more read syscalls for this process. It did not.
+
+```
+sudo dtrace -n 'syscall::read:entry /execname == "mpv"/ { @[ustack()] = count(); }'
+              libsystem_kernel.dylib`read+0xa
+              mpv`stream_read_unbuffered+0x41
+              mpv`stream_read_more+0xe5
+              mpv`stream_read_partial+0x91
+              mpv`mp_read+0x2e
+              libavformat.58.dylib`0x000000010d4e5f5d+0x13
+                2
+```
+
+We will take a look at where `stream_read_unbuffered` leads us.
+
+### What does `stream_read_unbuffered` do?
+
+----
+
+Based on `Dtrace Review` by Brian Cantrill
+https://www.youtube.com/watch?v=TgmA48fILq8
+
+---
+
+The pid provider traces every instruction in a given PID.
+We filter by function.  
+Detect every function entry:
+
+```
+sudo dtrace -n 'pid56141::stream_read_unbuffered:entry'
+```
+
+Show timestamp for function entry:
+
+```
+sudo dtrace -n 'pid56141::stream_read_unbuffered:entry { printf("Called stream_read_unbuffered at %Y", walltimestamp); }'
+CPU     ID                    FUNCTION:NAME
+  6   2099     stream_read_unbuffered:entry Called stream_read_unbuffered at 2022 Sep  5 03:36:32
+  8   2099     stream_read_unbuffered:entry Called stream_read_unbuffered at 2022 Sep  5 03:36:33
+  2   2099     stream_read_unbuffered:entry Called stream_read_unbuffered at 2022 Sep  5 03:36:34
+  5   2099     stream_read_unbuffered:entry Called stream_read_unbuffered at 2022 Sep  5 03:36:35
+^C
+```
+
+Follow all instructions in the process after they passed through `stream_read_unbuffered` ([mpv-trace-stream_read_unbuffered](./d-scripts/mpv-trace-stream_read_unbuffered.d)):
+
+```
+dtrace: script './mpv-trace-stream_read_unbuffered.d' matched 67031 probes
+CPU FUNCTION
+  0  -> stream_read_unbuffered
+  0    -> mp_cancel_test
+  0    <- mp_cancel_test
+  0    -> read
+  0    <- read
+  0  <- stream_read_unbuffered
+  4  -> stream_read_unbuffered
+  4    -> mp_cancel_test
+  4    <- mp_cancel_test
+  4    -> read
+  4    <- read
+  4  <- stream_read_unbuffered
+  6  -> stream_read_unbuffered
+  6    -> mp_cancel_test
+  6    <- mp_cancel_test
+  6    -> read
+  6    <- read
+  6  <- stream_read_unbuffered
+```
+
