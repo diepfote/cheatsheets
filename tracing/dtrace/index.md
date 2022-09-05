@@ -665,3 +665,22 @@ dtrace: script './mpv-trace-stream_read_unbuffered.d' matched 193402 probes
  10      -> lck_rw_lock_shared
  10      <- lck_rw_lock_shared
 ```
+
+Which files are read by the `read` syscall requested by `mpv`?
+
+```
+$ sudo dtrace  -n 'syscall::read:entry /execname == "mpv"/ { @[fds[3].fi_pathname] = count(); @[fds[4].fi_pathname] = count(); }'
+dtrace: description 'syscall::read:entry ' matched 1 probe
+^C
+
+  ??/Logs/mpv.log                                                   1
+  ??/Movies/Dtrace Review [TgmA48fILq8].mp4                         1
+```
+
+```
+$ sudo dtrace  -n 'syscall::read:entry /execname == "mpv"/ { @[fds[arg0].fi_pathname] = count(); }'
+^C
+
+  ??/Logs/mpv.log                                                   1
+  ??/Movies/Dtrace Review [TgmA48fILq8].mp4                         1
+```
