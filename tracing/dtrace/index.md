@@ -684,3 +684,84 @@ $ sudo dtrace  -n 'syscall::read:entry /execname == "mpv"/ { @[fds[arg0].fi_path
   ??/Logs/mpv.log                                                   1
   ??/Movies/Dtrace Review [TgmA48fILq8].mp4                         1
 ```
+
+Which libraries does `mpv` load (well this shows more -> any mmap file)?
+
+
+```
+$ sudo dtrace  -n 'syscall::mmap:entry /execname == "mpv"/ { @[fds[arg4].fi_pathname] = count(); }'
+dtrace: description 'syscall::mmap:entry ' matched 1 probe
+^C
+
+  ??/16777237_9765376/functions.data                                1
+  ??/31001/libraries.data                                           1
+  ??/AppExceptions.bundle/Exceptions.plist                          1
+  ??/C/com.apple.IntlDataCache.le.kbdx                              1
+  ??/Fonts/Helvetica.ttc                                            1
+  ??/Fonts/SFCompact.ttf                                            1
+  ??/Fonts/SFNS.ttf                                                 1
+  ??/Resources/AppleKeyboardLayouts-L.dat                           1
+  ??/Resources/Aqua.car                                             1
+  ??/Resources/Assets.car                                           1
+  ??/Resources/Exceptions.plist                                     1
+  ??/Resources/Extras2.rsrc                                         1
+  ??/Resources/FauxVibrantLight.car                                 1
+  ??/Resources/FunctionRowAppearance.car                            1
+  ??/Resources/SystemAppearance.car                                 1
+  ??/Resources/VibrantDark.car                                      1
+  ??/Resources/VibrantLight.car                                     1
+  ??/icu/icudt70l.dat                                               1
+  ??/io.mpv.savedState/window_1.data                                1
+  ??/lib/libobjc-trampolines.dylib                                  3
+  <unknown (not a vnode)>                                           4
+  ??/DisplayVendorID-610/DisplayProductID-a044                      4
+  ??/Overrides/Icons.plist                                          4
+  ??/lib/libarchive.13.dylib                                        4
+  ??/lib/libass.9.dylib                                             4
+  ??/lib/libavcodec.58.dylib                                        4
+  ??/lib/libavdevice.58.dylib                                       4
+  ??/lib/libavfilter.7.dylib                                        4
+  ??/lib/libavformat.58.dylib                                       4
+  ??/lib/libavresample.4.dylib                                      4
+  ??/lib/libavutil.56.dylib                                         4
+  ??/lib/libb2.1.dylib                                              4
+  ??/lib/libcrypto.1.1.dylib                                        4
+  ??/lib/libdav1d.5.dylib                                           4
+  ??/lib/libfontconfig.1.dylib                                      4
+  ??/lib/libfreetype.6.dylib                                        4
+  ??/lib/libfribidi.0.dylib                                         4
+  ??/lib/libglib-2.0.0.dylib                                        4
+  ??/lib/libgraphite2.3.dylib                                       4
+  ??/lib/libharfbuzz.0.dylib                                        4
+  ??/lib/libintl.8.dylib                                            4
+  ??/lib/liblcms2.2.dylib                                           4
+  ??/lib/liblua.5.1.dylib                                           4
+  ??/lib/liblz4.1.dylib                                             4
+  ??/lib/liblzma.5.dylib                                            4
+  ??/lib/libmujs.so                                                 4
+  ??/lib/libogg.0.dylib                                             4
+  ??/lib/libopenjp2.7.dylib                                         4
+  ??/lib/libopus.0.dylib                                            4
+  ??/lib/libpcre.1.dylib                                            4
+  ??/lib/libpng16.16.dylib                                          4
+  ??/lib/libpostproc.55.dylib                                       4
+  ??/lib/librubberband.2.dylib                                      4
+  ??/lib/libsamplerate.0.dylib                                      4
+  ??/lib/libsoxr.0.dylib                                            4
+  ??/lib/libsrt.1.4.dylib                                           4
+  ??/lib/libssh.4.dylib                                             4
+  ??/lib/libssl.1.1.dylib                                           4
+  ??/lib/libswresample.3.dylib                                      4
+  ??/lib/libswscale.5.dylib                                         4
+  ??/lib/libtheoradec.1.dylib                                       4
+  ??/lib/libtheoraenc.1.dylib                                       4
+  ??/lib/libuchardet.0.dylib                                        4
+  ??/lib/libvorbis.0.dylib                                          4
+  ??/lib/libvorbisenc.2.dylib                                       4
+  ??/lib/libvpx.7.dylib                                             4
+  ??/lib/libzimg.2.dylib                                            4
+  ??/lib/libzstd.1.dylib                                            4
+  ??/MacOS/AMDRadeonX6000GLDriver                                   5
+  ??/MacOS/CoreAudio                                                5
+  <none>                                                          137
+```
