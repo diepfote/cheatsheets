@@ -14,6 +14,23 @@ mpstat -P ALL
 mpstat -P 1
 ```
 
+#### pagefaults | page faults
+
+---
+
+Taken from: https://linoxide.com/commands-to-understand-page-faults-in-linux/
+
+---
+
+Field 1 - pid  
+Field 2 - filename of the executable  
+Field 10 - number of minor page faults  
+Field 12 - number of major page faults  
+
+```
+cut -d ' ' -f 1,2,10,12 /proc/<pid>/stat
+```
+
 ### memory
 
 ```
