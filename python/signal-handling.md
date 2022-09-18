@@ -20,23 +20,23 @@ import time
 import signal
 
 
-def call_func():
-    print('called')
-
 def sigterm_handler(signal_num, stack_frame):
     '''Default kill signal | Graceful termination'''
-    print('SIGTERM received exiting')
+    print('Terminating')
     exit(0)
 
 def sigint_handler(signal_num, stack_frame):
     '''If someone presses ctrl-c'''
-    print('SIGINT received exiting')
+    print("Ctrl-C'ed by user.")
     exit(0)
 
-def run_default_behavior(signal_num, stack_frame):
-    print('running sync')
+def run_default_behavior(signal_num=None, stack_frame=None):
+    print('main() executting')
+    while True:
+        print('still main()')
+        time.sleep(2)
 
-def wait_on_signal(signal_num, stack_frame):
+def wait_on_signal(signal_num=None, stack_frame=None):
     print('pausing')
     signal.pause()
 
@@ -46,10 +46,7 @@ signal.signal(signal.SIGINT, sigint_handler)
 signal.signal(signal.SIGUSR1, run_default_behavior)
 signal.signal(signal.SIGUSR2, wait_on_signal)
 
-
-while True:
-    print('Still running...')
-    time.sleep(10)
+run_default_behavior()
 ```
 
 
