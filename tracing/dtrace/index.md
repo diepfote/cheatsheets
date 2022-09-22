@@ -2,6 +2,14 @@
 
 ## Dtrace objects
 
+
+---
+
+Based on Dtrace Dynamic Tracing in Oracle Solaris, Mac OS X, And FreeBSD
+Brendan Gregg, Jim Mauro
+
+---
+
 ### Get type of object
 
 Any translation should be defined in this directory `/usr/lib/dtrace/`.
@@ -764,4 +772,78 @@ dtrace: description 'syscall::mmap:entry ' matched 1 probe
   ??/MacOS/AMDRadeonX6000GLDriver                                   5
   ??/MacOS/CoreAudio                                                5
   <none>                                                          137
+```
+
+
+### python provider
+
+----
+
+Taken from `Dtrace Review` by Brian Cantrill
+https://www.youtube.com/watch?v=TgmA48fILq8
+
+---
+
+### List probes
+
+```
+$ sudo dtrace -l -P pyth\*
+   ID   PROVIDER            MODULE                          FUNCTION NAME
+16797 python14473            Python                         sys_audit audit
+16798 python14473            Python                  sys_audit_tstate audit
+16799 python14473            Python          _PyEval_EvalFrameDefault function-entry
+16800 python14473            Python             dtrace_function_entry function-entry
+16801 python14473            Python          _PyEval_EvalFrameDefault function-return
+16802 python14473            Python            dtrace_function_return function-return
+16803 python14473            Python                   gc_collect_main gc-done
+16804 python14473            Python                   gc_collect_main gc-start
+16805 python14473            Python  PyImport_ImportModuleLevelObject import-find-load-done
+16806 python14473            Python  PyImport_ImportModuleLevelObject import-find-load-start
+16807 python14473            Python          _PyEval_EvalFrameDefault line
+16808 python14473            Python                 maybe_dtrace_line line
+16929 python14419            Python                         sys_audit audit
+16930 python14419            Python                  sys_audit_tstate audit
+16931 python14419            Python          _PyEval_EvalFrameDefault function-entry
+16932 python14419            Python             dtrace_function_entry function-entry
+16933 python14419            Python          _PyEval_EvalFrameDefault function-return
+16934 python14419            Python            dtrace_function_return function-return
+16935 python14419            Python                   gc_collect_main gc-done
+16936 python14419            Python                   gc_collect_main gc-start
+16937 python14419            Python  PyImport_ImportModuleLevelObject import-find-load-done
+16938 python14419            Python  PyImport_ImportModuleLevelObject import-find-load-start
+16939 python14419            Python          _PyEval_EvalFrameDefault line
+16940 python14419            Python                 maybe_dtrace_line line
+71546 python94111            Python                         sys_audit audit
+71547 python94111            Python                  sys_audit_tstate audit
+71548 python94111            Python          _PyEval_EvalFrameDefault function-entry
+71549 python94111            Python             dtrace_function_entry function-entry
+71550 python94111            Python          _PyEval_EvalFrameDefault function-return
+71551 python94111            Python            dtrace_function_return function-return
+71552 python94111            Python                   gc_collect_main gc-done
+71553 python94111            Python                   gc_collect_main gc-start
+71554 python94111            Python  PyImport_ImportModuleLevelObject import-find-load-done
+71555 python94111            Python  PyImport_ImportModuleLevelObject import-find-load-start
+71556 python94111            Python          _PyEval_EvalFrameDefault line
+71557 python94111            Python                 maybe_dtrace_line line
+71678 python94025            Python                         sys_audit audit
+71679 python94025            Python                  sys_audit_tstate audit
+71680 python94025            Python          _PyEval_EvalFrameDefault function-entry
+71681 python94025            Python             dtrace_function_entry function-entry
+71682 python94025            Python          _PyEval_EvalFrameDefault function-return
+71683 python94025            Python            dtrace_function_return function-return
+71684 python94025            Python                   gc_collect_main gc-done
+71685 python94025            Python                   gc_collect_main gc-start
+71686 python94025            Python  PyImport_ImportModuleLevelObject import-find-load-done
+71687 python94025            Python  PyImport_ImportModuleLevelObject import-find-load-start
+71688 python94025            Python          _PyEval_EvalFrameDefault line
+71689 python94025            Python                 maybe_dtrace_line line
+```
+
+### show module name & function name for Python
+
+```
+$ sudo dtrace  -n 'python*:::function-entry { printf("%s %s\n", copyinstr(arg0), copyinstr(arg1)) }'
+ 10   2911 dtrace_function_entry:function-entry /tmp/test-signal.py run_default_behavior
+
+  6   2911 dtrace_function_entry:function-entry /tmp/test-signal.py sigint_handler
 ```

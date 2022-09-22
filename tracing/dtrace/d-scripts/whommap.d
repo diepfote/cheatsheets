@@ -1,5 +1,8 @@
 #!/usr/bin/env dtrace -s
 
+/* taken from `Dtrace Review` by Brian Cantrill */
+/* https://www.youtube.com/watch?v=TgmA48fILq8 */
+
 /* Basically who made you, "less", allocate memory */
 /* Not very meaningful on Mac OS X */
 /* ``` */
