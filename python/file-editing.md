@@ -23,3 +23,28 @@ def eat_first_line(fpath):
     # replace original file
     shutil.move(new_fpath, fpath)
 ```
+
+## convert pickled dict to json | convert dict in a text file to json
+
+```
+#!/usr/bin/env python3
+
+# very much inspired by https://www.geeksforgeeks.org/how-to-read-dictionary-from-file-in-python/
+
+import sys
+import ast
+import json
+
+pattern = ", {'path':"
+
+for line in sys.stdin:
+    if pattern in line:
+        paths = line.split(pattern)
+        for path in paths:
+            sanitized_path = f"{{'path':{path}"
+    else:
+        sanitized_path = line
+
+    loaded_dict = ast.literal_eval(sanitized_path)
+    print(json.dumps(loaded_dict))
+```
