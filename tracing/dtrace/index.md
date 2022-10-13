@@ -707,6 +707,7 @@ $ sudo dtrace  -n 'syscall::read:entry /execname == "mpv"/ { @[fds[arg0].fi_path
 
 Which libraries does `mpv` load (well this shows more -> any mmap file)?
 
+<details><p>
 
 ```
 $ sudo dtrace  -n 'syscall::mmap:entry /execname == "mpv"/ { @[fds[arg4].fi_pathname] = count(); }'
@@ -786,6 +787,7 @@ dtrace: description 'syscall::mmap:entry ' matched 1 probe
   <none>                                                          137
 ```
 
+</details></p>
 
 ### python provider
 
