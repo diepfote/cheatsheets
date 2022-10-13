@@ -46,6 +46,8 @@ Examples below
 
 **Hint**: I assumed `thread` is the same as `thread_t`.
 
+<details><p>
+
 ```
 $ grep -r thread /usr/lib/dtrace/ | grep translator
 /usr/lib/dtrace/darwin.d: * kthread_t-to-psinfo_t translator, below.
@@ -80,7 +82,11 @@ $ grep -rFA 25 'translator lwpsinfo_t < thread_t T >' /usr/lib/dtrace/
 /usr/lib/dtrace/darwin.d-};
 ```
 
+</p></details>
+
 ##### Check if this translator is the one we are looking for
+
+<details><p>
 
 ```
 $ sudo dtrace -n 'profile-997hz { @[curthread->last_processor] = count(); }'
@@ -119,6 +125,8 @@ dtrace: description 'profile-997hz ' matched 1 probe
               173              104
 ...
 ```
+
+</details></p>
 
 #### `proc` struct translator
 
@@ -248,6 +256,8 @@ CPU FUNCTION
 ```
 
 Follow every action stream_read_unbuffered triggered in the kernel ([mpv-trace-stream_read_unbuffered-in-the-kernel](./d-scripts/mpv-trace-stream_read_unbuffered-in-the-kernel.d)):
+
+<details><p>
 
 ```
 dtrace: script './mpv-trace-stream_read_unbuffered.d' matched 193402 probes
@@ -673,6 +683,8 @@ dtrace: script './mpv-trace-stream_read_unbuffered.d' matched 193402 probes
  10      -> lck_rw_lock_shared
  10      <- lck_rw_lock_shared
 ```
+
+</p></details>
 
 Which files are read by the `read` syscall requested by `mpv`?
 
