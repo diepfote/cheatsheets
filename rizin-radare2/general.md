@@ -44,6 +44,7 @@ e asm.emu=false
 
 ## Print memory address of printf call (which is actually just an int)
 
+
 ```
 ................> pd 50 @ main 
 ...
@@ -78,4 +79,14 @@ hit breakpoint at: 0x5585e1d801f1
 
 $ qalc 0xc
 12 = 12
+```
+
+**Sidenote**: gdb shows that it cannot read memory, rizin implicitly maps it to 0xff
+```
+gef➤  x/s $edx
+0xc:    <error: Cannot access memory at address 0xc>
+gef➤  x/x $edx
+0xc:    Cannot access memory at address 0xc
+gef➤  print $edx
+$1 = 0xc
 ```
