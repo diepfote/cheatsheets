@@ -8,6 +8,7 @@
 
 ### Paperoni & Calibre
 
+* [fetch articles (writes links file)](../getpocket.html)
 * [to epub](#website-to-epub)
 * use calibre to convert an `epub` into a `pdf`
   ```
