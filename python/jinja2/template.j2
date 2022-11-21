@@ -1,0 +1,8 @@
+{%- if command -%}
+{%- if version_9 -%}
+{#- A comment. Will not show up in templated output -#}
+these.compile-commands={{ command }}
+{%- else -%}
+some.output-dir={{ build_output_dir }}
+{%- endif -%}
+{%- endif -%}
