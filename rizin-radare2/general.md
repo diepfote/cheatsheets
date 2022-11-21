@@ -19,6 +19,15 @@ Append `q`
 iz~string
 ```
 
+## Print integer value of character
+
+```
+$ rz-ax -S J
+4a
+
+man rz-ax
+```
+
 ## Temporary seek
 
 Do this
@@ -90,3 +99,5 @@ gef➤  x/x $edx
 gef➤  print $edx
 $1 = 0xc
 ```
+
+
