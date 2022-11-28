@@ -122,3 +122,6 @@ jump to the end of a search result
 
 restore visual selection (run in normal mode)
   gv
+
+redirect to stdout  # https://superuser.com/a/1692033
+  nvim -e +"redir>>/dev/stdout | echo &undodir | redir END" -scq
