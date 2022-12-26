@@ -100,4 +100,20 @@ gef➤  print $edx
 $1 = 0xc
 ```
 
+## run debugger with arguments
+
+### start-up rizin debugger with arguments
+
+snatched from <https://stackoverflow.com/questions/39487888/radare2-how-to-pass-parameters-to-debugee/41515545#41515545>
+
+```
+$ r2 -d a.out ex17.db.dat l
+[0x7f4161daa8a1]> ood
+PTRACE_CONT: No such process
+child received signal 9
+INFO: File dbg:///home/flo/Desktop/c-exercises/a.out reopened in read-write mode
+[0x7f1498268730]> dcu main
+INFO: Continue until 0x557877e50804 using 1 bpsize
+hit breakpoint at: 0x557877e50804
+```
 
