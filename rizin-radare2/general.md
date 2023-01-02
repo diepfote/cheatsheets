@@ -117,3 +117,13 @@ INFO: Continue until 0x557877e50804 using 1 bpsize
 hit breakpoint at: 0x557877e50804
 ```
 
+## print registers
+
+### show general purpose registers
+
+`dr`
+
+### show registers related to conditionals
+
+`drc` ... for more information `dr?`
+
