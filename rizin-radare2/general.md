@@ -117,6 +117,23 @@ INFO: Continue until 0x557877e50804 using 1 bpsize
 hit breakpoint at: 0x557877e50804
 ```
 
+or 
+
+```
+$ cat ./ex17.r
+#!/usr/bin/rarun2
+arg1=ex17.db.dat
+arg2=l
+
+$ r2 -r ex17.r -d a.out
+[0x7f07ee4c7730]> ood
+child received signal 9
+[0x7fa545112730]> dcu main
+INFO: Continue until 0x5637c4ab7804 using 1 bpsize
+hit breakpoint at: 0x5637c4ab7804
+```
+
+
 ## print registers
 
 ### show general purpose registers
@@ -127,3 +144,8 @@ hit breakpoint at: 0x557877e50804
 
 `drc` ... for more information `dr?`
 
+## print variables
+
+https://book.rizin.re/analysis/variables.html
+
+### TODO
