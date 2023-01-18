@@ -19,13 +19,20 @@ Append `q`
 iz~string
 ```
 
-## Print integer value of character
+## Print hex value of character
 
 ```
-$ rz-ax -S J
+$ rax2 -S J
 4a
 
-man rz-ax
+man rax2
+```
+
+## Print hex string as string
+
+```
+$ rax2 -s 0x0000006c
+l
 ```
 
 ## Temporary seek
@@ -102,7 +109,7 @@ $1 = 0xc
 
 ## run debugger with arguments
 
-### start-up rizin debugger with arguments
+### start-up radare2 debugger with arguments
 
 snatched from <https://stackoverflow.com/questions/39487888/radare2-how-to-pass-parameters-to-debugee/41515545#41515545>
 
@@ -146,6 +153,9 @@ hit breakpoint at: 0x5637c4ab7804
 
 ## print variables
 
-https://book.rizin.re/analysis/variables.html
+https://book.rada.re/analysis/variables.html
 
 ### TODO
+
+```
+```
