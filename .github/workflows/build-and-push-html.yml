@@ -10,23 +10,24 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Copy text files
+      - name: Copy files
         run: |
-          mkdir _build
-          find -name '*.txt' -exec sh -c 'mkdir -p _build/"$(dirname "$0")" && cp "$0" _build/"$0"' {} \;
+          mkdir docs
+          find -name '*.txt' -exec sh -c 'mkdir -p docs/"$(dirname "$0")" && cp "$0" docs/"$0"' {} \;
+          find -name '*.md' -exec sh -c 'mkdir -p docs/"$(dirname "$0")" && cp "$0" docs/"$0"' {} \;
 
-      - name: Install pandoc
-        run : |
+      - name: Install mkdocs
+        run: |
           sudo apt update
-          sudo apt install -y pandoc
+          sudo apt install -y mkdocs
 
-      # - name: Generate files
-      #   run: |
-      #     find -name '*.md' -exec /usr/local/bin/bash -c 'dir="$(dirname "$0")" && _base="$(basename "$0")" && _base_no_ext="${_base%.*}" && mkdir -p _build/"$dir" && pandoc "$0" -f gfm -o _build/"${dir}/${_base_no_ext}.html"' {} \;
+      - name: Generate html
+        run: |
+          mkdocs build
 
       - name: Publish site
         run: |
-          cd _build
+          cd site
 
           git init
           git config user.name "GitHub Actions Bot"
