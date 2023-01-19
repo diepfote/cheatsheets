@@ -5,4 +5,4 @@ docs_dir: docs/
 repo_name: 'diepfote/cheatsheets'
 repo_url: 'https://github.com/diepfote/cheatsheets'
 theme:
-  name: 'material'
+  name: 'readthedocs'
