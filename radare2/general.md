@@ -1,4 +1,4 @@
-# Rizin
+# Radare2 | Radare 2
 
 ## JSON output
 Append `j` or `j~{}` for json or json+intended output
@@ -97,7 +97,7 @@ $ qalc 0xc
 12 = 12
 ```
 
-**Sidenote**: gdb shows that it cannot read memory, rizin implicitly maps it to 0xff
+**Sidenote**: gdb shows that it cannot read memory, radare2 implicitly maps it to 0xff
 ```
 gef➤  x/s $edx
 0xc:    <error: Cannot access memory at address 0xc>
