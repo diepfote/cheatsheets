@@ -1,7 +1,6 @@
 site_name: Florian Begusch's Cheatsheets
 site_description: 'Cheatsheets'
 site_author: 'Florian Begusch'
-docs_dir: docs/
 repo_name: 'diepfote/cheatsheets'
 repo_url: 'https://github.com/diepfote/cheatsheets'
 theme:

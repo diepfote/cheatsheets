@@ -12,9 +12,17 @@ jobs:
 
       - name: Copy files
         run: |
-          mkdir docs
-          find -name '*.txt' -exec sh -c 'mkdir -p docs/"$(dirname "$0")" && cp "$0" docs/"$0"' {} \;
-          find -name '*.md' -exec sh -c 'mkdir -p docs/"$(dirname "$0")" && cp "$0" docs/"$0"' {} \;
+          mkdir /tmp/docs
+          find -name '*.txt' -exec sh -c 'mkdir -p /tmp/docs/"$(dirname "$0")" && cp "$0" /tmp/docs/"$0"' {} \;
+          find -name '*.md' -exec sh -c 'mkdir -p /tmp/docs/"$(dirname "$0")" && cp "$0" /tmp/docs/"$0"' {} \;
+          mv mkdocs.yml /tmp/
+
+      - name: Cleanup
+        run: |
+          rm -rf *
+
+          mv /tmp/docs .
+          mv /tmp/mkdocs.yml .
 
       - name: Install mkdocs
         run: |
