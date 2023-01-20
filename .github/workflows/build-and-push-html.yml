@@ -29,6 +29,8 @@ jobs:
         run: |
           cd site
 
+          grep -r -l -F 'edit/master/docs' | xargs sed -i -r 's#(edit/master/)docs/(.*)#\1\2#'
+
           git init
           git config user.name "GitHub Actions Bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
