@@ -53,7 +53,6 @@ run_default_behavior()
 Triggering it
 ```
 $ kill -SIGUSR2 "$(ps -ef | grep -v grep | grep python | grep signal_test | awk '{ print $2 }')"
-~/Desktop/***REMOVED***
 $ kill -SIGUSR1 "$(ps -ef | grep -v grep | grep python | grep signal_test | awk '{ print $2 }')"
 
 # graceful termination

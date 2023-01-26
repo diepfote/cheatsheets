@@ -137,13 +137,13 @@ Repeat the following steps for every offending id (retry pushes if the list of i
   # note this command those not take filepaths sadly
   $ bfg --delete-files 'Open_Sans.zip' --no-blob-protection
   
-  Using repo : /private/tmp/backup-***REMOVED***-training-/.git
+  Using repo : /private/tmp/backup-test-repo/.git
   ...
   ...
   ...
   In total, 5 object ids were changed. Full details are logged here:
 
-        /private/tmp/backup-***REMOVED***-training.bfg-report/2021-06-18/08-14-27
+        /private/tmp/backup-test-repo.bfg-report/2021-06-18/08-14-27
 
 BFG run is complete! When ready, run: git reflog expire --expire=now --all && git gc --prune=now --aggressive
   ```
