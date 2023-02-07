@@ -861,3 +861,68 @@ $ sudo dtrace  -n 'python*:::function-entry { printf("%s %s\n", copyinstr(arg0),
 
   6   2911 dtrace_function_entry:function-entry /tmp/test-signal.py sigint_handler
 ```
+
+## Find pre-written dtrace scripts
+
+On Mac-OS/on Mac OS
+
+<details><p>
+
+```
+$ find / -executable -type f -exec sh -c 'grep -m 1 -H -F "/usr/sbin/dtrace" "$0" 2>/dev/null' {} \; 2>/dev/null
+/usr/bin/loads.d:#!/usr/sbin/dtrace -s
+/usr/bin/syscallbypid.d:#!/usr/sbin/dtrace -s
+/usr/bin/fddist:/usr/sbin/dtrace -n '
+/usr/bin/iofileb.d:#!/usr/sbin/dtrace -s
+/usr/bin/errinfo:/usr/sbin/dtrace -n '
+/usr/bin/topsyscall:/usr/sbin/dtrace -n '
+/usr/bin/iofile.d:#!/usr/sbin/dtrace -s
+/usr/bin/iotop:/usr/sbin/dtrace -n '
+/usr/bin/cpuwalk.d:#!/usr/sbin/dtrace -s
+/usr/bin/dispqlen.d:#!/usr/sbin/dtrace -s
+/usr/bin/lastwords:/usr/sbin/dtrace -n '
+/usr/bin/syscallbyproc.d:#!/usr/sbin/dtrace -s
+/usr/bin/timer_analyser.d:/usr/sbin/dtrace -n "$dtrace" $1
+/usr/bin/execsnoop:/usr/sbin/dtrace -n '
+/usr/bin/opensnoop:/usr/sbin/dtrace -n '
+/usr/bin/newproc.d:#!/usr/sbin/dtrace -s
+/usr/bin/syscallbysysc.d:#!/usr/sbin/dtrace -s
+/usr/bin/pathopens.d:#!/usr/sbin/dtrace -s
+/usr/bin/rwbytype.d:#!/usr/sbin/dtrace -s
+/usr/bin/timerfires:    /usr/sbin/dtrace -xdisallow_dsym -Cqn "$dtrace" | /usr/bin/perl -w -e "$aggregator"
+/usr/bin/dtruss:#       /usr/sbin/dtrace -x dynvarsize=$buf -x evaltime=postinit -n "$dtrace" \
+/usr/bin/kill.d:#!/usr/sbin/dtrace -qs
+/usr/bin/imptrace:      /usr/sbin/dtrace -s $SCRIPTFILE
+/usr/bin/priclass.d:#!/usr/sbin/dtrace -s
+/usr/bin/topsysproc:/usr/sbin/dtrace -n '
+/usr/bin/seeksize.d:#!/usr/sbin/dtrace -s
+/usr/bin/setuids.d:#!/usr/sbin/dtrace -s
+/usr/bin/bitesize.d:#!/usr/sbin/dtrace -s
+/usr/bin/iosnoop:/usr/sbin/dtrace -n '
+/usr/bin/iopending:/usr/sbin/dtrace -n '
+/usr/bin/rwbypid.d:#!/usr/sbin/dtrace -s
+/usr/bin/procsystime:   /usr/sbin/dtrace -n "$dtrace" -x evaltime=exec -c "$command" >&2
+/usr/bin/pridist.d:#!/usr/sbin/dtrace -s
+/usr/bin/sigdist.d:#!/usr/sbin/dtrace -s
+/usr/bin/dappprof:      /usr/sbin/dtrace -x dynvarsize=$buf -x evaltime=preinit -Z -n "$dtrace" \
+/usr/bin/rwsnoop:/usr/sbin/dtrace -n '
+/usr/bin/creatbyproc.d:#!/usr/sbin/dtrace -s
+/usr/bin/pidpersec.d:#!/usr/sbin/dtrace -s
+/usr/bin/sampleproc:/usr/sbin/dtrace -n '
+/usr/bin/filebyproc.d:#!/usr/sbin/dtrace -s
+/usr/bin/cpu_profiler.d:/usr/sbin/dtrace -n "$dtrace"
+/usr/bin/iopattern:/usr/sbin/dtrace -n '
+/usr/bin/hotspot.d:#!/usr/sbin/dtrace -s
+/usr/bin/dapptrace:     /usr/sbin/dtrace -x dynvarsize=$buf -x evaltime=preinit -Z -n "$dtrace" \
+/usr/libexec/dtrace/vm_map_delete_permanent_deny.d:#!/usr/sbin/dtrace -s
+/usr/libexec/dtrace/log_unnest_badness.d:#!/usr/sbin/dtrace -s
+/usr/libexec/dtrace/vm_object_ownership.d:#!/usr/sbin/dtrace -s
+/usr/libexec/dtrace/vm_map_delete_permanent.d:#!/usr/sbin/dtrace -s
+/usr/libexec/dtrace/vm_map_delete_permanent_prot_none.d:#!/usr/sbin/dtrace -s
+/usr/libexec/dtrace/smbtrace.d:#! /usr/sbin/dtrace -C -s
+/usr/libexec/dtrace/suspicious_task_vm_info_count.d:#!/usr/sbin/dtrace -s
+/System/Library/Extensions/autofs.kext/Contents/Resources/watch_for_automounts:#!/usr/sbin/dtrace -s
+/System/Library/Extensions/IOHIDFamily.kext/Contents/PlugIns/IOHIDLib.plugin/Contents/Resources/hiddtraceutil:validEventProbe=$(echo $(/usr/sbin/dtrace -l | grep $grepStrEvent | cut -d' ' -f 2) | cut -d' ' -f 1)
+```
+
+</details></p>
