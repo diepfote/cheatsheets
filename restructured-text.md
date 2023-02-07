@@ -36,3 +36,6 @@ Reference it/use it:
 :ref:`some_label`
 ```
 
+## external link
+
+`Text to display <https://thelink.com>`_
