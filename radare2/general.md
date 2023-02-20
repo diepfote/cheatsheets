@@ -236,4 +236,6 @@ ex17.db.dat\x00l\x00./a.out\x00\x00\x00\x00\x00\x00\x00\x00\x00
 [0x558cc804b852]> px 1 @ rdx
 - offset -  6C6D 6E6F 7071 7273 7475 7677 7879 7A7B  CDEF0123456789AB
 0x0000006c  ff
+$ rax2 -s 0x0000006c
+l
 ```
