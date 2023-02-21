@@ -239,3 +239,25 @@ ex17.db.dat\x00l\x00./a.out\x00\x00\x00\x00\x00\x00\x00\x00\x00
 $ rax2 -s 0x0000006c
 l
 ```
+
+## Debugger Continue / Debugger Stepping
+
+``` 
+# single step instruction
+ds
+
+# step 10 instructions
+ds 10
+
+# step over instruction (do not go into function call instructions) 
+dso
+
+# step until address
+dsu <address>
+
+# continue until function start
+dcu <func-address>/<func-name>
+
+# continue until next breakpoint
+dc
+```
