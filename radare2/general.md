@@ -203,7 +203,7 @@ pf r (rdi)
 
 ### example - print memory locations
 
-Show function arguments before entering function
+#### Show function arguments before entering function
 
 ```
 [0x558cc804b852]> pd -10 @ rip
@@ -249,7 +249,7 @@ ds
 # step 10 instructions
 ds 10
 
-# step over instruction (do not go into function call instructions) 
+# step over instruction (treat function calls as instructions) 
 dso
 
 # step until address
