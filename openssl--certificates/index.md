@@ -1,5 +1,34 @@
+# Openssl
+
+## Get full certificate chain
+
 ```
-# certificate signing request (CSR)
+$ openssl s_client -showcerts -verify 5 -connect some-domain.net:443 -servername some-domain.net
+```
+
+
+
+## Extract public key from CRT/extract public key from Certificate Signing Request
+
+```
+$ openssl x509 -in servicedesk-ca-cert1.crt -noout -pubkey
+```
+
+## Extract public key from rsa private key
+
+```
+$ openssl rsa -in servicedesk.key -pubout
+```
+
+## View certificate signing request
+
+```
+openssl req -in whatever.csr -noout -text
+```
+
+## Create certificate signing request (CSR)
+
+```
 $ openssl req -new \
               -key ~/Documents/kubernetes/etc/kubernetes/pki/apiserver-etcd-client.key \
               -subj '/CN=kube-apiserver-etcd-client/O=system:masters' \
@@ -70,4 +99,3 @@ Certificate:
          d2:5d:0f:69:c7:57:0c:e4:32:f4:9f:23:44:2e:ea:1a:d1:36:
          24:6a:dc:d4
 ```
-
