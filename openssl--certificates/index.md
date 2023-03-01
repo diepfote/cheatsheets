@@ -1,6 +1,14 @@
 # Openssl
 
-## Get full certificate chain
+## Show full certificate chain for pem file
+
+Snatched from https://superuser.com/a/1599687
+
+```
+openssl crl2pkcs7 -nocrl -certfile CHAINED.pem | openssl pkcs7 -print_certs -text -noout
+```
+
+## Fetch full certificate chain
 
 ```
 $ openssl s_client -showcerts -verify 5 -connect some-domain.net:443 -servername some-domain.net
