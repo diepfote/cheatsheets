@@ -6,8 +6,6 @@
 $ openssl s_client -showcerts -verify 5 -connect some-domain.net:443 -servername some-domain.net
 ```
 
-
-
 ## Extract public key from CRT/extract public key from Certificate Signing Request
 
 ```
