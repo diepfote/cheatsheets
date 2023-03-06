@@ -10,8 +10,20 @@ openssl crl2pkcs7 -nocrl -certfile CHAINED.pem | openssl pkcs7 -print_certs -tex
 
 ## Fetch full certificate chain
 
+### Show full ceritifcate chain (no verify -> faster)
+
 ```
-$ openssl s_client -showcerts -verify 5 -connect some-domain.net:443 -servername some-domain.net
+$ openssl s_client -showcerts -connect archlinux.org.net:443 -servername archlinux.org.net
+$ openssl s_client -showcerts -verify 5 -connect 95.217.163.246:443 -servername archlinux.org
+```
+
+### Show and verify full certificate chain
+
+Verification depth: 5
+
+```
+$ openssl s_client -showcerts -verify 5 -connect archlinux.org.net:443 -servername archlinux.org.net
+$ openssl s_client -showcerts -verify 5 -connect 95.217.163.246:443 -servername archlinux.org.net
 ```
 
 ## Extract public key from CRT/extract public key from Certificate Signing Request
