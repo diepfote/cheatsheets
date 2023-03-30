@@ -1,14 +1,29 @@
 # SSH
 
-## Command Line Options
+## Options
 
-* disable strict host checking
+### Disable strict host checking
+
+* command line options 
 
 ```
-ssh -o StrictHostKeyChecking=no <...>
+ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null  ...
+```
+
+* ssh config options
+
+```
+Host somehost
+  HostName localhost
+  User ...
+  Port ...
+  StrictHostKeyChecking no
+  UserKnownHostsFile=/dev/null
+  IdentityFile ...
 ```
 
 ## ssh jump through bastion host first
+
 ```
 ssh <user>@<ip address> -J <jump host ip>
 ```
@@ -34,3 +49,4 @@ ssh -p 60906 -NT -L 10.157.80.56:8080:localhost:8080  localhost
 # -f ... in background
 ssh -D 5555 -TN <ip-or-hostname> -f
 ```
+
