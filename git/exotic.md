@@ -1,11 +1,12 @@
 # Git Exotic
 
-## secret excludes for a repo
+## Add local only excludes in git repo
+
 ```
 $GIT_DIR/info/exclude
 ```
 
-## top-level of git repo
+## show top-level of git repo
 
 ```
 git rev-parse --show-toplevel
@@ -116,3 +117,53 @@ $ git clang-format --style=WebKit
 $ git clang-format --style=file # if you have an existing .clang-format
 ```
 
+## Git Blame flags
+
+unknown origin
+
+```
+$ git blame -w  # ignores white space
+$ git blame -M  # ignores moving text
+$ git blame -C  # ignores moving text into other files
+```
+
+## Git Grep flags
+
+snatched from <https://github.blog/2018-09-10-highlights-from-git-2-19>
+
+Display entire c lang function if there is a result.
+
+```
+git grep --function-context/-W
+```
+
+
+## Git log flags
+
+snatched from <https://github.blog/2019-11-03-highlights-from-git-2-24/>
+
+Not using the standard `--` was an intentional choice here, since this is already a widely-used mechanism in Git to separate reference names from files. 
+
+```
+git log --end-of-options --super-dangerous-option
+```
+
+## Git refspec explained
+
+snatched from <https://github.blog/2020-10-19-git-2-29-released/>
+
+This refspec tells Git to fetch what’s on the left side of the colon (everything in refs/heads/; i.e., all branches) and to write them into the hierarchy on the right-hand side. The \* means “match everything” on the left-hand side and “replace with the matched part” on the right-hand side.
+
+```
+* git config remote.origin.fetch
++refs/heads/*:refs/remotes/origin/*
+```
+
+## Git stash flags
+
+stash content in index/stash staged content
+
+```
+git stash -p
+git stash --staged
+```
