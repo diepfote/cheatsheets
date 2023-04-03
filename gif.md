@@ -4,7 +4,7 @@
 
 *snatched from <https://superuser.com/a/556031>*
 
-```
+```sh
 ffmpeg -i filename..mov \
        -to 00:00:28 \
        -vf "fps=10" \
@@ -12,5 +12,4 @@ ffmpeg -i filename..mov \
        -pix_fmt rgb24 
        output.gif
 ```
-
 
