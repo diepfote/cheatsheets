@@ -155,7 +155,7 @@ snatched from <https://github.blog/2020-10-19-git-2-29-released/>
 This refspec tells Git to fetch what’s on the left side of the colon (everything in refs/heads/; i.e., all branches) and to write them into the hierarchy on the right-hand side. The \* means “match everything” on the left-hand side and “replace with the matched part” on the right-hand side.
 
 ```
-* git config remote.origin.fetch
+git config remote.origin.fetch
 +refs/heads/*:refs/remotes/origin/*
 ```
 
@@ -167,3 +167,15 @@ stash content in index/stash staged content
 git stash -p
 git stash --staged
 ```
+
+
+## Git fix repository corruption |  Git refetch the entire branch content/repo
+
+snatched from <https://github.blog/2022-04-18-highlights-from-git-2-36/>
+
+If there is content missing from the repo, a refetch all might help:
+
+```
+git fetch --refetch
+```
+
