@@ -6,7 +6,7 @@
 
 snatched from <https://bbs.archlinux.org/viewtopic.php?pid=1515377#p1515377>
 
-```
+```text
 sudo systemctl daemon-reload
 sudo systemctl restart local-fs.target
 ```
@@ -15,7 +15,7 @@ sudo systemctl restart local-fs.target
 
 snatched from <https://bbs.archlinux.org/viewtopic.php?id=167639>
 
-```
+```text
 sudo systemctl daemon-reload
 sudo systemctl restart cryptsetup.target
 ```
