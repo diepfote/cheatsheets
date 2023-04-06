@@ -2,7 +2,7 @@
 
 <https://www.man7.org/linux/man-pages/man5/systemd.automount.5.html>
 
-## remount `systemd-umount`ed disk
+## reload systemd fstab target after `systemd-umount`
 
 snatched from <https://bbs.archlinux.org/viewtopic.php?pid=1515377#p1515377>
 
