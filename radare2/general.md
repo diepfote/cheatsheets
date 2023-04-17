@@ -58,7 +58,7 @@ Run native code instead of VM
 e asm.emu=false
 ```
 
-## Print memory address of printf call (which is actually just an int)
+## Print `printf` argument if it is just an INT
 
 
 ```
@@ -113,6 +113,8 @@ $1 = 0xc
 
 snatched from <https://stackoverflow.com/questions/39487888/radare2-how-to-pass-parameters-to-debugee/41515545#41515545>
 
+Hint: run `ood` if radare was not started in debug mode
+
 ```
 $ r2 -d a.out ex17.db.dat l
 [0x7f4161daa8a1]> ood
@@ -127,14 +129,13 @@ hit breakpoint at: 0x557877e50804
 or 
 
 ```
-$ cat ./ex17.r
+$ cat ./ex17.profile
 #!/usr/bin/rarun2
+program=./a.out
 arg1=ex17.db.dat
 arg2=l
 
-$ r2 -r ex17.r -d a.out
-[0x7f07ee4c7730]> ood
-child received signal 9
+$ r2 -r ex17.profile -d a.out
 [0x7fa545112730]> dcu main
 INFO: Continue until 0x5637c4ab7804 using 1 bpsize
 hit breakpoint at: 0x5637c4ab7804
@@ -239,6 +240,45 @@ ex17.db.dat\x00l\x00./a.out\x00\x00\x00\x00\x00\x00\x00\x00\x00
 $ rax2 -s 0x0000006c
 l
 ```
+
+### Print struct contents (argument to func call)
+
+C struct to print  -> Database\* (FILE\* ... address of FILE -> 8 byte address -> rdi+8)
+
+```
+struct Connection {
+        FILE *file;
+        struct Database *db;
+};
+
+void Database_load(struct Connection *conn) {
+}
+```
+
+
+```
+$ r2 -r ex17.profile -d a.out
+[0x5632901196b0]> px 8 @ rdi   # FILE*
+- offset -      B0B1 B2B3 B4B5 B6B7 B8B9 BABB BCBD BEBF  0123456789ABCDEF
+0x564eda6f06b0  009a 70da 4e56 0000                      ..p.NV..
+[0x5632901196b0]> px 8 @ rdi+8   # Database*
+- offset -      B8B9 BABB BCBD BEBF C0C1 C2C3 C4C5 C6C7  89ABCDEF01234567
+0x564eda6f06b8  d006 6fda 4e56 0000                      ..o.NV..
+[0x5632901196b0]> px 16 @ rdi
+- offset -      B0B1 B2B3 B4B5 B6B7 B8B9 BABB BCBD BEBF  0123456789ABCDEF
+0x564eda6f06b0  009a 70da 4e56 0000 d006 6fda 4e56 0000  ..p.NV....o.NV..
+
+# flip endianness of memory address
+[0x5632901196b0]> !rax2 =16 -e 0xd0066fda4e560000
+0x564eda6f06d0
+
+# Database contents
+[0x5632901196b0]> px 20 @ 0x564eda6f06d0
+- offset -      D0D1 D2D3 D4D5 D6D7 D8D9 DADB DCDD DEDF  0123456789ABCDEF
+0x564eda6f06d0  0000 0000 0000 0000 0000 0000 0000 0000  ................
+0x564eda6f06e0  0000 0000                                ....
+```
+
 
 ## Debugger Continue / Debugger Stepping
 
