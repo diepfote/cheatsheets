@@ -862,9 +862,9 @@ $ sudo dtrace  -n 'python*:::function-entry { printf("%s %s\n", copyinstr(arg0),
   6   2911 dtrace_function_entry:function-entry /tmp/test-signal.py sigint_handler
 ```
 
-## Find pre-written dtrace scripts
+## Pre-written dtrace scripts/Pre-provided dtrace scripts
 
-On Mac-OS/on Mac OS
+### Where to find them on Mac OS
 
 <details><p>
 
@@ -926,3 +926,15 @@ $ find / -executable -type f -exec sh -c 'grep -m 1 -H -F "/usr/sbin/dtrace" "$0
 ```
 
 </details></p>
+
+### Show files openend by process
+
+```
+$ sudo opensnoop -p 63183
+Password:
+
+
+  UID    PID COMM          FD PATH
+  501  63183 rsync          0 Compiler programming livestreams/53 Scope speedup, part 1-RsuZx8TxCpk.mp4
+  501  63183 rsync          0 Compiler programming livestreams/54 Scope speedup, part 2-Jc1X3sdv9-k.mp4
+```
