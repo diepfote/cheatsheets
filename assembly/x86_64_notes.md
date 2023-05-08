@@ -1,6 +1,8 @@
------------
-### calculate a relocatable offset
+# x86 notes
 
+## calculate a relocatable offset
+
+```text
 -> instructions
 0x109a: lea     rcx, [rip + 0x1af]
 0x10a1: lea     rdi, [rip + 0xd1]
@@ -25,34 +27,38 @@ printf  0x4020
 fgets   0x4028
 strcmp  0x4030
 malloc  0x4038
+```
 
 
 as soon as the processor executes the next instruction the instruction pointer points to the next instruction in line...
+
+``` text
 0x10a8: call    qword ptr [rip + 0x2f32]
 0x10ae: hlt
+```
 
 Thus [rip + 0x2f32] is equvivalent to [0x10ae + 0x2f32] which evaluates to 0x3fe0
------------
 
-
-
+---
 
 https://medium.com/sector443/python-for-reverse-engineering-1-elf-binaries-e31e92c33732
 .got -> Global Offset Table
 .ptl -> Procedure Linkage Table # https://stackoverflow.com/a/5469334
 system@plt --> variable address for system syscall
 
------------
-### 32 bit register layout
+## 32 bit register layout
+
+```text
 +---------+------+------+------+------+------+------+------+------+
 | syscall | arg0 | arg1 | arg2 | arg3 | arg4 | arg5 |      |      |
 +---------+------+------+------+------+------+------+------+------+
 |   %eax  | %ebx | %ecx | %edx | %esi | %edi | %ebp | %eip | %esp |
 +---------+------+------+------+------+------+------+------+------+
------------
+```
 
------------
-### 64 bit register layout
+## 64 bit register layout
+
+```text
 +---------+------+------+------+------+------+------+
 | syscall | arg0 | arg1 | arg2 | arg3 | arg4 | arg5 |
 +---------+------+------+------+------+------+------+
@@ -61,17 +67,18 @@ system@plt --> variable address for system syscall
 
 %rbp - %rip  - %rsp
   8  -   8  -  8
-
+```
 
 For 64 bit, the argument needs to be passed into CPU register instead of the stack. (https://arvandy.com/rop-emporium-split/)
 
 
-+-----------+
+## x64 NASM cheat sheet
+
 FROM https://gist.github.com/justinian/385c70347db8aca7ba93e87db90fc9a6#file-linux-x64-nasm-cheatsheet-md
-# x64 NASM cheat sheet
 
-## Registers
+### Registers
 
+```text
 |                         | 64 bit | 32 bit | 16 bit | 8 bit |
 |-------------------------|--------|--------|--------|-------|
 | A (accumulator)         | `RAX`  | `EAX`  | `AX`   | `AL`  |
@@ -83,11 +90,12 @@ FROM https://gist.github.com/justinian/385c70347db8aca7ba93e87db90fc9a6#file-lin
 | Numbered (n=8..15)      | `Rn`   | `RnD`  | `RnW`  | `RnB` |
 | Stack pointer           | `RSP`  | `ESP`  | `SP`   | `SPL` |
 | Frame pointer           | `RBP`  | `EBP`  | `BP`   | `BPL` |
+```
 
 As well as XMM0 .. XMM15 for 128 bit floating point numbers.
 
 
-## Calling Conventions
+### Calling Conventions
 
 Put function arguments (first to last) in the following registers (64 bit
 representations): RDI, RSI, RDX, RCX, R8, R9, then push to stack (in reverse,
