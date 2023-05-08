@@ -114,5 +114,3 @@ Like in a normal C program, the label that is (de facto) called first is
 `main`, with the args `argc` (argcount) in RDI, and the `char** argv` in RSI
 (the commandline arguments as in C's main function).
 
-+-----------+
-
