@@ -20,14 +20,14 @@ Examples below.
 
 `curthread` is defined as a `struct thread`. How do I know?
 
-```
+```text
 $ sudo dtrace -n 'profile-997hz { @[curthread->invalid_member] = count(); }'
 dtrace: invalid probe specifier profile-997hz { @[curthread->invalid_member] = count(); }: in action list: invalid_member is not a member of struct thread
 ```
 
 #### `proc` struct
 
-```
+```text
 $ sudo dtrace -n 'profile-997hz { @[(curthread->t_tro->tro_proc)->invalid_member] = count(); }'
 Password:
 dtrace: invalid probe specifier profile-997hz { @[(curthread->t_tro->tro_proc)->invalid_member] = count(); }: in action list: invalid_member is not a member of struct proc
@@ -48,7 +48,7 @@ Examples below
 
 <details><p>
 
-```
+```text
 $ grep -r thread /usr/lib/dtrace/ | grep translator
 /usr/lib/dtrace/darwin.d: * kthread_t-to-psinfo_t translator, below.
 /usr/lib/dtrace/darwin.d:translator psinfo_t < thread_t T > {
@@ -88,7 +88,7 @@ $ grep -rFA 25 'translator lwpsinfo_t < thread_t T >' /usr/lib/dtrace/
 
 <details><p>
 
-```
+```text
 $ sudo dtrace -n 'profile-997hz { @[curthread->last_processor] = count(); }'
 dtrace: description 'profile-997hz ' matched 1 probe
 ^C
@@ -130,14 +130,14 @@ dtrace: description 'profile-997hz ' matched 1 probe
 
 #### `proc` struct translator
 
-```
+```text
 $ grep -r 'proc ' /usr/lib/dtrace/
 /usr/lib/dtrace/darwin.d:inline struct proc * curproc =
 /usr/lib/dtrace/darwin.d:       ((struct proc *)(curthread->t_tro->tro_proc)) != NULL ? ((struct proc *)(curthread->t_tro->tro_proc)) :
 /usr/lib/dtrace/darwin.d:translator psinfo_t < struct proc * P > {
 ```
 
-```
+```text
 translator psinfo_t < struct proc * P > {
         pr_nlwp =       ((struct task *)(P->task))->thread_count;
         pr_pid =        P->p_pid;
@@ -157,7 +157,7 @@ Get `thread_count` for the task of the process `curthread` is running in
 
 **Hint**: This is how I knew how to cast the the `task` object:
 
-  ```
+  ```text
   $ grep -rF 'task ' /usr/lib/dtrace/
   /usr/lib/dtrace/darwin.d:       taskid_t pr_taskid; /* task id */
   /usr/lib/dtrace/darwin.d:       pr_nlwp =       ((struct task *)(P->task))->thread_count;
@@ -165,7 +165,7 @@ Get `thread_count` for the task of the process `curthread` is running in
 
 ###### Cast to struct task pointer
 
-```
+```text
 sudo dtrace -n 'profile-997hz { @[((struct task *)curthread->t_tro->tro_proc->task)->thread_count] = count(); }'
 ```
 
@@ -180,7 +180,7 @@ sudo dtrace -n 'profile-997hz { @[((struct task *)curthread->t_tro->tro_proc->ta
 
 probefunc = syscall in this case
 
-```
+```text
 sudo dtrace -n 'syscall:::entry /execname == "mpv"/ { @[pid, probefunc] = count(); }'
 ```
 
@@ -188,7 +188,7 @@ sudo dtrace -n 'syscall:::entry /execname == "mpv"/ { @[pid, probefunc] = count(
 
 Checked if `syscall::*read*:entry` would find more read syscalls for this process. It did not.
 
-```
+```text
 sudo dtrace -n 'syscall::read:entry /execname == "mpv"/ { @[ustack()] = count(); }'
               libsystem_kernel.dylib`read+0xa
               mpv`stream_read_unbuffered+0x41
@@ -214,13 +214,13 @@ The pid provider traces every instruction in a given PID.
 We filter by function.  
 Detect every function entry:
 
-```
+```text
 sudo dtrace -n 'pid56141::stream_read_unbuffered:entry'
 ```
 
 Show timestamp for function entry:
 
-```
+```text
 sudo dtrace -n 'pid56141::stream_read_unbuffered:entry { printf("Called stream_read_unbuffered at %Y", walltimestamp); }'
 CPU     ID                    FUNCTION:NAME
   6   2099     stream_read_unbuffered:entry Called stream_read_unbuffered at 2022 Sep  5 03:36:32
@@ -232,7 +232,7 @@ CPU     ID                    FUNCTION:NAME
 
 Follow all instructions in the process after they passed through `stream_read_unbuffered` ([mpv-trace-stream_read_unbuffered](./d-scripts/mpv-trace-stream_read_unbuffered.d)):
 
-```
+```text
 dtrace: script './mpv-trace-stream_read_unbuffered.d' matched 67031 ([] probes
 CPU FUNCTION
   0  -> stream_read_unbuffered
@@ -259,7 +259,7 @@ Follow every action stream_read_unbuffered triggered in the kernel ([mpv-trace-s
 
 <details><p>
 
-```
+```text
 dtrace: script './mpv-trace-stream_read_unbuffered.d' matched 193402 probes
  10  -> lck_rw_done
  10  <- lck_rw_done
@@ -688,7 +688,7 @@ dtrace: script './mpv-trace-stream_read_unbuffered.d' matched 193402 probes
 
 Which files are read by the `read` syscall requested by `mpv`?
 
-```
+```text
 $ sudo dtrace  -n 'syscall::read:entry /execname == "mpv"/ { @[fds[3].fi_pathname] = count(); @[fds[4].fi_pathname] = count(); }'
 dtrace: description 'syscall::read:entry ' matched 1 probe
 ^C
@@ -697,7 +697,7 @@ dtrace: description 'syscall::read:entry ' matched 1 probe
   ??/Movies/Dtrace Review [TgmA48fILq8].mp4                         1
 ```
 
-```
+```text
 $ sudo dtrace  -n 'syscall::read:entry /execname == "mpv"/ { @[fds[arg0].fi_pathname] = count(); }'
 ^C
 
@@ -709,7 +709,7 @@ Which libraries does `mpv` load (well this shows more -> any mmap file)?
 
 <details><p>
 
-```
+```text
 $ sudo dtrace  -n 'syscall::mmap:entry /execname == "mpv"/ { @[fds[arg4].fi_pathname] = count(); }'
 dtrace: description 'syscall::mmap:entry ' matched 1 probe
 ^C
@@ -800,7 +800,7 @@ https://www.youtube.com/watch?v=TgmA48fILq8
 
 ### List probes
 
-```
+```text
 $ sudo dtrace -l -P pyth\*
    ID   PROVIDER            MODULE                          FUNCTION NAME
 16797 python14473            Python                         sys_audit audit
@@ -855,7 +855,7 @@ $ sudo dtrace -l -P pyth\*
 
 ### show module name & function name for Python
 
-```
+```text
 $ sudo dtrace  -n 'python*:::function-entry { printf("%s %s\n", copyinstr(arg0), copyinstr(arg1)) }'
  10   2911 dtrace_function_entry:function-entry /tmp/test-signal.py run_default_behavior
 
@@ -868,7 +868,7 @@ $ sudo dtrace  -n 'python*:::function-entry { printf("%s %s\n", copyinstr(arg0),
 
 <details><p>
 
-```
+```text
 $ find / -executable -type f -exec sh -c 'grep -m 1 -H -F "/usr/sbin/dtrace" "$0" 2>/dev/null' {} \; 2>/dev/null
 /usr/bin/loads.d:#!/usr/sbin/dtrace -s
 /usr/bin/syscallbypid.d:#!/usr/sbin/dtrace -s
@@ -929,7 +929,7 @@ $ find / -executable -type f -exec sh -c 'grep -m 1 -H -F "/usr/sbin/dtrace" "$0
 
 ### Show files openend by process
 
-```
+```text
 $ sudo opensnoop -p 63183
 Password:
 
@@ -937,4 +937,58 @@ Password:
   UID    PID COMM          FD PATH
   501  63183 rsync          0 Compiler programming livestreams/53 Scope speedup, part 1-RsuZx8TxCpk.mp4
   501  63183 rsync          0 Compiler programming livestreams/54 Scope speedup, part 2-Jc1X3sdv9-k.mp4
+```
+
+
+# Display network activity via read and write system calls
+
+Note: Obviously these calls can be either local or remote write/reads.
+      This only works if you know the applications talks to the network.
+      Otherwise you need to also display the path it is reading from or
+      writing to.
+
+Show last 20 syscalls in the last 10 seconds including the buffer size
+they operated on
+
+```text
+$ sudo dtrace -p "$(ps -ef | grep -v grep | grep kubectl | awk '{ print $2 }')"  -n 'syscall::read:entry,syscall::write:entry /pid == $target/ { @iosize[probefunc, timestamp] = sum(arg2); } tick-10sec { trunc(@iosize, 20); printa(@iosize); }'
+dtrace: description 'syscall::read:entry,syscall::write:entry ' matched 3 probes
+CPU     ID                    FUNCTION:NAME
+  0 500833                      :tick-10sec
+  read                                                   414573712695            40870
+  read                                                   414574224934            40870
+  read                                                   413613772247            40872
+  read                                                   413614178744            40872
+  read                                                   420176099965            40872
+  read                                                   420177271532            40872
+  read                                                   416930462730            40930
+  read                                                   416931065835            40930
+  read                                                   416473476100            40932
+  read                                                   416474150262            40932
+  read                                                   415871678372            40934
+  read                                                   415872751171            40934
+  read                                                   415369604460            40936
+  read                                                   415370663830            40936
+  read                                                   414513020823            40938
+  read                                                   414514626577            40938
+  read                                                   413516276239            40940
+  read                                                   413516325316            40940
+  read                                                   420070217621            40940
+  read                                                   420070275581            40940
+
+  write                                                  420972849369               23
+  write                                                  420972858378             9569
+  write                                                  420959001064            24576
+  write                                                  420342166732            32768
+  write                                                  420395788760            32768
+  write                                                  420466818116            32768
+  write                                                  420496814581            32768
+  write                                                  420546572194            32768
+  write                                                  420594005810            32768
+  write                                                  420626161704            32768
+  write                                                  420680709445            32768
+  write                                                  420726899148            32768
+  write                                                  420791960338            32768
+  write                                                  420864622197            32768
+  write                                                  420929456447            32768
 ```
