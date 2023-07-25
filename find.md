@@ -1,5 +1,12 @@
 # Find
 
+## prune folders and subfolders/do not show folders and subfolders
+
+```text
+$ find "$HOME/Movies/" -path "$HOME/Movies/watched/*" -prune -o -path "$HOME/Movies/audio-only/*" -o -path "$HOME/Movies/TV" -prune -o -type f -print | grep -E 'watched|TV|audio-only'  # 2023-07-25
+/Users/florian.sorko/Movies/Maybe at some Point/totalbiscuit/Legacy of the Void/TB plays Protoss in LOTV - Daily Adept Nerfathon (October 11, 2015).mp4
+```
+
 ## any of the given filenames
 
 ```
