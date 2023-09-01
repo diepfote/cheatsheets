@@ -1,5 +1,6 @@
 import logging
 import os
+from functools import cache
 
 LOG_LEVELS = {
     "debug": logging.DEBUG,
@@ -8,6 +9,8 @@ LOG_LEVELS = {
     "error": logging.ERROR,
 }
 
+
+@cache
 def get_logger():
     LOG_LEVEL = os.getenv("LOG_LEVEL", "debug")
 
