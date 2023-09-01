@@ -1,6 +1,8 @@
 import logging
 import os
+# if we return a logger per loading this module we will log multiple times
 from functools import cache
+
 
 LOG_LEVELS = {
     "debug": logging.DEBUG,
