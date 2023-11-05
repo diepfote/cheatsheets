@@ -36,5 +36,5 @@ No symbol table info available.
 
 More at:   
 <https://stackoverflow.com/a/8306805>  
-<https://stackoverflow.com/a/22711917>
-
+<https://stackoverflow.com/a/22711917>  
+[Examining the symbol table](https://sourceware.org/gdb/current/onlinedocs/gdb.html/Symbols.html)
