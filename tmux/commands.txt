@@ -74,3 +74,5 @@ Copy Mode
 y — copy selection to system clipboard.
 Y (shift-y) — "put" selection. Equivalent to copying a selection, and pasting it to the command line.
 
+Synchronize panes
+`setw synchronize-panes on`
