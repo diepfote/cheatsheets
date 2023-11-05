@@ -12,6 +12,9 @@ Aug 4, 2022 at 14:28
 
 ## set pane title
 
+***CAREFUL***:
+for some reason this breaks CWD (resets it) if you use `tmux-resurrect`
+
 ```
 while read -r pane; do tmux select-pane -t "$pane" -T ''; done < <(tmux list-panes -a -F "#{pane_active} #{window_active} #{pane_id}" | sort | awk '{print $3}')
 ```
