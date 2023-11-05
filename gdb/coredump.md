@@ -1,0 +1,17 @@
+# GDB analyze coredumps
+
+Export core file
+
+```sh
+coredumpctl list
+coredumpctl dump --output /tmp/coredump 71155
+```
+
+
+Show full stack trace
+```sh
+gdb a.out -c /tmp/coredump
+(gdb) bt full
+```
+
+More at <https://stackoverflow.com/questions/8305866/how-do-i-analyze-a-programs-core-dump-file-with-gdb-when-it-has-command-line-pa>
