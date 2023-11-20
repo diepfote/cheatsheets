@@ -38,7 +38,6 @@ $ rax2 =10 0x1e
 
     From the man page:
 
-    ```
              =f    floating point
              =2    binary
              =3    ternary
@@ -46,7 +45,6 @@ $ rax2 =10 0x1e
              =10   decimal
              =16   hexadecimal
 
-    ```
 
 
 *NOTE*: `rax2` can also convert from a binary string to a number or 

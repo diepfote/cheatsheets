@@ -19,9 +19,7 @@ int* integer_ptr = update_integer(20);
 *integer_ptr = 30;
 ```
 
-radare output:
-
-<details><summary></summary><p>
+<details><summary>Setup</summary><p>
 
 ```
 [0x7f4fffa2f2a0]> pd 1200 @ main | grep -C 5 update_integer

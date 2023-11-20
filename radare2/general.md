@@ -1,4 +1,4 @@
-# Radare2 | Radare 2
+# General
 
 ## Print hex value of character
 
@@ -73,11 +73,11 @@ dc
 
 ## print variables / print vars
 
-https://book.rada.re/analysis/variables.html
+<https://book.rada.re/analysis/variables.html>
 
 ### radare helpers in functions - example
 
-<details><summary></summary><p>
+<details><summary>Show example</summary><p>
 
 ```
 [0x55a216e282ec]> afvf
