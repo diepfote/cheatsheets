@@ -5,4 +5,3 @@
 " :copen -> open in quickfix list
 :vimgrep /pattern/[gj] **.sh | :copen
 ```
-

@@ -14,7 +14,9 @@ $ psql -p PORT -U USERNAME  --dbname DB_NAME -hHOSTNAME < /tmp/gen-drop.sql > /t
 $ psql -p PORT -U USERNAME  --dbname DB_NAME -hHOSTNAME < /tmp/drop.sql
 ```
 
-### Drop by user (drops schemas and tables -> do not do this if you need some of the schemas)
+### Drop by user
+
+drops schemas and tables -> do not do this if you need some of the schemas
 
 ```
 DROP OWNED by <username>;

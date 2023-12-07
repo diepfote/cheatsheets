@@ -2,7 +2,6 @@
 
 ## Dtrace objects
 
-
 ---
 
 Based on Dtrace Dynamic Tracing in Oracle Solaris, Mac OS X, And FreeBSD
@@ -32,7 +31,6 @@ $ sudo dtrace -n 'profile-997hz { @[(curthread->t_tro->tro_proc)->invalid_member
 Password:
 dtrace: invalid probe specifier profile-997hz { @[(curthread->t_tro->tro_proc)->invalid_member] = count(); }: in action list: invalid_member is not a member of struct proc
 ```
-
 
 ### Find type defintion/Find dtrace type tranlator
 
@@ -143,7 +141,7 @@ translator psinfo_t < struct proc * P > {
         pr_pid =        P->p_pid;
         pr_ppid =       P->p_ppid;
         pr_pgid =       P->p_pgrp.__hazard_ptr->pg_id;
- 
+
 ...
 };
 ```
@@ -172,7 +170,6 @@ sudo dtrace -n 'profile-997hz { @[((struct task *)curthread->t_tro->tro_proc->ta
 ### Cast dtrace object | Casting dtrace object
 
 [Example](#cast-to-struct-task-pointer)
-
 
 ## Find origin of `read` system call in mpv on Darwin
 
@@ -794,7 +791,7 @@ dtrace: description 'syscall::mmap:entry ' matched 1 probe
 ----
 
 Taken from `Dtrace Review` by Brian Cantrill
-https://www.youtube.com/watch?v=TgmA48fILq8
+<https://www.youtube.com/watch?v=TgmA48fILq8>
 
 ---
 
@@ -938,7 +935,6 @@ Password:
   501  63183 rsync          0 Compiler programming livestreams/53 Scope speedup, part 1-RsuZx8TxCpk.mp4
   501  63183 rsync          0 Compiler programming livestreams/54 Scope speedup, part 2-Jc1X3sdv9-k.mp4
 ```
-
 
 # Display network activity via read and write system calls
 

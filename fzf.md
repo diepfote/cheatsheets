@@ -1,6 +1,11 @@
 # FZF
+
 ## preview
-### preview files in current dir highlighted based on file extension
+
+### preview files in current dir 
+
+highlighted based on file extension
+
 ```
 fzf --height 100% --preview='file={}; bat -l "${file##*.}" --color=always {}'
 

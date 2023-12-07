@@ -1,4 +1,4 @@
-#### Predefined searches
+# Predefined searches
 
 - `prefix + ctrl-f` - simple *f*ile search
 - `prefix + ctrl-g` - jumping over *g*it status files (best used after `git status` command)

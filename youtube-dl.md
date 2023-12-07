@@ -2,7 +2,5 @@
 
 ## Special flags
 
-* Do not download and do not write anything to disk
-```
---simulate
-```
+`--simulate` ... Do not download and do not write anything to disk
+

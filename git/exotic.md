@@ -187,4 +187,3 @@ If there is content missing from the repo, a refetch all might help:
 ```sh
 git fetch --refetch
 ```
-

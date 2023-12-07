@@ -1,6 +1,6 @@
 # Git Plumbing
 
-Snatched from [Dissecting Git's Guts, Emily Xie - Git Merge 2016](https://www.youtube.com/watch?v=Y2Msq90ZknI)  
+Snatched from [Dissecting Git's Guts, Emily Xie - Git Merge 2016](https://www.youtube.com/watch?v=Y2Msq90ZknI)
 
 ## Basic object types
 
@@ -18,6 +18,7 @@ $ git hash-object -w hello_world.txt
 ```
 
 Content addressable filesystem. Read content addressable by hash.
+
 ```
 $ ls -alh .git/objects/98/0a0d5f19a64b4b30a87d4206aade58726b60e3
 -r--r--r-- 1 florian.begusch wheel 29 Dec 14 08:02 .git/objects/98/0a0d5f19a64b4b30a87d4206aade58726b60e3
@@ -39,8 +40,8 @@ $ printf 'blob 13\000Hello World\041\n' | openssl sha1
 Add to stash/index
 
 ```
-$ git update-index --add hello_world.txt
-$ git update-index --add foo_bar.txt
+git update-index --add hello_world.txt
+git update-index --add foo_bar.txt
 ```
 
 Inspect index
@@ -76,10 +77,10 @@ $ find .git/objects -type f
 .git/objects/98/0a0d5f19a64b4b30a87d4206aade58726b60e3  # blob
 ```
 
-
 ### Mimic `git commit`/Write commit object
 
-A commit knows when trees were written and contains information about committer and author.
+A commit knows when trees were written and contains information
+about committer and author.
 
 ```
 $ echo 'first commit' | git commit-tree e4ff61e51b77e4e42e3b687ab8a086b24db2e16d
@@ -102,7 +103,6 @@ $ find .git/objects -type f
 .git/objects/9a/f24d2496973bb2603bb4ebd6ea3bba6179b577
 .git/objects/98/0a0d5f19a64b4b30a87d4206aade58726b60e3
 ```
-
 
 #### How git commits create parent commit relations
 
@@ -138,11 +138,11 @@ empty, no branches yet
 Add a master branch, point it at a commit
 
 ```
-$ git update-ref refs/heads/master 7edad5bf0e1967282ce4452464bca10ffc56bd66
+git update-ref refs/heads/master 7edad5bf0e1967282ce4452464bca10ffc56bd66
 ```
 
 ```
-$ find .git/refs/heads -type f 
+$ find .git/refs/heads -type f
 .git/refs/heads/master
 $ cat .git/refs/heads/master
 7edad5bf0e1967282ce4452464bca10ffc56bd66
@@ -153,11 +153,11 @@ $ cat .git/refs/heads/master
 It just duplicates the pointer
 
 ```
-$ git checkout -b feature
+git checkout -b feature
 ```
 
 ```
-$ find .git/refs/heads -type f 
+$ find .git/refs/heads -type f
 .git/refs/heads/master
 .git/refs/heads/feature
 $ cat .git/refs/heads/feature
@@ -167,7 +167,7 @@ $ cat .git/refs/heads/feature
 ### What is the current branch? HEAD/detached HEAD or headless
 
 ```
-$ cat .git/HEAD 
+$ cat .git/HEAD
 ref: refs/heads/feature
 ```
 
@@ -228,4 +228,3 @@ eb606ccdc530241cc740e97ea8d87c15a6cc3e69 tree   82 87 174
 non delta: 4 objects
 .git/objects/pack/pack-2bf9b004e25e7885f2a76d2a592375642b224422.pack: ok
 ```
-

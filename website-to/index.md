@@ -1,36 +1,40 @@
-## Website to pdf
+# Website to pdf
 
-### by hand (deprecated)
-* Save html as is -> https://github.com/gildas-lormeau/SingleFile
+## by hand (deprecated)
+
+* Save html as is -> <https://github.com/gildas-lormeau/SingleFile>
 * Change layout via [local browser page](./website-to-pdf.html)
 * print page -> save as PDF
 
 
-### Paperoni & Calibre
+## Paperoni & Calibre
 
 * [fetch articles (writes links file)](../getpocket.md)
 * [to epub](#website-to-epub)
 * use calibre to convert an `epub` into a `pdf`
+
   ```
   brew install calibre
 
   ebook-convert Spying\ on\ a\ Ruby\ process\'s\ memory\ allocations\ with\ eBPF.epub Spying\ on\ a\ Ruby\ process\'s\ memory\ allocations\ with\ eBPF.pdf
   ```
 
-#### batch conversion
+### batch conversion
 
 ```
-find . -name '*.epub' -exec sh -c 'b="$(basename "$0" | sed -r "s#\.epub\$##")"; ebook-convert "$0" "$b".pdf' {} \;
+find . -name '*.epub' -exec sh -c 'b="$(basename "$0" | sed -r "s#\.epub\$#")"; ebook-convert "$0" "$b".pdf' {} \;
 ```
 
 
-## Website to epub
+# Website to epub
 
 * Install paperoni via cargo.  
   Check [Paperoni](https://lib.rs/crates/paperoni) for installation instructions.
+
 * run paperoni
 
   - Single file
+
     ```
     $ paperoni -o /tmp 'https://jvns.ca/blog/2018/01/31/spying-on-a-ruby-process-s-memory-allocations/'
     Downloading article to /tmp
@@ -46,6 +50,7 @@ find . -name '*.epub' -exec sh -c 'b="$(basename "$0" | sed -r "s#\.epub\$##")";
     ```
 
   - Batch file
+
   ```
   paperoni -o <output-dir> -f <file-containing-links>
   ```

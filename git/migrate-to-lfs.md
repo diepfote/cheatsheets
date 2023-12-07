@@ -11,17 +11,17 @@ git add .lfsconfig
 git commit -m 'Add lfs remote config'
 ```
 
-
-3) git lfs track <files>
+3) `git lfs track <files>`
 
 e.g.
+
 ```
 git lfs track *.png *.html *.svg* *.jpg *.pptx *.pdf *.xcf *.zip
 git add .gitattributes
 git commit -m 'Add lfs track info'
 ```
 
-4) git migrate import --include=<files> --everything
+4) `git migrate import --include=<files> --everything`
 
 Use `--everything` to include files in any local branch
 
@@ -42,7 +42,7 @@ $ git lfs ls-files --all
 
 6) check if any additional files need to be migrated
 
-(nicked from https://stackoverflow.com/questions/42963854/list-files-not-tracked-by-git-lfs/46215732#46215732)
+(nicked from <https://stackoverflow.com/questions/42963854/list-files-not-tracked-by-git-lfs/46215732#46215732>)
 
 Show files tracked by git and not in git lfs:
 
@@ -56,30 +56,22 @@ Makefile
 README.md
 ```
 
-
 8) set up lfs authentication
 
-e.g. 
+e.g.
 
 ```
 git config --global credential.helper store  # store on disk (plain-text)
 echo 'https://<user>:<password>@<hostname>' > ~/.git-credentials
 ```
 
-
 8) Fix `remote: error: GH008: Your push referenced at least XX unknown Git LFS objects:`
 ***(optional if the step below fails)***
 
-
-------------
-!!!!!!!!!!!!
-
-actually we need to delete the repo on github and re-create it, otherwise GHE will always reject your lfs references in the pre-receive hook. --> step 8
-
-!!!!!!!!!!!!
---------------
+**actually we need to delete the repo on github and re-create it, otherwise GHE will always reject your lfs references in the pre-receive hook. --> step 8**
 
 Force push error you might encounter in the next step
+
 ```
 $ git push --force --all
 Enumerating objects: 915, done.
@@ -107,6 +99,7 @@ First option, delete any files matched by the previous migrate call:
   **Note: This approach will not keep a history of lfs files, only `latest` will remain in the repo**
 
   1) delete files that are now lfs files based on extension
+
   ```
   bfg --no-blob-protection -D '*.{png,html,svg*,jpg,pptx,pdf,xcf,zip}'
   ```
@@ -114,6 +107,7 @@ First option, delete any files matched by the previous migrate call:
 Second option  
 Repeat the following steps for every offending id (retry pushes if the list of ids is non-exaustive)
   1) retrieve filepath
+
   ```
   $ git l -p -S 91693be5c509f738700c781c4604536cd4c4bf30cf448e78e7d21f7378ca427b
   ...
@@ -128,15 +122,14 @@ Repeat the following steps for every offending id (retry pushes if the list of i
   | | | |   +version https://git-lfs.github.com/spec/v1
   | | | |   +oid sha256:91693be5c509f738700c781c4604536cd4c4bf30cf448e78e7d21f7378ca427b
   | | | |   +size 593525
-
   ```
-  
+
   2) delete offending files from git
 
   ```
   # note this command those not take filepaths sadly
   $ bfg --delete-files 'Open_Sans.zip' --no-blob-protection
-  
+
   Using repo : /private/tmp/backup-test-repo/.git
   ...
   ...
@@ -169,11 +162,9 @@ $ git commit -m 'Add all lfs tracked files'
 
 ```
 git push --force --all
-
 ```
 
 10) enable branch protection on repo
-
 
 7) checkout all lfs files to the working copy (otherwise you will only have pointer files in your working copy)
 
@@ -182,42 +173,3 @@ git lfs checkout
 ```
 
 11) celebrate
-
-----------
-
-# LFS in general
-
-*) retrieve pointer stored in git
-
-```
-$ git lfs untrack '*.zip'
-Untracking "*.zip"
-$ git checkout -- docker-slides/fonts/Open_Sans.zip
-$ bat docker-slides/fonts/Open_Sans.zip
-version https://git-lfs.github.com/spec/v1
-oid sha256:91693be5c509f738700c781c4604536cd4c4bf30cf448e78e7d21f7378ca427b
-size 593525
-```
-
-*) check pointer
-
-```
-$ git lfs pointer --check --file=docker-slides/fonts/Open_Sans.zip && echo valid || echo invalid
-valid
-```
-
-*) get pointer that would be generated (file needs to be checked out obviously, not a pointer file, otherwise the results will differ)
-
-```
-$ git lfs track '*.zip'
-$ git lfs checkout
-Checking out LFS objects: 100% (71/71), 24 MB | 0 B/s, done.
-/tmp/test-something
-$ git lfs pointer --file=docker-slides/fonts/Open_Sans.zip
-Git LFS pointer for docker-slides/fonts/Open_Sans.zip
-
-version https://git-lfs.github.com/spec/v1
-oid sha256:91693be5c509f738700c781c4604536cd4c4bf30cf448e78e7d21f7378ca427b
-size 593525
-```
-
