@@ -4,7 +4,7 @@
 
 snatched from <https://stackoverflow.com/a/52675535>
 
-```
+```text
 ffmpeg -i 'file.mov'  -filter:v 'crop=iw:ih-40' 'file-cropped.mp4'
 ```
 

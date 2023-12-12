@@ -10,5 +10,5 @@
 
 ## close quickfix windows
 
-location listing ... `:lcl`
-quickfix window  ... `:ccl` 
+location listing ... `:lcl`  
+quickfix window  ... `:ccl`
