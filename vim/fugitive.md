@@ -1,6 +1,6 @@
 # Fugitive.vim
 
-```
+```text
 :Gedit branchname:/path/to/file
  " autocompletion for branchname and fpath
 :Gedit SHA-hash (any git object, blob, tag, tree,

@@ -1,3 +1,6 @@
+# General
+
+```text
 sort unique    :sort u
 
 back to previous location   <CTRL+O>
@@ -125,3 +128,4 @@ restore visual selection (run in normal mode)
 
 redirect to stdout  # https://superuser.com/a/1692033
   nvim -e +"redir>>/dev/stdout | echo &undodir | redir END" -scq
+```

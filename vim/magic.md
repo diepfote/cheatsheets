@@ -1,6 +1,6 @@
 # Magic
 
-Vim's default 'magic' setting makes characters have the same 
+Vim's default 'magic' setting makes characters have the same
 meaning as in grep, and \v (very magic) makes them the same
 as the extended regular expressions used by egrep.
 
@@ -13,7 +13,7 @@ helpful to refine your regular expression *by searching with
 `/\v` first*, then you can insert your regular expression by
 typing:
 
-```
+```text
 :s/<Ctrl-R>/
 ```
 

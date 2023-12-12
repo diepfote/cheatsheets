@@ -1,3 +1,6 @@
+# Movement commands
+
+```text
 ge      End of previous word
 gE      End of previous WORD
 
@@ -23,4 +26,4 @@ g#      Search backward for word --           ||                           --
 ``      Return to position before most recent jump
 `.      Move to last change in file (for me it is '.)
 '0      Position where you last exited vim
-
+```

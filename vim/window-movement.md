@@ -2,7 +2,7 @@
 
 snatched from <https://stackoverflow.com/a/4571319>
 
-```
+```text
 :help window-moving
 
 C-w R - To rotate windows up/left.

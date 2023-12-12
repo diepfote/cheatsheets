@@ -1,3 +1,6 @@
+# Multitab
+
+```text
  :e filename      - edit another file
  :split filename  - split window and load another file
  ctrl-w up arrow  - move cursor up a window
@@ -11,4 +14,4 @@
  :only            - keep only this window open
  :ls              - show current buffers
  :b 2             - open buffer #2 in this window
-
+```

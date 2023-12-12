@@ -6,7 +6,7 @@
 
 * no longer true, just use Clam
 
-```
+```text
 :1,10Clam sort
 ```
 

@@ -12,7 +12,9 @@ view current register values -> :registers
 
 "Ayy
 
-## Blackhole register -> do not affect my unnamed register!
+## Blackhole register
+
+leave my unnamed register alone!
 
 "_
 e.g. delete current line

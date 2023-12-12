@@ -1,6 +1,6 @@
 # Zathura key bindings
 
-```
+```text
 General
 
   J, PgDn
