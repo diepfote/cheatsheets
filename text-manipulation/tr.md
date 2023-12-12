@@ -10,13 +10,11 @@ catalina-
 0
 ```
 
-
 ## remove non-printable characters (ASCII)
 
 ```
 tr -cd '[:print:]\n'
 ```
-
 
 ## keep control sequences and printable characters (ASCII)
 
@@ -25,4 +23,3 @@ $ tr -cd '[:print:][:cntrl:]' < <(echo -e 'asdf\n 34j3  . -- dsf')
 asdf
  34j3  . -- dsf
 ```
-

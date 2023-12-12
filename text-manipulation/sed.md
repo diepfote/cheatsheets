@@ -14,7 +14,6 @@ other()otherother
 use backslashes to indicate input continues (new lines).
 
 ```
-
 echo '.Ah "Major Heading"' | sed '
 /^\.Ah/{
 s#\.Ah *#\
@@ -24,7 +23,7 @@ s/"//g
 s/$/\
 /
 }'
-
+```
 
 ## Insert
 
@@ -76,7 +75,6 @@ The change command replaces the contents of the pattern space with the text you 
 In effect, it deletes the current line and puts the supplied text in its place.
 It can be used when you want to match a line and replace it entirely.
 
-
 ```
 $ echo -e 'something\nother bli bla blub\n\n\nasdf' \
 | sed -r '/other/c\
@@ -93,7 +91,6 @@ French Lick, IN
 
 asdf
 ```
-
 
 ## List
 
@@ -115,11 +112,14 @@ xsdf
 
 ## Print
 
-The print command (p) causes the contents of the pattern space to be output.
-It does not clear the pattern space nor does it change the flow of control in the script.
-However, it is frequently used before commands (d, N, b) that do change flow control.
-Unless the default output is suppressed (-n), the print command will cause duplicate copies of a line to be output
-
+The print command (p) causes the contents of the pattern space
+to be output.
+It does not clear the pattern space nor does it change the
+flow of control in the script.
+However, it is frequently used before commands (d, N, b) that
+do change flow control.
+Unless the default output is suppressed (-n), the print command
+will cause duplicate copies of a line to be output
 
 ## Print line number
 
@@ -137,4 +137,3 @@ other bli bla blubr
 
 asdf
 ```
-

@@ -29,8 +29,9 @@ strcmp  0x4030
 malloc  0x4038
 ```
 
-
-as soon as the processor executes the next instruction the instruction pointer points to the next instruction in line...
+as soon as the processor executes the next instruction
+the instruction pointer points to the next instruction 
+in line...
 
 ``` text
 0x10a8: call    qword ptr [rip + 0x2f32]
@@ -41,9 +42,9 @@ Thus [rip + 0x2f32] is equvivalent to [0x10ae + 0x2f32] which evaluates to 0x3fe
 
 ---
 
-https://medium.com/sector443/python-for-reverse-engineering-1-elf-binaries-e31e92c33732
+<https://medium.com/sector443/python-for-reverse-engineering-1-elf-binaries-e31e92c33732>
 .got -> Global Offset Table
-.ptl -> Procedure Linkage Table # https://stackoverflow.com/a/5469334
+.ptl -> Procedure Linkage Table # <https://stackoverflow.com/a/5469334>
 system@plt --> variable address for system syscall
 
 ## 32 bit register layout
@@ -69,12 +70,11 @@ system@plt --> variable address for system syscall
   8  -   8  -  8
 ```
 
-For 64 bit, the argument needs to be passed into CPU register instead of the stack. (https://arvandy.com/rop-emporium-split/)
-
+For 64 bit, the argument needs to be passed into CPU register instead of the stack. (<https://arvandy.com/rop-emporium-split/>)
 
 ## x64 NASM cheat sheet
 
-FROM https://gist.github.com/justinian/385c70347db8aca7ba93e87db90fc9a6#file-linux-x64-nasm-cheatsheet-md
+FROM <https://gist.github.com/justinian/385c70347db8aca7ba93e87db90fc9a6#file-linux-x64-nasm-cheatsheet-md>
 
 ### Registers
 
@@ -93,7 +93,6 @@ FROM https://gist.github.com/justinian/385c70347db8aca7ba93e87db90fc9a6#file-lin
 ```
 
 As well as XMM0 .. XMM15 for 128 bit floating point numbers.
-
 
 ### Calling Conventions
 

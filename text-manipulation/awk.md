@@ -18,7 +18,7 @@ awk 'BEGIN{FIELDWIDTHS = "10 25 9"}; {print $3 $2 $1}' file
 
 ## Print column n to last | Print all but column x
 
-Snatched from https://stackoverflow.com/a/2961994
+Snatched from <https://stackoverflow.com/a/2961994>
 
 e.g. Remove first three columns
 ```

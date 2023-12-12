@@ -1,3 +1,6 @@
+# Zathura key bindings
+
+```
 General
 
   J, PgDn
@@ -126,4 +129,4 @@ Mouse bindings
     Pan the document
   Button1
     Follow link
-
+```
