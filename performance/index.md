@@ -33,10 +33,13 @@ cut -d ' ' -f 1,2,10,12 /proc/<pid>/stat
 
 ### memory
 
-```
+```text
 $ man vmstat
 
 $ free -h
+
+# sort processes by memory consumption (gnu tools only)
+$ ps -eo pid,ppid,cmd,%mem,%cpu --sort=-%mem | head
 ```
 
 ### disks
