@@ -2,20 +2,18 @@
 
 ## Short
 
-```
-$ drill -Q name
+```text
+drill -Q name
 ```
 
 ## Trace
 
-```
-$ drill -T name
+```text
+drill -T name
 ```
 
 ## Verbose enough to show the request
 
+```text
+drill -V 5 name
 ```
-$ drill -V 5 name
-```
-
-

@@ -10,7 +10,7 @@ high amounts of DNS traffic before domains are resolved correctly.
 
 `ndots:5` will result in 4 local lookups for this example config:
 
-```
+```text
 # /etc/resolv.conf
 nameserver 100.64.0.10
 search namespace.svc.cluster.local svc.cluster.local cluster.local

@@ -2,7 +2,7 @@
 
 ## install previous version of pkg
 
-```
+```text
 cd "$(brew --repo homebrew/core)"
 
 # find commit & reset to commit

@@ -1,3 +1,6 @@
+# Cmus Adding music
+
+```text
 @h1 Step 2: Adding Music
 
 Press *5* to switch to the file-browser view so we can add some music. You
@@ -27,4 +30,4 @@ row) and start adding the file/folder you pressed *a* on to your library. This
 can take a while if you added a folder with a lot in it. As files are added,
 you will see the second time in the bottom right go up. This is the total
 duration of all the music in the cmus library.
-
+```

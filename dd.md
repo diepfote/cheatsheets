@@ -2,7 +2,7 @@
 
 ## generate file of arbitrary size
 
-```
+```text
 arbitrary_size=4G
 dd if=/dev/urandom of=/tmp/arbitrary-file.img count=0 bs=1 seek="$arbitrary_size"
 ```

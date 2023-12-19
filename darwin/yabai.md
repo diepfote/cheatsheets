@@ -13,8 +13,8 @@ More information at <https://github.com/koekeishiya/yabai/wiki/Disabling-System-
 2. Long-press power button until "Loading  boot options" appears.  
     Select "Options" to enter `Recovery Mode`
 
-    ```
-    $ csrutil enable --without fs --without debug --without nvram
+    ```text
+    csrutil enable --without fs --without debug --without nvram
     ```
 
     Then restart
@@ -23,14 +23,13 @@ More information at <https://github.com/koekeishiya/yabai/wiki/Disabling-System-
 
 Put this into `/etc/sudoers`
 
-```
+```text
 %admin ALL = NOPASSWD: /opt/homebrew/bin/yabai --load-sa
 ```
 
-Put this at the top of your `~/.yabairc`
+Put this at the top of your `~/.yabairc`.
 
-```
+```text
 sudo yabai --load-sa
 yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
 ```
-

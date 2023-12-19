@@ -9,7 +9,7 @@ $ find "$HOME/Movies/" -path "$HOME/Movies/watched/*" -prune -o -path "$HOME/Mov
 
 ## any of the given filenames
 
-```
+```text
 find  \( -name .envrc -o -name .custom-envrc \) ...
 
 find ~/ -type f ! -executable \( -name '*vaultfile' -o -name '*ansible*vault'  \) -exec sh -c 'bat "$0"' {} \;
@@ -17,18 +17,18 @@ find ~/ -type f ! -executable \( -name '*vaultfile' -o -name '*ansible*vault'  \
 
 ## multiple directories
 
-```
+```text
 find <dir1> <dir2> ...
 ```
 
 ## sort by size & filter file-extensions
 
-```
+```text
 find . -path ./.git -prune -o -type f -exec sh -c 'ls -s "$0"' {} \; | sort -n -r | grep -vE 'png|html|svg|jpg|pptx|pdf|xcf|zip'
 ```
 
 ## sort by last modified
 
-```
+```text
 find slides/out -printf "%T@ %Tc %p\n" 2>&1 | sort -n | grep html | cut -d ' ' -f7
 ```

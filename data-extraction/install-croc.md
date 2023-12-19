@@ -2,7 +2,7 @@
 
 ## Install croc
 
-```sh
+```text
 $ curl -s https://getcroc.schollz.com > file
 $ chmod +x file
 ./file -p .  # install croc to current dir

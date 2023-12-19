@@ -29,8 +29,8 @@ strcmp  0x4030
 malloc  0x4038
 ```
 
-as soon as the processor executes the next instruction
-the instruction pointer points to the next instruction 
+as soon as the processor executes the next instruction  
+the instruction pointer points to the next instruction  
 in line...
 
 ``` text
