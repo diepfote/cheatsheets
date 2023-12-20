@@ -1,7 +1,8 @@
 # GDB
 
 ## use defines
-```
+
+```text
 # either
 gdb -ex gef -q
 
@@ -10,7 +11,8 @@ gdb -ex pwndbg -q
 ```
 
 ## unset LESSSECURE in current bash process
-```
+
+```text
 export LESSSECURE=1
 read-only LESSSECURE
 
@@ -29,14 +31,13 @@ unset-readonly-var "$VARIABLE_TO_UNSET"
 
 
 ## memory & registers
-```
+
+```text
 # info about a register
 i r <reg_name>
 info register <reg_name>
 # for all registers run
 i r
-
-
 
 
 ## displaying memory
@@ -65,7 +66,7 @@ x/4xw $rbp # display 4 chunks as words in hexadecimal format
 
 ### dereference stack pointer to string
 
-```
+```text
 gdb-peda$ stack
 0000| 0xffffd340 --> 0x2
 0004| 0xffffd344 --> 0xffffd515 ("/home/flo/Documents/asm/check_is_pdf")
@@ -78,4 +79,3 @@ gdb-peda$ stack
 gdb-peda$ x/s *((char **) (8 + $ebp))
 0xffffd53a:     "test.s"
 ```
-

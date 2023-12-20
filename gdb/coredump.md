@@ -34,7 +34,7 @@ No symbol table info available.
 139             test_sorting(numbers, count, NULL, reverse_order);
 ```
 
-More at:   
+More at:  
 <https://stackoverflow.com/a/8306805>  
 <https://stackoverflow.com/a/22711917>  
 [Examining the symbol table](https://sourceware.org/gdb/current/onlinedocs/gdb.html/Symbols.html)

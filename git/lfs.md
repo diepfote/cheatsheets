@@ -2,7 +2,7 @@
 
 *) retrieve pointer stored in git
 
-```
+```text
 $ git lfs untrack '*.zip'
 Untracking "*.zip"
 $ git checkout -- docker-slides/fonts/Open_Sans.zip
@@ -14,14 +14,14 @@ size 593525
 
 *) check pointer
 
-```
+```text
 $ git lfs pointer --check --file=docker-slides/fonts/Open_Sans.zip && echo valid || echo invalid
 valid
 ```
 
 *) get pointer that would be generated (file needs to be checked out obviously, not a pointer file, otherwise the results will differ)
 
-```
+```text
 $ git lfs track '*.zip'
 $ git lfs checkout
 Checking out LFS objects: 100% (71/71), 24 MB | 0 B/s, done.

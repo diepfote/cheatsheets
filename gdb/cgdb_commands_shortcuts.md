@@ -1,11 +1,11 @@
-3.1 Commands available during CGDB mode
-=======================================
+# 3.1 Commands available during CGDB mode
 
 When you are in the source window, you are implicitly in "CGDB mode".
 All of the below commands are available during this mode.  This mode is
 primarily available for the user to view the current source file,
 search it, or switch to a different mode.
 
+```text
 `cgdbmodekey'
      Puts the user into command mode. However, you are already in this
      mode.  This is defaulted to the <ESC> key.
@@ -109,4 +109,4 @@ search it, or switch to a different mode.
 
 `F10'
      Send a step command to GDB.
-
+```

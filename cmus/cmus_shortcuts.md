@@ -1,6 +1,6 @@
 # Cmus shortcuts
 
-```
+```text
 Common Context
    q                           quit -i
    ^C                          echo Type :quit<enter> to exit cmus.
