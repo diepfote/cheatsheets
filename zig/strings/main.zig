@@ -6,6 +6,8 @@ const assert = std.debug.assert;
 pub fn main() !void {
     var s1 = "sdf";
 
+    var s1_const_cast = @constCast(s1);
+
     var s1_slice = s1[0..];
 
     // s ... array not slice
@@ -45,4 +47,8 @@ pub fn main() !void {
     try stdout.print("{s}", .{"\n"});
     try stdout.print("s_slice: {s}\n", .{s_slice});
     try stdout.print("typeof s_slice: {s}\n", .{@typeName(@TypeOf(s_slice))});
+
+    try stdout.print("{s}", .{"\n"});
+    try stdout.print("s1_const_cast: {s}\n", .{s1_const_cast});
+    try stdout.print("typeof s1_const_cast: {s}\n", .{@typeName(@TypeOf(s1_const_cast))});
 }
