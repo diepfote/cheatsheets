@@ -10,14 +10,14 @@
 ## Paperoni & Calibre
 
 * [fetch articles (writes links file)](../getpocket.md)
-* [to epub](#website-to-epub)
+* [to epub](../website-to-epub)
 * use calibre to convert an `epub` into a `pdf`
 
-  ```text
-  brew install calibre
+```text
+brew install calibre
 
-  ebook-convert Spying\ on\ a\ Ruby\ process\'s\ memory\ allocations\ with\ eBPF.epub Spying\ on\ a\ Ruby\ process\'s\ memory\ allocations\ with\ eBPF.pdf
-  ```
+ebook-convert Spying\ on\ a\ Ruby\ process\'s\ memory\ allocations\ with\ eBPF.epub Spying\ on\ a\ Ruby\ process\'s\ memory\ allocations\ with\ eBPF.pdf
+```
 
 ### batch conversion
 
