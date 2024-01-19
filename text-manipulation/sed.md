@@ -4,7 +4,7 @@
 
 * replace n-th occurrence of a pattern
 
-```
+```text
 $ echo 'otherotherotherother' | sed 's#other#()#2'
 other()otherother
 ```
@@ -13,7 +13,7 @@ other()otherother
 
 use backslashes to indicate input continues (new lines).
 
-```
+```text
 echo '.Ah "Major Heading"' | sed '
 /^\.Ah/{
 s#\.Ah *#\
@@ -29,7 +29,7 @@ s/$/\
 
 inserted content will not be affected by subsequent commands
 
-```
+```text
 $ echo -e 'something\nother bli bla blub\n\n\nasdf' \
 | sed -r '/other/i\
 4700 Cross Court\
@@ -51,7 +51,7 @@ asdf
 
 appended content will not be affected by subsequent commands
 
-```
+```text
 $ echo -e 'something\nother bli bla blub\n\n\nasdf' \
 | sed -r '/other/a\
 4700 Cross Court\
@@ -75,7 +75,7 @@ The change command replaces the contents of the pattern space with the text you 
 In effect, it deletes the current line and puts the supplied text in its place.
 It can be used when you want to match a line and replace it entirely.
 
-```
+```text
 $ echo -e 'something\nother bli bla blub\n\n\nasdf' \
 | sed -r '/other/c\
 4700 Cross Court\
@@ -101,7 +101,7 @@ printing characters as two-digit ASCII codes.
 
 Think of it as translate char to char.
 
-```
+```text
 $ echo -e 'something\nother bli bla blub\n\n\nasdf' | sed 'y/abc/xyz/'
 something
 other yli ylx yluy
@@ -123,7 +123,7 @@ will cause duplicate copies of a line to be output
 
 ## Print line number
 
-```
+```text
 $ echo -e 'something\n\tif\nother bli bla blubr\n\n\nasdf' | sed "/$(echo -n -e '\t')if/{
 =
 p

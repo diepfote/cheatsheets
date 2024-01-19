@@ -2,7 +2,7 @@
 
 ## literal includes and code blocks
 
-```
+```text
 .. _ghe-ssh-config-label:
 
 Heading
@@ -25,14 +25,14 @@ Some more text
 
 Create a ref:
 
-```
+```text
 .. _some_label:
 ```
 
 Reference it/use it:
 **Hint**: `_` leading underscore not present on purpose.
 
-```
+```text
 :ref:`some_label`
 ```
 

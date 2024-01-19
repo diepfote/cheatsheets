@@ -2,7 +2,7 @@
 
 ## Get current key binds
 
-```
+```text
 $ bindkey
 "^A"-"^C" self-insert
 "^D" list-choices

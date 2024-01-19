@@ -2,7 +2,7 @@
 
 ## keybinds to readline functions
 
-```
+```text
 $ bind -p | grep beginning
 "\e<": beginning-of-history
 "\C-a": beginning-of-line
@@ -12,7 +12,7 @@ $ bind -p | grep beginning
 ...
 ```
 
-```
+```text
 $ bind -P
 
 abort can be found on "\C-g", "\C-x\C-g", "\e\C-g".
@@ -25,7 +25,7 @@ backward-byte is not bound to any keys
 
 ## readline macros
 
-```
+```text
 $ bind -S
 \C-r outputs \C-x1\e^\er
 
@@ -35,7 +35,7 @@ $ bind -s
 
 ## bindings to shell commands
 
-```
+```text
 $ bind -X
 "\C-x1": "__fzf_history"
 ```

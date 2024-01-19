@@ -1,4 +1,6 @@
-```
+# SSH escape sequences
+
+```text
 [rootless@podman-remote ~]$ <return>~?
 Supported escape sequences:
  ~.   - terminate connection (and any multiplexed sessions)

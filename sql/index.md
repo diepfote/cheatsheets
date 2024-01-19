@@ -6,7 +6,7 @@
 
 snatched parts from <https://stackoverflow.com/a/3327326>
 
-```
+```text
 $ cat /tmp/gen-drop.sql
 select 'drop table if exists "' || tablename || '" cascade;' from pg_tables;
 
@@ -18,6 +18,6 @@ $ psql -p PORT -U USERNAME  --dbname DB_NAME -hHOSTNAME < /tmp/drop.sql
 
 drops schemas and tables -> do not do this if you need some of the schemas
 
-```
+```text
 DROP OWNED by <username>;
 ```

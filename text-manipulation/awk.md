@@ -2,7 +2,7 @@
 
 ## environment variables
 
-```
+```text
 read -rp 'Enter a search value: ' value
 ((${#value} <= 1000)) || die "No, I don't think so"
 search="$value" awk '$0 ~ ENVIRON["search"] {print $1}' "$file"
@@ -10,9 +10,9 @@ search="$value" awk '$0 ~ ENVIRON["search"] {print $1}' "$file"
 
 
 
-##  replace cut -d | custom field widths
+## replace cut -d | custom field widths
 
-```
+```text
 awk 'BEGIN{FIELDWIDTHS = "10 25 9"}; {print $3 $2 $1}' file
 ```
 
@@ -21,6 +21,7 @@ awk 'BEGIN{FIELDWIDTHS = "10 25 9"}; {print $3 $2 $1}' file
 Snatched from <https://stackoverflow.com/a/2961994>
 
 e.g. Remove first three columns
-```
+
+```text
 awk '{$1=$2=$3=""; print $0 }' <file>
 ```

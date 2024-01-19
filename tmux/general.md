@@ -97,7 +97,7 @@ Other:
 
 ### Move window to different session
 
-```
+```text
 # source:
 # -s <session>:<window-id>
 # destination:
