@@ -187,3 +187,12 @@ If there is content missing from the repo, a refetch all might help:
 ```sh
 git fetch --refetch
 ```
+
+## Get type of git object | Show type of git ref | What type does this git hash refer to
+
+```
+$ git cat-file -t refs/magic/value
+blob
+$ git show refs/magic/value
+1705590754643
+```
