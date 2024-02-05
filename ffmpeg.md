@@ -1,6 +1,6 @@
-# Video cropping
+# FFmpeg
 
-## ffmpeg
+## Video cropping
 
 snatched from <https://stackoverflow.com/a/52675535>
 
@@ -18,3 +18,15 @@ you want a 'crisper' edge.
 scale=960:720 Scaling the video slightly to bring it back to
 your original 720p, the 960 is to keep it at a nice 4x3 ratio.
 This scaling is not needed, your preference.  
+
+## Speed up video / Slow down video
+
+snatched from/more information at <https://trac.ffmpeg.org/wiki/How%20to%20speed%20up%20/%20slow%20down%20a%20video>
+
+```text
+# export raw stream without timestamp information
+ffmpeg -i input.mp4 -map 0:v -c:v copy -bsf:v h264_mp4toannexb raw.h264
+
+# set timestamp info (set input framerate to 65) and limit output framerate to 30
+ffmpeg -fflags +genpts -r 65 -i raw.h264 -c:v  copy -fpsmax 30 output.mp4
+```
