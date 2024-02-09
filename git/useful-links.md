@@ -57,3 +57,10 @@ LFS:
 
 * <https://www.atlassian.com/git/tutorials/git-lfs?_ga=2.206269456.2025572132.1528446321-166493356.1526479758#installing-git-lfs>
 
+-- 
+
+Git merge videos:
+
+* <https://youtu.be/YdstUWcg6j4>
+* <https://youtu.be/Y2Msq90ZknI>
+
