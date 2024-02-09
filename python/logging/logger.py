@@ -14,7 +14,8 @@ LOG_LEVELS = {
 
 @cache
 def get_logger():
-    LOG_LEVEL = os.getenv("LOG_LEVEL", "debug")
+    log_level = os.getenv("LOG_LEVEL", "debug")
+    log_level = LOG_LEVELS[log_level]
 
     logger = logging.getLogger('whatever-you-want-to-name-this')
     logger.setLevel(logging.DEBUG)
@@ -22,7 +23,7 @@ def get_logger():
     # console output
     ch = logging.StreamHandler()
     ch.setFormatter(formatter)
-    ch.setLevel(LOG_LEVELS[LOG_LEVEL])
+    ch.setLevel(log_level)
     logger.addHandler(ch)
 
     return logger
