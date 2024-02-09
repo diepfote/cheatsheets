@@ -26,11 +26,13 @@ https://improveandrepeat.com/2021/06/how-to-use-git-filter-repo-to-remove-files-
 --
 
 git delta (nicer git diff output on the command line):
+
 https://github.com/diepfote/dot-files/commit/09cfbf1183e230a7965382d52209ff23cc0a2c04
 
 --
 
-nice git helpers
+nice git helpers:
+
 https://github.com/diepfote/dot-files/blob/09cfbf1183e230a7965382d52209ff23cc0a2c04/.gitconfig#L53-L63
 
 --
