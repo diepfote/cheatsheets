@@ -30,3 +30,18 @@ ffmpeg -i input.mp4 -map 0:v -c:v copy -bsf:v h264_mp4toannexb raw.h264
 # set timestamp info (set input framerate to 65) and limit output framerate to 30
 ffmpeg -fflags +genpts -r 65 -i raw.h264 -c:v  copy -fpsmax 30 output.mp4
 ```
+
+
+## Concatenate files / merge files
+
+snatched from <https://trac.ffmpeg.org/wiki/Concatenate>
+
+`list.txt`
+
+```
+file '/path/to/file1.wav'
+file '/path/to/file2.wav'
+file '/path/to/file3.wav'
+```
+
+`ffmpeg -f concat -safe 0 -i list.txt -c copy output.wav`
