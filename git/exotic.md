@@ -12,38 +12,6 @@ $GIT_DIR/info/exclude
 git rev-parse --show-toplevel
 ```
 
-## remove files from all git commits
-
-taken from <https://improveandrepeat.com/2021/06/how-to-use-git-filter-repo-to-remove-files-from-your-git-repository/>
-
-```sh
-# To check what will be deleted run with --dry-run and remove --invert-paths
-# --> will only add matched commits (commits you want to delete --> invert)
-git filter-repo --dry-run --path specific-file-or-dir/ --path-glob '*partial-name-in-subfolder*'
-
-# --invert-paths --> to exclude these matches, otherwise all other
-# commits would be dropped
-git filter-repo --invert-paths --path specific-file-or-dir/ --path-glob '*partial-name-in-subfolder*'
-
-```
-
-## filter mail addresses from repo
-
-Snatched from <https://www.scivision.dev/git-update-email-address/>
-
-### mailcap file
-
-```sh
-Jane Doe <jane@NEW.com> <jane@OLD.com>
-John Smith <john@NEW.com> <john@OLD.com>
-```
-
-### command
-
-```sh
-git filter-repo --mailmap mailmap
-```
-
 ## filter git diff
 
 ```sh
@@ -196,3 +164,12 @@ blob
 $ git show refs/magic/value
 1705590754643
 ```
+
+## Show root commit
+
+nicked from <https://stackoverflow.com/a/5189296>
+
+```
+git log --max-parents=0
+```
+
