@@ -1,6 +1,4 @@
-# Git Filter Repo 
-
-`git filter-repo`
+# Git Filter Repo - git filter-repo
 
 
 ## rewrite committer and author dates
