@@ -3,6 +3,20 @@
 (C-x means ctrl+x, M-x means alt+x)
 
 
+## save pane history to file - save current buffer to file - write pane history to file
+
+snatched from <https://unix.stackexchange.com/questions/26548/write-all-tmux-scrollback-to-a-file/236845#236845>
+
+You may want to use [tmux-save-pane-history](https://github.com/diepfote/scripts/commit/0e46020f785b96197b8b0a01183a75c4a58cb893)
+
+```text
+# `-S -` b  ... entire history
+# `-p`      ... write to stdout
+# `-t %num` ... choose alternate pane [default: current pane]
+tmux capture-pane [-t %xy] -S - -p > /tmp/log.txt
+```
+
+
 ## Prefix key
 
 The default prefix is C-b. If you (or your muscle memory) prefer C-a, you need to add this to `~/.tmux.conf`:
