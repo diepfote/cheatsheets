@@ -71,3 +71,10 @@ qemu-system-x86_64 --boot d --cdrom mfsbsd-14.0-RELEASE-amd64.iso -smp 2 -m 4096
 `-smp <value>`
 
 
+## Limit screen resolution for display device
+
+Indirect solution: use the lowest amount of vmem possible. Append:
+
+```text
+-device VGA,vgamem_mb=1
+```
