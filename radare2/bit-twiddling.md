@@ -13,7 +13,7 @@ In radare:
 
 In your shell:
 
-```
+```text
 rax2 =16 -e 0xd0066fda4e560000
 0x564eda6f06d0
 ```
@@ -22,14 +22,14 @@ rax2 =16 -e 0xd0066fda4e560000
 
 base 16 to base 10 - hex to decimal
 
-```
+```text
 $ rax2 30
 0x1e
 ```
 
 base 10 to base 16 - decimal to hex
 
-```
+```text
 $ rax2 =10 0x1e
 30
 ```

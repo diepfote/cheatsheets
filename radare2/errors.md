@@ -4,12 +4,12 @@
 
 This occurs if you ran
 
-```
+```text
 dc <address>
 ```
 
 instead of
 
-```
+```text
 dcu <address>
 ```

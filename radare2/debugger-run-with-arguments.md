@@ -1,12 +1,12 @@
 # run debugger with arguments
 
-### start-up radare2 debugger with arguments
+## start-up radare2 debugger with arguments
 
 snatched from <https://stackoverflow.com/questions/39487888/radare2-how-to-pass-parameters-to-debugee/41515545#41515545>
 
 Hint: run `ood` if radare was not started in debug mode
 
-```
+```text
 $ r2 -d a.out ex17.db.dat l
 [0x7f4161daa8a1]> ood
 PTRACE_CONT: No such process
@@ -17,9 +17,9 @@ INFO: Continue until 0x557877e50804 using 1 bpsize
 hit breakpoint at: 0x557877e50804
 ```
 
-or 
+or
 
-```
+```text
 $ cat ./ex17.profile
 #!/usr/bin/rarun2
 program=./a.out

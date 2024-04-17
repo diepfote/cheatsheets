@@ -2,7 +2,7 @@
 
 C struct to print  -> Database\* (FILE\* ... address of FILE -> 8 byte address -> rdi+8)
 
-```
+```text
 struct Connection {
         FILE *file;
         struct Database *db;
@@ -13,7 +13,7 @@ void Database_load(struct Connection *conn) {
 ```
 
 
-```
+```text
 $ r2 -r ex17.profile -d a.out
 [0x5632901196b0]> px 8 @ rdi   # FILE*
 - offset -      B0B1 B2B3 B4B5 B6B7 B8B9 BABB BCBD BEBF  0123456789ABCDEF

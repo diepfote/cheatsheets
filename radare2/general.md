@@ -2,7 +2,7 @@
 
 ## Print hex value of character
 
-```
+```text
 $ rax2 -S J
 4a
 
@@ -11,7 +11,7 @@ man rax2
 
 ## Print hex string as string
 
-```
+```text
 $ rax2 -s 0x0000006c
 l
 ```
@@ -20,13 +20,13 @@ l
 
 Do this
 
-```
+```text
 pd @0x1234
 ```
 
 instead of
 
-```
+```text
 s 0x1234
 pd 32
 ```
@@ -35,13 +35,13 @@ pd 32
 
 Run native code instead of VM
 
-```
+```text
 e asm.emu=false
 ```
 
 ## Debugger Continue / Debugger Stepping
 
-``` 
+```text
 # single step instruction
 ds
 
@@ -79,7 +79,7 @@ dc
 
 <details><summary>Show example</summary><p>
 
-```
+```text
 [0x55a216e282ec]> afvf
 0x00000024  var_1ch:   int64_t
 0x00000020  var_18h:   int64_t

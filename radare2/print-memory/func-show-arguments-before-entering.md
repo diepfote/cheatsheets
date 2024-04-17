@@ -1,6 +1,6 @@
 # Show function arguments before entering function
 
-```
+```text
 [0x558cc804b852]> pd -10 @ rip
             0x558cc804b830 00:0000      488945f0       mov qword [rbp - 0x10], rax
             0x558cc804b834 00:0000      488b45d0       mov rax, qword [rbp - 0x30] ; rax=0x7ffec4c8c2f8 (pstr 0x7ffec4c8dfda) "./a.out" rbx

@@ -2,7 +2,7 @@
 
 ## Load coredump
 
-```
+```text
 $ r2 -d a.out /tmp/coredump
 WARN: Cannot resolve symbol address __libc_start_main
 WARN: Cannot resolve symbol address __gmon_start__

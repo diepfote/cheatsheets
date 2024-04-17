@@ -1,7 +1,7 @@
 # Print `printf` argument if it is just an INT
 
 
-```
+```text
 ................> pd 50 @ main 
 ...
             0x5585e1d801f1 00:0000      mov   edx, dword [rbp - 0x2c]
@@ -38,7 +38,8 @@ $ qalc 0xc
 ```
 
 **Sidenote**: gdb shows that it cannot read memory, radare2 implicitly maps it to 0xff
-```
+
+```text
 gef➤  x/s $edx
 0xc:    <error: Cannot access memory at address 0xc>
 gef➤  x/x $edx

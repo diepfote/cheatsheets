@@ -7,7 +7,7 @@ a pointer to a static integer in the function.
 
 `integer_ptr` is initialized with `1`. We want to see it change to `30`/`0x1e`.
 
-```
+```text
 int* update_integer(int new_int) {
 
 	static int integer = 1;
@@ -21,7 +21,7 @@ int* integer_ptr = update_integer(20);
 
 <details><summary>Setup</summary><p>
 
-```
+```text
 [0x7f4fffa2f2a0]> pd 1200 @ main | grep -C 5 update_integer
             0x00201e48 00:0000      40             invalid
             0x00201e49 00:0000      16             invalid
@@ -80,14 +80,14 @@ INFO: hit breakpoint at: 0x201e9b
 *Note*:
 This is how a register is used to refer to a memory location (taken from above):
 
-```
+```text
         └─> 0x00201e91 00:0000      488b4580       mov rax, qword [rbp - 0x80] ; ex22_main.c:0 ; rax=0x0
             0x00201e95 00:0000      c7001e000000   mov dword [rax], 0x1e ; ex22_main.c:65     *integer_ptr = 30; ; [0x1e:4]=-1 ; 30
 ```
 
 ## Dereference
 
-```
+```text
 [0x00201e9b]> # show the current value for the rbp register
 [0x00201e9b]> dr rbp
 0x7ffe469ccee0
