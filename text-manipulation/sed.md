@@ -1,12 +1,20 @@
 # Sed
 
-## Substitude
+## Substitute
 
-* replace n-th occurrence of a pattern
+* replace n-th occurrence of a pattern in a line - replace first occurrence of a pattern in a line
 
 ```text
-$ echo 'otherotherotherother' | sed 's#other#()#2'
+$ echo 'otherotherotherother' | sed 's#other#()#1'
 other()otherother
+```
+
+* replace n-th occurrence in the entire file only  - replace first occurrence of a pattern in the entire file
+
+snatched from <https://stackoverflow.com/a/148473>
+
+```text
+sed -i '0,/PATTERN/s/PATTERN/REPLACEMENT/' "$tmp_f"
 ```
 
 * multi-line replacement
