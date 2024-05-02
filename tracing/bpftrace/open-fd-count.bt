@@ -1,0 +1,32 @@
+#!/usr/bin/bpftrace
+
+
+BEGIN
+{
+    /* printf("Tracing open file descriptors... Hit Ctrl+C to stop.\n"); */
+    printf("Tracing opened file descriptors... Hit Ctrl+C to stop.\n");
+}
+
+tracepoint:syscalls:sys_enter_open,
+tracepoint:syscalls:sys_enter_openat
+/* /comm == "/bin/bash"/ */
+{
+  @fd_count[comm] += 1;
+}
+
+/* tracepoint:syscalls:sys_exit_open, */
+/* tracepoint:syscalls:sys_exit_openat */
+/* /1* /comm == "/bin/bash"/ *1/ */
+/* { */
+/*   @fd_count[comm] -= 1; */
+/* } */
+
+interval:s:10
+{
+  printf("%s\n", strftime("%Y-%m-%dT%H:%M:%S%z", nsecs));
+  print(@fd_count);
+  printf("-----------------------------\n");
+
+  clear(@fd_count);
+}
+
