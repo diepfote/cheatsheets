@@ -8,7 +8,16 @@ read -rp 'Enter a search value: ' value
 search="$value" awk '$0 ~ ENVIRON["search"] {print $1}' "$file"
 ```
 
+## replace every newline character with a space except for every third
 
+remove new line characters but keep every third:
+
+```text
+$ printf '1\n2\n3\n4\n5\n6\n7' | awk 'NR %3 != 0 {printf "%s ", $0; next} 1'
+1 2 3
+4 5 6
+7 
+```
 
 ## replace cut -d | custom field widths
 
