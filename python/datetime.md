@@ -4,7 +4,7 @@
 
 Use datetime with timezones to calculate a delta
 
-```
+```text
 import math
 import pytz
 from datetime import datetime

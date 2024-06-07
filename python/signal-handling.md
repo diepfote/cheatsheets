@@ -1,11 +1,11 @@
 # Python Signal Handling
 
-Taken from https://docs.python.org/3/library/signal.html
+Taken from <https://docs.python.org/3/library/signal.html>
 
 Sidenote: Do not put this in a file called `signal.py`. Otherwise we override the module name.
-The following will happen (https://stackoverflow.com/a/66055075):
+The following will happen (<https://stackoverflow.com/a/66055075>):
 
-  ```
+  ```text
   $ python /tmp/signal.py
   Traceback (most recent call last):
     File "/tmp/signal.py", line 2, in <module>
@@ -15,7 +15,7 @@ The following will happen (https://stackoverflow.com/a/66055075):
   ImportError: cannot import name 'SIGINT' from partially initialized module 'signal' (most likely due to a circular import) (/private/tmp/signal.py)
   ```
 
-```
+```text
 import time
 import signal
 
@@ -51,7 +51,8 @@ run_default_behavior()
 
 
 Triggering it
-```
+
+```text
 $ kill -SIGUSR2 "$(ps -ef | grep -v grep | grep python | grep signal_test | awk '{ print $2 }')"
 $ kill -SIGUSR1 "$(ps -ef | grep -v grep | grep python | grep signal_test | awk '{ print $2 }')"
 
@@ -66,7 +67,8 @@ $ kill -SIGINT "$(ps -ef | grep -v grep | grep python | grep signal_test | awk '
 
 
 Output
-```
+
+```text
 $ python /tmp/signal_test.py
 Still running...
 pausing

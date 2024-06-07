@@ -2,7 +2,7 @@
 
 `/tmp/asdf.py`:
 
-```
+```text
 import sys
 
 match sys.argv[1]:
@@ -17,7 +17,7 @@ match sys.argv[1]:
 
 `Note`: There is no implicit fall through:
 
-```
+```text
 $ python /tmp/asdf.py  123
 123
 

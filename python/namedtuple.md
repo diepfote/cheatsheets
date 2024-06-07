@@ -1,6 +1,6 @@
 # NamedTuple
 
-```
+```text
 from collections import namedtuple
 
 Script = namedtuple('Script', 'data name')

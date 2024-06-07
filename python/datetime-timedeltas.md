@@ -1,5 +1,6 @@
 # Python Timedeltas
-```
+
+```text
 import datetime
 t0 = datetime.datetime.now()
 dt = datetime.datetime.now() - t0

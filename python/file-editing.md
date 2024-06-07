@@ -2,7 +2,7 @@
 
 ## consume first line in File
 
-```
+```text
 def eat_first_line(fpath):
     '''
     most of it snatched from https://stackoverflow.com/a/39791546
@@ -26,7 +26,7 @@ def eat_first_line(fpath):
 
 ## convert pickled dict to json | convert dict in a text file to json
 
-```
+```text
 #!/usr/bin/env python3
 
 # very much inspired by https://www.geeksforgeeks.org/how-to-read-dictionary-from-file-in-python/
