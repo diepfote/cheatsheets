@@ -18,9 +18,15 @@ pipenv-poetry-migrate -f Pipfile -t pyproject.toml
 Add index server
 
 ```text
-[[tool.poetry.source]]
+[tool.poetry.source]
 name = "different-index-server"
 url = "https://index-server"
 default = true
 ```
 
+## Use poetry for package management only
+
+```text
+[tool.poetry]
+package-mode = false
+```
