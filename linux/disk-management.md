@@ -1,6 +1,6 @@
 # Linux Disk Management
 
-## How to list avaialble disks
+## How to list available disks
 
 ```text
 fdisk -l
