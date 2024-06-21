@@ -31,13 +31,13 @@ $ podman run --security-opt=no-new-privileges \
 
 ## show namespace information (UTS, IPC, CGROUP, ...)
 
-```
+```text
 docker ps --ns
 ```
 
 ## show cpu stats per process/per container
 
-```
+```text
 # per second cpu stats per process
 $ pidstat 1
 Linux 5.18.7-arch1-1 (lima-default)     07/07/2022      _x86_64_        (4 CPU)
@@ -74,7 +74,7 @@ Linux 5.18.7-arch1-1 (lima-default)     07/07/2022      _x86_64_        (4 CPU)
 
 ## container I/O | container IO
 
-```
+```text
 # per second iostats for processes/containers
 $ pidstat -d 1
 Linux 5.18.7-arch1-1 (lima-default)     07/07/2022      _x86_64_        (4 CPU)
@@ -99,12 +99,12 @@ Linux 5.18.7-arch1-1 (lima-default)     07/07/2022      _x86_64_        (4 CPU)
 
 ## `top` for docker containers
 
-```
+```text
 docker stats
 ```
 
 ## `top` for cgroups
 
-```
+```text
 systemd-cgtop
 ```
