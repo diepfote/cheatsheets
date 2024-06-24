@@ -23,6 +23,6 @@ $ firejail --put=68702 Standard\ Notes\ Backups/2023-04-08T05-08-31.544Z.txt ~/a
 snatched from <https://github.com/netblue30/firejail/issues/1812#issuecomment-372674179>
 
 ```text
-$ firejail --get=<pid>   <path>
-$ firejail --get=68702 ~/Downloads/decrypted-sn-data.txt
+firejail --get=<pid>   <path>
+firejail --get=68702 ~/Downloads/decrypted-sn-data.txt
 ```
