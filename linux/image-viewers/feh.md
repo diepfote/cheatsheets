@@ -1,4 +1,6 @@
-# Image viewer FEH
+# Image viewer feh
+
+FEH
 
 ## Keyboard mappings
 
