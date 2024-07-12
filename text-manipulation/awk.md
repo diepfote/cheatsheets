@@ -22,8 +22,13 @@ $ printf '1\n2\n3\n4\n5\n6\n7' | awk 'NR %3 != 0 {printf "%s ", $0; next} 1'
 ## replace the first newline character with a hyphen/minus
 
 ```
-$ printf '1\n2\n3\n4\n5\n6\n7' | awk '{ if (NR != 1) { printf( "%s ", $0 ); } else { printf("%s - ", $0); } }'
-1 - 2 3 4 5 6 7
+$ printf '1\n2\n3\n4\n5\n6\n7' | awk '{ if (NR == 1)  { printf("%s - ", $0); } else { print $0 } }'
+1 - 2
+3
+4
+5
+6
+7
 ```
 
 ## replace cut -d | custom field widths
