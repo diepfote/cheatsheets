@@ -5,15 +5,17 @@ Taken from <https://docs.python.org/3/library/signal.html>
 Sidenote: Do not put this in a file called `signal.py`. Otherwise we override the module name.
 The following will happen (<https://stackoverflow.com/a/66055075>):
 
-  ```text
-  $ python /tmp/signal.py
-  Traceback (most recent call last):
-    File "/tmp/signal.py", line 2, in <module>
-      import signal
-    File "/private/tmp/signal.py", line 3, in <module>
-      from signal import SIGINT
-  ImportError: cannot import name 'SIGINT' from partially initialized module 'signal' (most likely due to a circular import) (/private/tmp/signal.py)
-  ```
+```text
+$ python /tmp/signal.py
+Traceback (most recent call last):
+File "/tmp/signal.py", line 2, in <module>
+  import signal
+File "/private/tmp/signal.py", line 3, in <module>
+  from signal import SIGINT
+ImportError: cannot import name 'SIGINT' from partially initialized module 'signal' (most likely due to a circular import) (/private/tmp/signal.py)
+```
+
+--
 
 ```text
 import time
