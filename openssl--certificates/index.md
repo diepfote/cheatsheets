@@ -1,5 +1,11 @@
 # Openssl
 
+## Create RSA key
+
+```text
+openssl genrsa -out ingress.key 4096
+```
+
 ## Show full certificate chain for pem file
 
 Snatched from https://superuser.com/a/1599687
@@ -13,45 +19,56 @@ openssl crl2pkcs7 -nocrl -certfile CHAINED.pem | openssl pkcs7 -print_certs -tex
 ### Show full ceritifcate chain (no verify -> faster)
 
 ```
-$ openssl s_client -showcerts -connect archlinux.org.net:443 -servername archlinux.org.net
-$ openssl s_client -showcerts -verify 5 -connect 95.217.163.246:443 -servername archlinux.org
+ openssl s_client -showcerts -connect archlinux.org.net:443 -servername archlinux.org.net
+ openssl s_client -showcerts -connect 95.217.163.246:443 -servername archlinux.org
 ```
 
 ### Show and verify full certificate chain
 
 Verification depth: 5
 
-```
-$ openssl s_client -showcerts -verify 5 -connect archlinux.org.net:443 -servername archlinux.org.net
-$ openssl s_client -showcerts -verify 5 -connect 95.217.163.246:443 -servername archlinux.org.net
+```text
+ openssl s_client -showcerts -verify 5 -connect archlinux.org.net:443 -servername archlinux.org.net
+ openssl s_client -showcerts -verify 5 -connect 95.217.163.246:443 -servername archlinux.org.net
 ```
 
 ## Extract public key from CRT/extract public key from Certificate Signing Request
 
-```
-$ openssl x509 -in servicedesk-ca-cert1.crt -noout -pubkey
+```text
+openssl x509 -in sd-ca-cert1.crt -noout -pubkey
 ```
 
 ## Extract public key from rsa private key
 
-```
-$ openssl rsa -in servicedesk.key -pubout
+```text
+openssl rsa -in sd.key -pubout
 ```
 
 ## View certificate signing request
 
-```
+```text
 openssl req -in whatever.csr -noout -text
 ```
 
 ## Create certificate signing request (CSR)
 
-```
+```text
 $ openssl req -new \
               -key ~/Documents/kubernetes/etc/kubernetes/pki/apiserver-etcd-client.key \
               -subj '/CN=kube-apiserver-etcd-client/O=system:masters' \
               -out kube-apiserver-etcd-client.csr
 
+# SAN cert
+$ openssl req -new \
+              -key  ingress.key \
+              -subj '/C=AT/ST=Salzburg/L=Salzburg/O=Mister\ Swiffer\ Solutions\ GmbH/OU=Accounting/CN=bookings.some.somewhere.cloud' \
+              -addtext 'subjectAltName = DNS:bookings.some.somewhere.cloud' \
+              -out cert-signing-request.csr
+```
+
+## Sign certificate signing request (CRT)
+
+```text
 # sign request (CRT)
 $ openssl x509 -req \
                -in kube-apiserver-etcd-client.csr \
@@ -117,3 +134,4 @@ Certificate:
          d2:5d:0f:69:c7:57:0c:e4:32:f4:9f:23:44:2e:ea:1a:d1:36:
          24:6a:dc:d4
 ```
+
