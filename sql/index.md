@@ -2,6 +2,24 @@
 
 ## Postgres
 
+### List structures in Postgres
+
+`\dt` ... list tables
+`\df` ... list functions
+`\ds` ... list sequences
+
+### Run statements from a file while in prompt
+
+```text
+\i /path/to/file
+```
+
+If you want to redirect stdout (e.g. so you can save generated statements):
+
+```text
+\o /path/to/drop.sql \i /path/to/gen-drop.sql
+```
+
 ### Drop all tables
 
 snatched parts from <https://stackoverflow.com/a/3327326>
