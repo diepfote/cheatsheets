@@ -7,6 +7,7 @@
 `\dt` ... list tables
 `\df` ... list functions
 `\ds` ... list sequences
+`\dn` ... list 
 
 ### Run statements from a file while in prompt
 
@@ -55,4 +56,17 @@ drops schemas and tables -> do not do this if you need some of the schemas
 
 ```text
 DROP OWNED by <username>;
+```
+
+### Drop Schema
+
+```text
+drop SCHEMA <name> cascade;
+```
+
+### Create Schema
+
+```text
+create SCHEMA public;
+GRANT USAGE ON SCHEMA <schema_name> to <user>;
 ```
