@@ -4,10 +4,10 @@
 
 ### List structures in Postgres
 
-`\dt` ... list tables
-`\df` ... list functions
-`\ds` ... list sequences
-`\dn` ... list 
+`\dt` ... list tables  
+`\df` ... list functions  
+`\ds` ... list sequences  
+`\dn` ... list schemas  
 
 ### Run statements from a file while in prompt
 
@@ -67,6 +67,6 @@ drop SCHEMA <name> cascade;
 ### Create Schema
 
 ```text
-create SCHEMA public;
+create SCHEMA <schema_name>;
 GRANT USAGE ON SCHEMA <schema_name> to <user>;
 ```
