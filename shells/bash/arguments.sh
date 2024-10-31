@@ -1,4 +1,4 @@
-```
+```text
 echo -e "second argument: ${@:2:1}"  # ${@:which_arg_to_start_on:how_long_to_continue}
 
 #array=( "$@" )
@@ -7,7 +7,17 @@ echo -e "second argument: ${@:2:1}"  # ${@:which_arg_to_start_on:how_long_to_con
 last_arg="${@:$#}"
 set -- "${@:1:$(($#-1))}"  # all except last
 
-echo $@
+# one or many
+echo "$@"
+# single string
+echo "$*"
 
 echo "$last_arg"
+
+
+repos=()
+echo "number of elemnts ${#repos}"
+repos+=(asdf)
+echo "number of elemnts ${#repos[@]}"
 ```
+
