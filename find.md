@@ -32,3 +32,12 @@ find . -path ./.git -prune -o -type f -exec sh -c 'ls -s "$0"' {} \; | sort -n -
 ```text
 find slides/out -printf "%T@ %Tc %p\n" 2>&1 | sort -n | grep html | cut -d ' ' -f7
 ```
+
+## Find images by creation date
+
+Use exiftool instead of `find -newer ... -! o newer ...`
+
+```text
+exiftool -r -if '$CreateDate =~ /^2024:06:15 14:04/' -filename -createdate 2024-07-*
+```
+
