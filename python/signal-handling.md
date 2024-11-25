@@ -33,7 +33,7 @@ def sigint_handler(signal_num, stack_frame):
     exit(0)
 
 def run_default_behavior(signal_num=None, stack_frame=None):
-    print('main() executting')
+    print('main() executing')
     while True:
         print('still main()')
         time.sleep(2)
