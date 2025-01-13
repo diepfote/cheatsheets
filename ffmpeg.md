@@ -45,3 +45,12 @@ file '/path/to/file3.wav'
 ```
 
 `ffmpeg -f concat -safe 0 -i list.txt -c copy output.wav`
+
+
+## Generate GIF
+
+snatched from <https://www.bannerbear.com/blog/how-to-make-a-gif-from-a-video-using-ffmpeg/>
+
+```text
+ffmpeg -ss 23.0 -t 1.8 -i input.mp4 output_trimmed.gif
+```
