@@ -5,7 +5,7 @@ on:
       - master
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -26,8 +26,8 @@ jobs:
 
       - name: Install mkdocs
         run: |
-          sudo apt update
-          sudo apt install -y mkdocs
+          sudo apt-get update
+          sudo apt-get install -y mkdocs
 
       - name: Generate html
         run: |
