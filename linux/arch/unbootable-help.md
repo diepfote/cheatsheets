@@ -23,6 +23,8 @@ mount -o ro /dev/mapper/crypt-root /mnt-root
 cat /etc/fstab
 umount /mnt-root
 
+# get subvol ids
+btrfs subvol list / | less
 
 # root
 mount -o noatime,compress=zstd:3,ssd,discard,space_cache=v2,subvolid=412,subvol=/@  /dev/mapper/crypt-root /mnt-root
@@ -32,6 +34,7 @@ mount -o noatime,compress=zstd:3,ssd,discard,space_cache=v2,subvolid=258,subvol=
 
 # pacman pkgs
 mount -o noatime,compress=zstd:3,ssd,discard,space_cache=v2,subvolid=260,subvol=/@packages  /dev/mapper/crypt-root /mnt-root/var/pacman/pkg
+
 
 # boot
 mount /dev/nvme0n1p1 /mnt-root/boot
