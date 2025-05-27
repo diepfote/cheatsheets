@@ -18,13 +18,15 @@ cryptsetup open --key-file /mnt-key/crypto_keyfile.bin /dev/nvme0n1p2 crypt-root
 
 mkdir /mnt-root
 
+## fetch info
+#
 # fetch most up-to-date mount point info
 mount -o ro /dev/mapper/crypt-root /mnt-root
-cat /etc/fstab
-umount /mnt-root
-
+cat /mnt-root/etc/fstab
 # get subvol ids
-btrfs subvol list / | less
+btrfs subvol list /mnt-root | less
+# unmount again to remount with appropriate options
+umount /mnt-root
 
 # root
 mount -o noatime,compress=zstd:3,ssd,discard,space_cache=v2,subvolid=412,subvol=/@  /dev/mapper/crypt-root /mnt-root
