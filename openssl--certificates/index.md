@@ -6,11 +6,20 @@
 openssl genrsa -out ingress.key 4096
 ```
 
+## Show Github fingerprint for private key
+
+Snatched from <https://stackoverflow.com/a/75735052>
+
+```text
+$ echo -n SHA256: ; openssl rsa -in /tmp/ingress.key -pubout -outform DER 2>/dev/null | openssl sha256 -binary | openssl base64
+SHA256:tOLGohzjdDokOFbFqMk9j6uu7ljPSGy5ETYRLd98yV0=
+```
+
 ## Show full certificate chain for pem file
 
-Snatched from https://superuser.com/a/1599687
+Snatched from <https://superuser.com/a/1599687>
 
-```
+```text
 openssl crl2pkcs7 -nocrl -certfile CHAINED.pem | openssl pkcs7 -print_certs -text -noout
 ```
 
@@ -18,7 +27,7 @@ openssl crl2pkcs7 -nocrl -certfile CHAINED.pem | openssl pkcs7 -print_certs -tex
 
 ### Show full ceritifcate chain (no verify -> faster)
 
-```
+```text
  openssl s_client -showcerts -connect archlinux.org.net:443 -servername archlinux.org.net
  openssl s_client -showcerts -connect 95.217.163.246:443 -servername archlinux.org
 ```
