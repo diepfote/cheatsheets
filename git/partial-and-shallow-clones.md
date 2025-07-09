@@ -1,9 +1,9 @@
 # Types of clones
 
-* blobless ... `git filter --filter=blob:none`
+* blobless ... `git clone --filter=blob:none <url>`
 * treeless ... `git clone --filter=tree:0 <url>`
 * full
-* shallow  ... `git clone --depth=1 --branch=master`
+* shallow  ... `git clone --depth=1 --branch=master <url>`
 
 “We strongly recommend that developers do not use treeless clones for
 their daily work. Treeless clones are really only helpful for automated
