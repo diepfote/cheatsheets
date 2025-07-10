@@ -20,6 +20,7 @@ the commit history.”
 download the data for the commit we plan to use immediately.”
 
 Difference treeless - shallow:
+
 * a treeless clone contains every commit,
 * a shallow clone only the last (or depth=N) commits.
   Trees and blobs up to that depth are downloaded.
