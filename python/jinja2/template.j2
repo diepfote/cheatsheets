@@ -3,6 +3,7 @@
 {#- A comment. Will not show up in templated output -#}
 these.compile-commands={{ command }}
 {%- else -%}
-some.output-dir={{ build_output_dir }}
+{#- use array expression to trim strings -#}
+some.output-dir={{ build_output_dir[:7] }}
 {%- endif -%}
 {%- endif -%}
