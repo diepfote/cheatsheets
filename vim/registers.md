@@ -17,7 +17,9 @@ view current register values -> :registers
 leave my unnamed register alone!
 
 "_
+
 e.g. delete current line
+
 "_dd
 
 ## record macro then use it again

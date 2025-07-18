@@ -1,17 +1,23 @@
 # GPG
 
 ## default key or name to sign with
-" https://stackoverflow.com/questions/11292196/gnupg-how-to-encrypt-decrypt-files-using-a-certain-key/11293559#11293559
-`gpg --encrypt --local-user <id>`
 
+snatched from <https://stackoverflow.com/questions/11292196/gnupg-how-to-encrypt-decrypt-files-using-a-certain-key/11293559#11293559>
+
+```text
+gpg --encrypt --local-user <id>
+```
 
 ## gpg unattended key generation
-https://security.stackexchange.com/q/213709
-https://gist.github.com/vrillusions/5484422
+
+snatched from
+
+- <https://security.stackexchange.com/q/213709>
+- <https://gist.github.com/vrillusions/5484422>
 
 
-/tmp/non-interactive-gpg-key:
-```
+```text
+$ cat /tmp/non-interactive-gpg-key
 %echo Generating a OpenPGP key
 %no-protection
 Key-Type: eddsa
@@ -38,7 +44,7 @@ Expire-Date: 0
 %commit
 ```
 
-```
+```text
 $ gpg --batch --gen-key  /tmp/non-interactive-gpg-key
 gpg: Generating a OpenPGP key
 gpg: key BLUB marked as ultimately trusted

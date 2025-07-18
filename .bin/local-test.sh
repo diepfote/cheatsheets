@@ -13,7 +13,7 @@ temp="$(mktemp -d)"
 temp_docs="$temp"/docs
 num_sec=500
 cleanup () { rm -r "$temp"; }
-trap cleanup EXIT
+# trap cleanup EXIT
 
 mkdir "$temp_docs"
 find -name '*.txt' -exec sh -c 'mkdir -p '"$temp_docs"'/"$(dirname "$0")" && cp "$0" '"$temp_docs"'/"$0" ' {} \;
