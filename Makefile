@@ -3,4 +3,4 @@ SHELL := bash
 
 .PHONY: build
 build:
-	./.bin/local-test.sh
+	./.bin/local-build.sh

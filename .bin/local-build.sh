@@ -9,21 +9,20 @@ shopt -s failglob  # error on unexpaned globs
 shopt -s inherit_errexit  # Bash disables set -e in command substitution by default; reverse this behavior
 
 
-temp="$(mktemp -d)"
-temp_docs="$temp"/docs
-num_sec=500
-cleanup () { rm -r "$temp"; }
-# trap cleanup EXIT
-
+temp=./.local-build
+temp_docs="$temp/docs"
+rm -r "$temp" || true
+mkdir "$temp"
 mkdir "$temp_docs"
+num_sec=500
+
 find -name '*.txt' -exec sh -c 'mkdir -p '"$temp_docs"'/"$(dirname "$0")" && cp "$0" '"$temp_docs"'/"$0" ' {} \;
 find -name '*.md' -exec sh -c 'mkdir -p '"$temp_docs"'/"$(dirname "$0")" && cp "$0" '"$temp_docs"'/"$0" ' {} \;
 cp mkdocs.yml "$temp"
-cd "$temp"
+pushd "$temp"
 mkdocs build
+popd
 
 echo
-echo "[.] Site is available at: $temp/site/index.html"
-echo "[.] Clearing in $RED$num_sec$NC seconds."
-sleep "$num_sec"
+echo "[.] Site is available at: ${YELLOW}file://$(realpath "$temp/site/index.html")$NC"
 
