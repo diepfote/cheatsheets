@@ -38,4 +38,6 @@ Reference it/use it:
 
 ## external link
 
+```text
 `Text to display <https://thelink.com>`_
+```

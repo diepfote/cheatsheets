@@ -28,7 +28,7 @@ logger.info('testing 3 4')
 
 ## custom python logger module
 
-Check this [example](./logging/).
+Check this [example](https://github.com/diepfote/cheatsheets/tree/master/python/logging).
 
 ```text
 python3 ./logging/using.py

@@ -24,3 +24,5 @@ local option.
 `snapper create --config home ...` to `snapper --config home create ...`
 
 ### 2nd
+
+n/a
