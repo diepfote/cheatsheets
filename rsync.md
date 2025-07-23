@@ -15,3 +15,13 @@ local-file.txt
     102,727,104   3%  542.99kB/s    1:19:55
 ```
 
+## check differences (files not directories)
+
+```text
+# grep -x  ... match entire line
+#
+$ rsync --exclude '_Some software/' --dry-run -av  /run/media/flo/2nd\ brain/private/ /run/media/flo/3rd\ brain/private/ | grep -x -vE '.*/'
+sending incremental file list
+~$sere 2000er.docx
+~WRL0708.tmp
+```
