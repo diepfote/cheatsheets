@@ -13,3 +13,4 @@ snatched parts from <https://apple.stackexchange.com/a/198860>
 ```text
 exiftool *.pdf | awk -F": " '/Page Count/{print $2}' | tr '\n' + | sed 's#+$#\n#' | bc
 ```
+
