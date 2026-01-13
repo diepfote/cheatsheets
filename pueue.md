@@ -46,3 +46,16 @@ JSON
 pueue status -j | jq '.tasks[] | select(.status | has("Queued")) | .id'
 ```
 
+### Running
+
+Default
+
+```text
+pueue status -g now -- columns=id,status,command status=running
+```
+
+JSON
+
+```text
+pueue status -j | jq '.tasks[] | select(.status | has("Running")) | .id'
+```
