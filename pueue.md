@@ -59,3 +59,19 @@ JSON
 ```text
 pueue status -j | jq '.tasks[] | select(.status | has("Running")) | .id'
 ```
+
+## PQ Helpers
+
+### Filtering
+
+Find tasks that resulted in an increase in file size
+
+```text
+$ pq log -g now --lines 1000  |& grep -E 'Task [0-9]+|≈' | grep -B 1 -F '0.'
+```
+
+Show filename for tasks that resulted in an increase in file size
+
+```text
+$ pq log -g now --lines 1000  |& grep -E 'Task [0-9]+|≈' | grep -B 1 -F '0.' | grep Task | awk -F : '{ print $1 }' | awk '{ print $3 }' | xargs -n 1 pq log --lines 1
+```
