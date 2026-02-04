@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="Florian Sorko">
+  
+  <link rel="shortcut icon" href="../../../img/favicon.ico">
+  <title>Dereference int pointer - Florian Sorko's Cheatsheets</title>
+  <link rel="stylesheet" href="../../../css/theme.css" />
+  <link rel="stylesheet" href="../../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Dereference int pointer";
+    var mkdocs_page_input_path = "radare2/print-memory/dereference-int-pointer.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../../.." class="icon icon-home"> Florian Sorko's Cheatsheets</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../..">Cheatsheets</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../Makefile/">make</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../ansible/">Ansible</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../chrome-chrome/">Chrome/Chromium</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../dd/">dd</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../docker/">Docker</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../dvdbackup/">DVD backup | dvdbackup</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../execute-on-file-change/">Execute on file change</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../ffmpeg/">FFmpeg</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../find/">Find</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../firefox/">Firefox</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../freebsd/">FreeBSD</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../fzf/">FZF</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../gedit/">Gedit</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../gif/">Gif</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../gnome/">Gnome</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../gpg/">GPG</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../illumos/">Illumos</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../less/">less</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../markdown/">Markdown</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../mdbook/">Mdbook</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../mpv/">MPV - media player</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../neomutt/">Neomutt</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../pdf/">PDF</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../ps/">PS command</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../pueue/">Pueue</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../qemu/">Qemu</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../rst/">rst - restructured text</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../rsync/">Rsync</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../ruby/">Ruby Programming Language</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../torrent/">Torrent Client</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../youtube-dl/">Youtube-dl</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Assembly</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../assembly/x86_64_notes/">x86 notes</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Audio</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Dynamic range compression</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../audio/dynamic-range-compression/">Audio</a>
+                </li>
+    </ul>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Cmus</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../cmus/cmus_adding_music/">Cmus Adding music</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../cmus/cmus_shortcuts/">Cmus shortcuts</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Darwin</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../darwin/automator/">Automator</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../darwin/container-or-linux-vm-video-and-audio-playback/">Container or Linux VM video and audio playback</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../darwin/disk-management/">Mac OS Disk Management</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../darwin/dns-via-cli/">Mac OS DNS Settings</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../darwin/homebrew/">Homebrew</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../darwin/lima/">Docker Desktop replacement - Lima VM</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../darwin/mds/">MDS - Metadata stores used by spotlight</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../darwin/okd-3.11-cli-client/">openshift-cli v3.11.0 | okd-cli v3.11.0</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../darwin/privacy-settings/">Mac OS Privacy Settings</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../darwin/remote-login/">Remote login</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../darwin/screensaver/">Mac OS Tahoe</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../darwin/tmutil-time-machine-exclusions/">Tmutil exlcusions | Time machine exclusions</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../darwin/yabai/">Yabai</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Transfer</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../darwin/transfer/firefox/">Firefox</a>
+                </li>
+    </ul>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Data extraction</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../data-extraction/install-croc/">siphon out data</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Dns</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../dns/">DNS</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../dns/drill/">Drill</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Fish</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../fish/argument-parsing/">Fish</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Gdb</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../gdb/cgdb_commands_shortcuts/">3.1 Commands available during CGDB mode</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../gdb/coredump/">GDB analyze coredumps</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../gdb/gdb_cheat-sheet/">GDB commands by function - simple guide</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../gdb/general/">GDB</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Git</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../git/completions/">Git Completions</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../git/exotic/">Git Exotic</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../git/git-filter-repo/">Git Filter Repo - git filter-repo</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../git/github/">Github</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../git/lfs/">LFS in general</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../git/partial-and-shallow-clones/">Types of clones</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../git/plumbing/">Git Plumbing</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../git/useful-links/">Git useful links</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Github</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../github/gh/">GH cli</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Iphone</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../iphone/tethering/">iPhone tethering</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Java</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../java/jmx/">Jmx</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Keyboards</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../keyboards/logitech-multi-device-k780/">Logitech Mutli-Device K780</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Kubernetes</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../kubernetes/">Index</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../kubernetes/install-kubectl-on-linux/">Install kubectl binary on Linux</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../kubernetes/jq/">Jq filtering</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Okd</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../kubernetes/okd/drain-nodes/">Drain nodes</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../kubernetes/okd/etcd/">OKD etcd</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../kubernetes/okd/rebind-pv/">Re-bind PV | Rebind PV | PVC stuck in "Pending" state</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../kubernetes/okd/security-context-constraints/">OKD SCC</a>
+                </li>
+    </ul>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Linux</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../linux/audio/">Audio (I assume you use pipewire)</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../linux/disk-management/">Linux Disk Management</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../linux/efi/">EFI</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../linux/mkinitcpio/">Initcpio Initramfs mkinitcpio</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../linux/power/">Linux Power Management</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Arch</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../linux/arch/reinstall-grub/">GRUB Reinstall</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../linux/arch/unbootable-help/">Unbootable: Help</a>
+                </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Btrfs</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../linux/btrfs/snapper/">Snapper</a>
+                </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Image viewers</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../linux/image-viewers/feh/">Image viewer feh</a>
+                </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Security</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../linux/security/firejail/">Firejail</a>
+                </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Systemd</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../linux/systemd/automounts/">Systemd automounts</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../linux/systemd/commands/">Systemd Commands</a>
+                </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Ubuntu</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../linux/ubuntu/apt/">Apt package installer</a>
+                </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Window managers</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../linux/window-managers/i3/">i3</a>
+                </li>
+    </ul>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Openssl  certificates</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../openssl--certificates/">Openssl</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Performance</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../performance/">Performance</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Containers</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../performance/containers/docker-podman/">Docker containers</a>
+                </li>
+    </ul>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Prometheus</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../prometheus/">Prometheus</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Proxy</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../proxy/apache/">Apache</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../proxy/haproxy/">Proxy</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../proxy/socat/">SOCAT</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Python</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../python/collections/">Python collections</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../python/datetime/">Python Datetime</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../python/file-editing/">File editing</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../python/logging/">logging</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../python/signal-handling/">Python Signal Handling</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../python/switch-case--pattern-matching/">Pattern matching - Switch case</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../python/virtualenv/">Virtualenvs</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../python/yaml/">Python Yaml module</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Radare2</span></p>
+                <ul class="current">
+                    <li class="toctree-l1"><a class="reference internal" href="../../bit-twiddling/">Bit Twiddling</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../coredump/">Radare analyze coredumps</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../debugger-run-with-arguments/">run debugger with arguments</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../errors/">Radare2 errors</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../general/">General</a>
+                    </li>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="#">Print memory</a>
+    <ul class="current">
+                <li class="toctree-l2 current"><a class="reference internal current" href="./">Dereference int pointer</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#setup">Setup</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#dereference">Dereference</a>
+    </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../func-arg-is-just-int/">Print `printf` argument if it is just an INT</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../func-show-arguments-before-entering/">Show function arguments before entering function</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../print-struct-contents/">Print struct contents (argument to func call)</a>
+                </li>
+    </ul>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Shells</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Bash</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../shells/bash/complete/">bash completion</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../shells/bash/escapes/">Bash escapes</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../shells/bash/keybindings/">Bash keybindings</a>
+                </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Zsh</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../shells/zsh/keybindings/">ZSH key bindings</a>
+                </li>
+    </ul>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Sql</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../sql/">SQL</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Ssh</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../ssh/">SSH</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../ssh/ssh-escape-sequences/">SSH escape sequences</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Storage</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Zfs</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../storage/zfs/">ZFS</a>
+                </li>
+    </ul>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Text manipulation</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../text-manipulation/awk/">awk</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../text-manipulation/ed/">Ed text editor | vim's built-in regex engine</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../text-manipulation/grep/">grep</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../text-manipulation/sed/">Sed</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../text-manipulation/tr/">tr</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Tmux</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../tmux/general/">tmux cheat sheet</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../tmux/options_and_keys/">Tmux options and keys</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../tmux/scripting/">Tmux scripting</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../tmux/ssh-or-kubectl-exec/">Tmux and ssh | Tmux and ssh</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../tmux/tmux_copycat/">Predefined searches</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Tracing</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Dtrace</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../tracing/dtrace/">Darwin</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../tracing/dtrace/special-types-of-tracing/">Special types of tracing in Dtrace</a>
+                </li>
+    </ul>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Vim</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../vim/binds/">Binds</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../vim/coc/">Coc.nvim</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../vim/fugitive/">Fugitive.vim</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../vim/general/">General</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../vim/macro/">Macros</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../vim/magic/">Magic</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../vim/movement-commands/">Movement commands</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../vim/multitab/">Multitab</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../vim/quickfix/">Quickfix</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../vim/registers/">Vim Registers</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../vim/tagbar_shortcuts/">Tagbar shortcuts</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../vim/window-movement/">Vim window movement | vim window moving</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Vlc</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../vlc/">vlc</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Web</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../web/favicons-for-search-engines/">favicons for search engines etc</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Website to</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../website-to/command-line-epub-reader/">Command line epub reader</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../website-to/website-to-epub/">Website to epub</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../website-to/website-to-pdf/">Website to pdf</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Windows</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../windows/undeletable-folder-undeletable-directory/">Remove undeletable folder</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Zathura</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../zathura/bindings/">Zathura key bindings</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../..">Florian Sorko's Cheatsheets</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Print memory &raquo;</li>
+        
+      
+        
+          <li>Radare2 &raquo;</li>
+        
+      
+    
+    <li>Dereference int pointer</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/diepfote/cheatsheets/edit/master/radare2/print-memory/dereference-int-pointer.md"> Edit on diepfote/cheatsheets</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="dereference-int-pointer">Dereference int pointer</h1>
+<h2 id="setup">Setup</h2>
+<p><code>update_integer</code> does not do anything with its argument but it returns
+a pointer to a static integer in the function.</p>
+<p><code>integer_ptr</code> is initialized with <code>1</code>. We want to see it change to <code>30</code>/<code>0x1e</code>.</p>
+<pre><code class="language-text">int* update_integer(int new_int) {
+
+    static int integer = 1;
+
+    return &amp;integer;
+}
+
+int* integer_ptr = update_integer(20);
+*integer_ptr = 30;
+</code></pre>
+<details><summary>Setup</summary><p>
+
+
+<pre><code class="language-text">[0x7f4fffa2f2a0]&gt; pd 1200 @ main | grep -C 5 update_integer
+            0x00201e48 00:0000      40             invalid
+            0x00201e49 00:0000      16             invalid
+            0x00201e4a 00:0000      488b4588       mov rax, qword [rbp - 0x78] ; ex22_main.c:0 ; rax=0xffffffffffffffff
+            0x00201e4e 00:0000      f20f1005e2e6.  movsd xmm0, qword [0x00200538] ; ex22_main.c:62     *ratio_ptr = 123123123.0; ; [0x200538:8]=0x419d5ad6cc000000
+            0x00201e56 00:0000      f20f1100       movsd qword [rax], xmm0
+            0x00201e5a 00:0000      bf14000000     mov edi, 0x14       ; ex22_main.c:64     int* integer_ptr = update_integer(20); ; 20 ; rdi=0x14
+            0x00201e5f 00:0000      e85cfbffff     call sym.update_integer ; rsp=0x7ffe469ccef8 ; rip=0x2019c0 ; sym.update_integer(0x0, 0x0, 0x0, 0x0)
+            0x00201e64 00:0000      488945e0       mov qword [rbp - 0x20], rax
+            0x00201e68 00:0000      488b4de0       mov rcx, qword [rbp - 0x20] ; ex22_main.c:65     *integer_ptr = 30; ; rcx=0xffffffffffffffff
+            0x00201e6c 00:0000      48894d80       mov qword [rbp - 0x80], rcx
+            0x00201e70 00:0000      4883f900       cmp rcx, 0          ; zf=0x0 ; cf=0x0 ; pf=0x1 ; sf=0x1 ; of=0x0 ; af=0x0
+            0x00201e74 00:0000      0f95c0         setne al            ; al=0x1
+[0x7f4fffa2f2a0]&gt; dcu 0x00201e68
+INFO: Continue until 0x00201e68 using 1 bpsize
+[INFO] (ex22_main.c:34:main()) My name: A Name, age: 37
+[INFO] (ex22_main.c:41:main()) My age is now: 100
+[INFO] (ex22_main.c:42:main()) My age is now: 123
+[INFO] (ex22_main.c:46:main()) THE_SIZE is: 1000
+[INFO] (ex22.c:33:print_size()) I think size is: 1000
+[INFO] (ex22_main.c:51:main()) THE_SIZE is now: 9
+[INFO] (ex22.c:33:print_size()) I think size is: 9
+[INFO] (ex22_main.c:55:main()) Ratio at first: 1.000000
+[INFO] (ex22_main.c:57:main()) Ratio again: 1.000000
+[INFO] (ex22_main.c:58:main()) Ratio once more: 1.000000
+INFO: hit breakpoint at: 0x201e68
+[0x00201e68]&gt; pd 20
+            ;-- rip:
+            0x00201e68 00:0000      488b4de0       mov rcx, qword [rbp - 0x20] ; ex22_main.c:65     *integer_ptr = 30; ; rcx=0x2041d8 rax
+            0x00201e6c 00:0000      48894d80       mov qword [rbp - 0x80], rcx
+            0x00201e70 00:0000      4883f900       cmp rcx, 0          ; zf=0x0 ; cf=0x0 ; pf=0x1 ; sf=0x0 ; of=0x0 ; af=0x0
+            0x00201e74 00:0000      0f95c0         setne al            ; al=0x1 rcx
+            0x00201e77 00:0000      4883e103       and rcx, 3          ; rcx=0x0 ; zf=0x1 ; pf=0x1 ; sf=0x0 ; cf=0x0 ; of=0x0
+            0x00201e7b 00:0000      4883f900       cmp rcx, 0          ; zf=0x1 ; cf=0x0 ; pf=0x1 ; sf=0x0 ; of=0x0 ; af=0x0
+            0x00201e7f 00:0000      0f94c1         sete cl             ; cl=0x1 rcx
+            0x00201e82 00:0000      20c8           and al, cl          ; al=0x1 rcx ; zf=0x0 ; pf=0x0 ; sf=0x0 ; cf=0x0 ; of=0x0
+            0x00201e84 00:0000      a801           test al, 1          ; rcx ; zf=0x0 ; pf=0x0 ; sf=0x0 ; cf=0x0 ; of=0x0
+        ┌─&lt; 0x00201e86 00:0000      0f8505000000   jne 0x201e91        ; rip=0x201e91 ; likely
+        │   0x00201e8c 00:0000      670fb9         ud2b
+        │   0x00201e8f 00:0000      40             invalid
+        │   0x00201e90 00:0000      16             invalid
+        └─&gt; 0x00201e91 00:0000      488b4580       mov rax, qword [rbp - 0x80] ; ex22_main.c:0 ; rax=0x0
+            0x00201e95 00:0000      c7001e000000   mov dword [rax], 0x1e ; ex22_main.c:65     *integer_ptr = 30; ; [0x1e:4]=-1 ; 30
+            0x00201e9b 00:0000      488b05fe1200.  mov rax, qword [reloc.stderr] ; ex22_main.c:68     log_info(&quot;Ratio at the end: %f&quot;, *update_ratio(300.0)); ; [0x2031a0:8]=0x7f4fff9eb6a0 ; rax=0x7f4fff9eb6a0 -&gt; 0xfbad2887
+            0x00201ea2 00:0000      488b00         mov rax, qword [rax] ; rax=0x7f4fff9eb4e0
+            0x00201ea5 00:0000      48898570ffff.  mov qword [rbp - 0x90], rax
+            0x00201eac 00:0000      f20f10057ce6.  movsd xmm0, qword [0x00200530] ; [0x200530:8]=0x4072c00000000000
+            0x00201eb4 00:0000      e817fbffff     call sym.update_ratio ; rsp=0x7ffe469cce38 -&gt; 0xe0458948 ; rip=0x2019d0 ; sym.update_ratio(0x14, 0x7ffe469ccc90, 0x0, 0x1)
+[0x00201e68]&gt; dcu 0x00201e9b
+INFO: Continue until 0x00201e9b using 1 bpsize
+INFO: hit breakpoint at: 0x201e9b
+</code></pre>
+
+
+</p></details>
+
+<p><em>Note</em>:
+This is how a register is used to refer to a memory location (taken from above):</p>
+<pre><code class="language-text">        └─&gt; 0x00201e91 00:0000      488b4580       mov rax, qword [rbp - 0x80] ; ex22_main.c:0 ; rax=0x0
+            0x00201e95 00:0000      c7001e000000   mov dword [rax], 0x1e ; ex22_main.c:65     *integer_ptr = 30; ; [0x1e:4]=-1 ; 30
+</code></pre>
+<h2 id="dereference">Dereference</h2>
+<pre><code class="language-text">[0x00201e9b]&gt; # show the current value for the rbp register
+[0x00201e9b]&gt; dr rbp
+0x7ffe469ccee0
+[0x00201e9b]&gt; pxq 4 @ rbp-0x80
+0x7ffe469cce60  0x00000000002041d8                       .A .
+[0x00201e9b]&gt; pxq 4 @ 0x7ffe469ccee0-0x80
+0x7ffe469cce60  0x00000000002041d8                       .A .
+[0x00201e9b]&gt; pxq 4 @ [0x7ffe469ccee0-0x80]
+0x002041d8  0x000000000000001e                       ....
+[0x00201e9b]&gt;
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../func-arg-is-just-int/" class="btn btn-neutral float-right" title="Print `printf` argument if it is just an INT">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../../general/" class="btn btn-neutral" title="General"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../../general/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../func-arg-is-just-int/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../../..';</script>
+    <script src="../../../js/theme.js" defer></script>
+      <script src="../../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

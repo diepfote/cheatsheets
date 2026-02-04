@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="Florian Sorko">
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>GDB commands by function - simple guide - Florian Sorko's Cheatsheets</title>
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "GDB commands by function - simple guide";
+    var mkdocs_page_input_path = "gdb/gdb_cheat-sheet.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Florian Sorko's Cheatsheets</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Cheatsheets</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../Makefile/">make</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../ansible/">Ansible</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../chrome-chrome/">Chrome/Chromium</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../dd/">dd</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../docker/">Docker</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../dvdbackup/">DVD backup | dvdbackup</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../execute-on-file-change/">Execute on file change</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../ffmpeg/">FFmpeg</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../find/">Find</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../firefox/">Firefox</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../freebsd/">FreeBSD</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../fzf/">FZF</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../gedit/">Gedit</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../gif/">Gif</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../gnome/">Gnome</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../gpg/">GPG</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../illumos/">Illumos</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../less/">less</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../markdown/">Markdown</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../mdbook/">Mdbook</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../mpv/">MPV - media player</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../neomutt/">Neomutt</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../pdf/">PDF</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../ps/">PS command</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../pueue/">Pueue</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../qemu/">Qemu</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../rst/">rst - restructured text</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../rsync/">Rsync</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../ruby/">Ruby Programming Language</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../torrent/">Torrent Client</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../youtube-dl/">Youtube-dl</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Assembly</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../assembly/x86_64_notes/">x86 notes</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Audio</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Dynamic range compression</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../audio/dynamic-range-compression/">Audio</a>
+                </li>
+    </ul>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Cmus</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cmus/cmus_adding_music/">Cmus Adding music</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cmus/cmus_shortcuts/">Cmus shortcuts</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Darwin</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../darwin/automator/">Automator</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../darwin/container-or-linux-vm-video-and-audio-playback/">Container or Linux VM video and audio playback</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../darwin/disk-management/">Mac OS Disk Management</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../darwin/dns-via-cli/">Mac OS DNS Settings</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../darwin/homebrew/">Homebrew</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../darwin/lima/">Docker Desktop replacement - Lima VM</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../darwin/mds/">MDS - Metadata stores used by spotlight</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../darwin/okd-3.11-cli-client/">openshift-cli v3.11.0 | okd-cli v3.11.0</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../darwin/privacy-settings/">Mac OS Privacy Settings</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../darwin/remote-login/">Remote login</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../darwin/screensaver/">Mac OS Tahoe</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../darwin/tmutil-time-machine-exclusions/">Tmutil exlcusions | Time machine exclusions</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../darwin/yabai/">Yabai</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Transfer</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../darwin/transfer/firefox/">Firefox</a>
+                </li>
+    </ul>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Data extraction</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../data-extraction/install-croc/">siphon out data</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Dns</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../dns/">DNS</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../dns/drill/">Drill</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Fish</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../fish/argument-parsing/">Fish</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Gdb</span></p>
+                <ul class="current">
+                    <li class="toctree-l1"><a class="reference internal" href="../cgdb_commands_shortcuts/">3.1 Commands available during CGDB mode</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../coredump/">GDB analyze coredumps</a>
+                    </li>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">GDB commands by function - simple guide</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#startup">Startup</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#help">Help</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#breakpoints">Breakpoints</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#running-the-program">Running the program</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#stack-backtrace">Stack backtrace</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#browsing-source">Browsing source</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#browsing-data">Browsing Data</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#object-file-manipulation">Object File manipulation</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#signal-control">Signal Control</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#machine-level-debug">Machine-level Debug</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#history-display">History Display</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#miscellaneous">Miscellaneous</a>
+    </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../general/">GDB</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Git</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../git/completions/">Git Completions</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../git/exotic/">Git Exotic</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../git/git-filter-repo/">Git Filter Repo - git filter-repo</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../git/github/">Github</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../git/lfs/">LFS in general</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../git/partial-and-shallow-clones/">Types of clones</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../git/plumbing/">Git Plumbing</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../git/useful-links/">Git useful links</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Github</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../github/gh/">GH cli</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Iphone</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../iphone/tethering/">iPhone tethering</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Java</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../java/jmx/">Jmx</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Keyboards</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../keyboards/logitech-multi-device-k780/">Logitech Mutli-Device K780</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Kubernetes</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../kubernetes/">Index</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../kubernetes/install-kubectl-on-linux/">Install kubectl binary on Linux</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../kubernetes/jq/">Jq filtering</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Okd</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../kubernetes/okd/drain-nodes/">Drain nodes</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../kubernetes/okd/etcd/">OKD etcd</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../kubernetes/okd/rebind-pv/">Re-bind PV | Rebind PV | PVC stuck in "Pending" state</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../kubernetes/okd/security-context-constraints/">OKD SCC</a>
+                </li>
+    </ul>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Linux</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../linux/audio/">Audio (I assume you use pipewire)</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../linux/disk-management/">Linux Disk Management</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../linux/efi/">EFI</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../linux/mkinitcpio/">Initcpio Initramfs mkinitcpio</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../linux/power/">Linux Power Management</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Arch</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/arch/reinstall-grub/">GRUB Reinstall</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/arch/unbootable-help/">Unbootable: Help</a>
+                </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Btrfs</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/btrfs/snapper/">Snapper</a>
+                </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Image viewers</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/image-viewers/feh/">Image viewer feh</a>
+                </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Security</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/security/firejail/">Firejail</a>
+                </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Systemd</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/systemd/automounts/">Systemd automounts</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/systemd/commands/">Systemd Commands</a>
+                </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Ubuntu</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/ubuntu/apt/">Apt package installer</a>
+                </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Window managers</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/window-managers/i3/">i3</a>
+                </li>
+    </ul>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Openssl  certificates</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../openssl--certificates/">Openssl</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Performance</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../performance/">Performance</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Containers</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../performance/containers/docker-podman/">Docker containers</a>
+                </li>
+    </ul>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Prometheus</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../prometheus/">Prometheus</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Proxy</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../proxy/apache/">Apache</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../proxy/haproxy/">Proxy</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../proxy/socat/">SOCAT</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Python</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../python/collections/">Python collections</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../python/datetime/">Python Datetime</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../python/file-editing/">File editing</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../python/logging/">logging</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../python/signal-handling/">Python Signal Handling</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../python/switch-case--pattern-matching/">Pattern matching - Switch case</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../python/virtualenv/">Virtualenvs</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../python/yaml/">Python Yaml module</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Radare2</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../radare2/bit-twiddling/">Bit Twiddling</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../radare2/coredump/">Radare analyze coredumps</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../radare2/debugger-run-with-arguments/">run debugger with arguments</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../radare2/errors/">Radare2 errors</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../radare2/general/">General</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Print memory</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../radare2/print-memory/dereference-int-pointer/">Dereference int pointer</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../radare2/print-memory/func-arg-is-just-int/">Print `printf` argument if it is just an INT</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../radare2/print-memory/func-show-arguments-before-entering/">Show function arguments before entering function</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../radare2/print-memory/print-struct-contents/">Print struct contents (argument to func call)</a>
+                </li>
+    </ul>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Shells</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Bash</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../shells/bash/complete/">bash completion</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../shells/bash/escapes/">Bash escapes</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../shells/bash/keybindings/">Bash keybindings</a>
+                </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Zsh</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../shells/zsh/keybindings/">ZSH key bindings</a>
+                </li>
+    </ul>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Sql</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../sql/">SQL</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Ssh</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../ssh/">SSH</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../ssh/ssh-escape-sequences/">SSH escape sequences</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Storage</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Zfs</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../storage/zfs/">ZFS</a>
+                </li>
+    </ul>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Text manipulation</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../text-manipulation/awk/">awk</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../text-manipulation/ed/">Ed text editor | vim's built-in regex engine</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../text-manipulation/grep/">grep</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../text-manipulation/sed/">Sed</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../text-manipulation/tr/">tr</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Tmux</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../tmux/general/">tmux cheat sheet</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../tmux/options_and_keys/">Tmux options and keys</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../tmux/scripting/">Tmux scripting</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../tmux/ssh-or-kubectl-exec/">Tmux and ssh | Tmux and ssh</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../tmux/tmux_copycat/">Predefined searches</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Tracing</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Dtrace</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../tracing/dtrace/">Darwin</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../tracing/dtrace/special-types-of-tracing/">Special types of tracing in Dtrace</a>
+                </li>
+    </ul>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Vim</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../vim/binds/">Binds</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../vim/coc/">Coc.nvim</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../vim/fugitive/">Fugitive.vim</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../vim/general/">General</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../vim/macro/">Macros</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../vim/magic/">Magic</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../vim/movement-commands/">Movement commands</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../vim/multitab/">Multitab</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../vim/quickfix/">Quickfix</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../vim/registers/">Vim Registers</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../vim/tagbar_shortcuts/">Tagbar shortcuts</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../vim/window-movement/">Vim window movement | vim window moving</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Vlc</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../vlc/">vlc</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Web</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../web/favicons-for-search-engines/">favicons for search engines etc</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Website to</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../website-to/command-line-epub-reader/">Command line epub reader</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../website-to/website-to-epub/">Website to epub</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../website-to/website-to-pdf/">Website to pdf</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Windows</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../windows/undeletable-folder-undeletable-directory/">Remove undeletable folder</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Zathura</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../zathura/bindings/">Zathura key bindings</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Florian Sorko's Cheatsheets</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Gdb &raquo;</li>
+        
+      
+    
+    <li>GDB commands by function - simple guide</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/diepfote/cheatsheets/edit/master/gdb/gdb_cheat-sheet.md"> Edit on diepfote/cheatsheets</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="gdb-commands-by-function-simple-guide">GDB commands by function - simple guide</h1>
+<p>Important commands start with a *.</p>
+<h2 id="startup">Startup</h2>
+<pre><code class="language-text">% gdb -help             print startup help, show switches
+*% gdb object       normal debug 
+*% gdb object core  core debug (must specify core file)
+%% gdb object pid   attach to running process
+% gdb               use file command to load object 
+</code></pre>
+<h2 id="help">Help</h2>
+<pre><code class="language-text">*(gdb) help         list command classes
+(gdb) help running      list commands in one command class
+(gdb) help run          bottom-level help for a command &quot;run&quot; 
+(gdb) help info         list info commands (running program state)
+(gdb) help info line    help for a particular info command
+(gdb) help show         list show commands (gdb state)
+(gdb) help show commands        specific help for a show command
+</code></pre>
+<h2 id="breakpoints">Breakpoints</h2>
+<pre><code class="language-text">*(gdb) break main       set a breakpoint on a function
+*(gdb) break 101        set a breakpoint on a line number
+*(gdb) break basic.c:101        set breakpoint at file and line (or function)
+*(gdb) info breakpoints        show breakpoints
+*(gdb) delete 1         delete a breakpoint by number
+(gdb) delete            delete all breakpoints (prompted)
+(gdb) clear             delete breakpoints at current line
+(gdb) clear function    delete breakpoints at function
+(gdb) clear line        delete breakpoints at line
+(gdb) disable 2         turn a breakpoint off, but don't remove it
+(gdb) enable 2          turn disabled breakpoint back on
+(gdb) tbreak function|line        set a temporary breakpoint
+(gdb) commands break-no ... end   set gdb commands with breakpoint
+(gdb) ignore break-no count       ignore bpt N-1 times before activation
+(gdb) condition break-no expression         break only if condition is true
+(gdb) condition 2 i == 20         example: break on breakpoint 2 if i equals 20
+(gdb) watch expression        set software watchpoint on variable
+(gdb) info watchpoints        show current watchpoints
+</code></pre>
+<h2 id="running-the-program">Running the program</h2>
+<pre><code class="language-text">*(gdb) run          run the program with current arguments
+*(gdb) run args redirection        run with args and redirection
+(gdb) set args args...        set arguments for run 
+(gdb) show args        show current arguments to run
+*(gdb) cont            continue the program
+*(gdb) step            single step the program; step into functions
+(gdb) step count       singlestep \fIcount\fR times
+*(gdb) next            step but step over functions 
+(gdb) next count       next \fIcount\fR times
+*(gdb) CTRL-C          actually SIGINT, stop execution of current program 
+*(gdb) attach process-id        attach to running program
+*(gdb) detach        detach from running program
+*(gdb) finish        finish current function's execution
+(gdb) kill           kill current executing program 
+</code></pre>
+<h2 id="stack-backtrace">Stack backtrace</h2>
+<pre><code class="language-text">*(gdb) bt           print stack backtrace
+(gdb) frame         show current execution position
+(gdb) up            move up stack trace  (towards main)
+(gdb) down          move down stack trace (away from main)
+*(gdb) info locals      print automatic variables in frame
+(gdb) info args         print function parameters 
+</code></pre>
+<h2 id="browsing-source">Browsing source</h2>
+<pre><code class="language-text">*(gdb) list 101         list 10 lines around line 101
+*(gdb) list 1,10        list lines 1 to 10
+*(gdb) list main    list lines around function 
+*(gdb) list basic.c:main        list from another file basic.c
+*(gdb) list -           list previous 10 lines
+(gdb) list *0x22e4      list source at address
+(gdb) cd dir            change current directory to \fIdir\fR
+(gdb) pwd           print working directory
+(gdb) search regexpr    forward current for regular expression
+(gdb) reverse-search regexpr        backward search for regular expression
+(gdb) dir dirname       add directory to source path
+(gdb) dir           reset source path to nothing
+(gdb) show directories        show source path
+</code></pre>
+<h2 id="browsing-data">Browsing Data</h2>
+<pre><code class="language-text">*(gdb) print expression        print expression, added to value history
+*(gdb) print/x expressionR        print in hex
+(gdb) print array[i]@count        artificial array - print array range
+(gdb) print $           print last value
+(gdb) print *$-&gt;next    print thru list
+(gdb) print $1          print value 1 from value history
+(gdb) print ::gx        force scope to be global
+(gdb) print 'basic.c'::gx        global scope in named file (&gt;=4.6)
+(gdb) print/x &amp;main     print address of function
+(gdb) x/countFormatSize address        low-level examine command
+(gdb) x/x &amp;gx           print gx in hex
+(gdb) x/4wx &amp;main       print 4 longs at start of \fImain\fR in hex
+(gdb) x/gf &amp;gd1         print double
+(gdb) help x            show formats for x
+*(gdb) info locals      print local automatics only
+(gdb) info functions regexp         print function names
+(gdb) info variables  regexp        print global variable names
+*(gdb) ptype name        print type definition
+(gdb) whatis expression       print type of expression
+*(gdb) set variable = expression        assign value
+(gdb) display expression        display expression result at stop
+(gdb) undisplay        delete displays
+(gdb) info display     show displays
+(gdb) show values      print value history (&gt;= gdb 4.0)
+(gdb) info history     print value history (gdb 3.5)
+</code></pre>
+<h2 id="object-file-manipulation">Object File manipulation</h2>
+<pre><code class="language-text">(gdb) file object           load new file for debug (sym+exec)
+(gdb) file                  discard sym+exec file info
+(gdb) symbol-file object        load only symbol table
+(gdb) exec-file object      specify object to run (not sym-file)
+(gdb) core-file core        post-mortem debugging
+</code></pre>
+<h2 id="signal-control">Signal Control</h2>
+<pre><code class="language-text">(gdb) info signals          print signal setup
+(gdb) handle signo actions      set debugger actions for signal
+(gdb) handle INT print          print message when signal occurs
+(gdb) handle INT noprint        don't print message
+(gdb) handle INT stop           stop program when signal occurs
+(gdb) handle INT nostop         don't stop program
+(gdb) handle INT pass           allow program to receive signal
+(gdb) handle INT nopass         debugger catches signal; program doesn't
+(gdb) signal signo          continue and send signal to program
+(gdb) signal 0              continue and send no signal to program
+</code></pre>
+<h2 id="machine-level-debug">Machine-level Debug</h2>
+<pre><code class="language-text">(gdb) info registers            print registers sans floats
+(gdb) info all-registers        print all registers
+(gdb) print/x $pc           print one register
+(gdb) stepi             single step at machine level
+(gdb) si                single step at machine level
+(gdb) nexti             single step (over functions) at machine level
+(gdb) ni                single step (over functions) at machine level
+(gdb) display/i $pc         print current instruction in display
+(gdb) x/x &amp;gx               print variable gx in hex
+(gdb) info line 22          print addresses for object code for line 22
+(gdb) info line *0x2c4e         print line number of object code at address
+(gdb) x/10i main            disassemble first 10 instructions in \fImain\fR
+(gdb) disassemble addr          dissassemble code for function around addr
+</code></pre>
+<h2 id="history-display">History Display</h2>
+<pre><code class="language-text">(gdb) show commands         print command history (&gt;= gdb 4.0)
+(gdb) info editing          print command history (gdb 3.5)
+(gdb) ESC-CTRL-J            switch to vi edit mode from emacs edit mode
+(gdb) set history expansion on       turn on c-shell like history
+(gdb) break class::member       set breakpoint on class member. may get menu
+(gdb) list class::member        list member in class
+(gdb) ptype class               print class members
+(gdb) print *this           print contents of this pointer
+(gdb) rbreak regexpr        useful for breakpoint on overloaded member name
+</code></pre>
+<h2 id="miscellaneous">Miscellaneous</h2>
+<pre><code class="language-text">(gdb) define command ... end        define user command
+*(gdb) RETURN               repeat last command
+*(gdb) shell command args       execute shell command 
+*(gdb) source file          load gdb commands from file
+*(gdb) quit             quit gdb
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../general/" class="btn btn-neutral float-right" title="GDB">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../coredump/" class="btn btn-neutral" title="GDB analyze coredumps"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../coredump/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../general/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

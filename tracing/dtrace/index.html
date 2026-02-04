@@ -1,0 +1,1626 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="Florian Sorko">
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Darwin - Florian Sorko's Cheatsheets</title>
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Darwin";
+    var mkdocs_page_input_path = "tracing/dtrace/index.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Florian Sorko's Cheatsheets</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Cheatsheets</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../Makefile/">make</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../ansible/">Ansible</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../chrome-chrome/">Chrome/Chromium</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../dd/">dd</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../docker/">Docker</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../dvdbackup/">DVD backup | dvdbackup</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../execute-on-file-change/">Execute on file change</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../ffmpeg/">FFmpeg</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../find/">Find</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../firefox/">Firefox</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../freebsd/">FreeBSD</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../fzf/">FZF</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../gedit/">Gedit</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../gif/">Gif</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../gnome/">Gnome</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../gpg/">GPG</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../illumos/">Illumos</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../less/">less</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../markdown/">Markdown</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../mdbook/">Mdbook</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../mpv/">MPV - media player</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../neomutt/">Neomutt</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../pdf/">PDF</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../ps/">PS command</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../pueue/">Pueue</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../qemu/">Qemu</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../rst/">rst - restructured text</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../rsync/">Rsync</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../ruby/">Ruby Programming Language</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../torrent/">Torrent Client</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../youtube-dl/">Youtube-dl</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Assembly</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../assembly/x86_64_notes/">x86 notes</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Audio</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Dynamic range compression</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../audio/dynamic-range-compression/">Audio</a>
+                </li>
+    </ul>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Cmus</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cmus/cmus_adding_music/">Cmus Adding music</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cmus/cmus_shortcuts/">Cmus shortcuts</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Darwin</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../darwin/automator/">Automator</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../darwin/container-or-linux-vm-video-and-audio-playback/">Container or Linux VM video and audio playback</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../darwin/disk-management/">Mac OS Disk Management</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../darwin/dns-via-cli/">Mac OS DNS Settings</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../darwin/homebrew/">Homebrew</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../darwin/lima/">Docker Desktop replacement - Lima VM</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../darwin/mds/">MDS - Metadata stores used by spotlight</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../darwin/okd-3.11-cli-client/">openshift-cli v3.11.0 | okd-cli v3.11.0</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../darwin/privacy-settings/">Mac OS Privacy Settings</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../darwin/remote-login/">Remote login</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../darwin/screensaver/">Mac OS Tahoe</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../darwin/tmutil-time-machine-exclusions/">Tmutil exlcusions | Time machine exclusions</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../darwin/yabai/">Yabai</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Transfer</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../darwin/transfer/firefox/">Firefox</a>
+                </li>
+    </ul>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Data extraction</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../data-extraction/install-croc/">siphon out data</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Dns</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../dns/">DNS</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../dns/drill/">Drill</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Fish</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../fish/argument-parsing/">Fish</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Gdb</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../gdb/cgdb_commands_shortcuts/">3.1 Commands available during CGDB mode</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../gdb/coredump/">GDB analyze coredumps</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../gdb/gdb_cheat-sheet/">GDB commands by function - simple guide</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../gdb/general/">GDB</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Git</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../git/completions/">Git Completions</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../git/exotic/">Git Exotic</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../git/git-filter-repo/">Git Filter Repo - git filter-repo</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../git/github/">Github</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../git/lfs/">LFS in general</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../git/partial-and-shallow-clones/">Types of clones</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../git/plumbing/">Git Plumbing</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../git/useful-links/">Git useful links</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Github</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../github/gh/">GH cli</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Iphone</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../iphone/tethering/">iPhone tethering</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Java</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../java/jmx/">Jmx</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Keyboards</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../keyboards/logitech-multi-device-k780/">Logitech Mutli-Device K780</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Kubernetes</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../kubernetes/">Index</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../kubernetes/install-kubectl-on-linux/">Install kubectl binary on Linux</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../kubernetes/jq/">Jq filtering</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Okd</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../kubernetes/okd/drain-nodes/">Drain nodes</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../kubernetes/okd/etcd/">OKD etcd</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../kubernetes/okd/rebind-pv/">Re-bind PV | Rebind PV | PVC stuck in "Pending" state</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../kubernetes/okd/security-context-constraints/">OKD SCC</a>
+                </li>
+    </ul>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Linux</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../linux/audio/">Audio (I assume you use pipewire)</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../linux/disk-management/">Linux Disk Management</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../linux/efi/">EFI</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../linux/mkinitcpio/">Initcpio Initramfs mkinitcpio</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../linux/power/">Linux Power Management</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Arch</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/arch/reinstall-grub/">GRUB Reinstall</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/arch/unbootable-help/">Unbootable: Help</a>
+                </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Btrfs</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/btrfs/snapper/">Snapper</a>
+                </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Image viewers</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/image-viewers/feh/">Image viewer feh</a>
+                </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Security</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/security/firejail/">Firejail</a>
+                </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Systemd</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/systemd/automounts/">Systemd automounts</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/systemd/commands/">Systemd Commands</a>
+                </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Ubuntu</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/ubuntu/apt/">Apt package installer</a>
+                </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Window managers</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../linux/window-managers/i3/">i3</a>
+                </li>
+    </ul>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Openssl  certificates</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../openssl--certificates/">Openssl</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Performance</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../performance/">Performance</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Containers</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../performance/containers/docker-podman/">Docker containers</a>
+                </li>
+    </ul>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Prometheus</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../prometheus/">Prometheus</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Proxy</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../proxy/apache/">Apache</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../proxy/haproxy/">Proxy</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../proxy/socat/">SOCAT</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Python</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../python/collections/">Python collections</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../python/datetime/">Python Datetime</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../python/file-editing/">File editing</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../python/logging/">logging</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../python/signal-handling/">Python Signal Handling</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../python/switch-case--pattern-matching/">Pattern matching - Switch case</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../python/virtualenv/">Virtualenvs</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../python/yaml/">Python Yaml module</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Radare2</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../radare2/bit-twiddling/">Bit Twiddling</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../radare2/coredump/">Radare analyze coredumps</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../radare2/debugger-run-with-arguments/">run debugger with arguments</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../radare2/errors/">Radare2 errors</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../radare2/general/">General</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Print memory</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../radare2/print-memory/dereference-int-pointer/">Dereference int pointer</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../radare2/print-memory/func-arg-is-just-int/">Print `printf` argument if it is just an INT</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../radare2/print-memory/func-show-arguments-before-entering/">Show function arguments before entering function</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../radare2/print-memory/print-struct-contents/">Print struct contents (argument to func call)</a>
+                </li>
+    </ul>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Shells</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Bash</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../shells/bash/complete/">bash completion</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../shells/bash/escapes/">Bash escapes</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../shells/bash/keybindings/">Bash keybindings</a>
+                </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Zsh</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../shells/zsh/keybindings/">ZSH key bindings</a>
+                </li>
+    </ul>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Sql</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../sql/">SQL</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Ssh</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../ssh/">SSH</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../ssh/ssh-escape-sequences/">SSH escape sequences</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Storage</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Zfs</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../storage/zfs/">ZFS</a>
+                </li>
+    </ul>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Text manipulation</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../text-manipulation/awk/">awk</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../text-manipulation/ed/">Ed text editor | vim's built-in regex engine</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../text-manipulation/grep/">grep</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../text-manipulation/sed/">Sed</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../text-manipulation/tr/">tr</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Tmux</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../tmux/general/">tmux cheat sheet</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../tmux/options_and_keys/">Tmux options and keys</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../tmux/scripting/">Tmux scripting</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../tmux/ssh-or-kubectl-exec/">Tmux and ssh | Tmux and ssh</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../tmux/tmux_copycat/">Predefined searches</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Tracing</span></p>
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="#">Dtrace</a>
+    <ul class="current">
+                <li class="toctree-l2 current"><a class="reference internal current" href="./">Darwin</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#dtrace-objects">Dtrace objects</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#get-type-of-object">Get type of object</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#find-type-defintionfind-dtrace-type-tranlator">Find type defintion/Find dtrace type tranlator</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#cast-dtrace-object-casting-dtrace-object">Cast dtrace object | Casting dtrace object</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#find-origin-of-read-system-call-in-mpv-on-darwin">Find origin of read system call in mpv on Darwin</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#check-if-there-is-a-read-system-call-get-pid">Check if there is a read system call + get PID</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#list-functions-to-trace-for-read">List functions to trace for read</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#what-does-stream_read_unbuffered-do">What does stream_read_unbuffered do?</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#python-provider">python provider</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#list-probes">List probes</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#show-module-name-function-name-for-python">show module name &amp; function name for Python</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#pre-written-dtrace-scriptspre-provided-dtrace-scripts">Pre-written dtrace scripts/Pre-provided dtrace scripts</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#where-to-find-them-on-mac-os">Where to find them on Mac OS</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#show-files-openend-by-process">Show files openend by process</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="special-types-of-tracing/">Special types of tracing in Dtrace</a>
+                </li>
+    </ul>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Vim</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../vim/binds/">Binds</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../vim/coc/">Coc.nvim</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../vim/fugitive/">Fugitive.vim</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../vim/general/">General</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../vim/macro/">Macros</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../vim/magic/">Magic</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../vim/movement-commands/">Movement commands</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../vim/multitab/">Multitab</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../vim/quickfix/">Quickfix</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../vim/registers/">Vim Registers</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../vim/tagbar_shortcuts/">Tagbar shortcuts</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../vim/window-movement/">Vim window movement | vim window moving</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Vlc</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../vlc/">vlc</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Web</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../web/favicons-for-search-engines/">favicons for search engines etc</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Website to</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../website-to/command-line-epub-reader/">Command line epub reader</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../website-to/website-to-epub/">Website to epub</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../website-to/website-to-pdf/">Website to pdf</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Windows</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../windows/undeletable-folder-undeletable-directory/">Remove undeletable folder</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Zathura</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../zathura/bindings/">Zathura key bindings</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Florian Sorko's Cheatsheets</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Dtrace &raquo;</li>
+        
+      
+        
+          <li>Tracing &raquo;</li>
+        
+      
+    
+    <li>Darwin</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/diepfote/cheatsheets/edit/master/tracing/dtrace/index.md"> Edit on diepfote/cheatsheets</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="darwin">Darwin</h1>
+<h2 id="dtrace-objects">Dtrace objects</h2>
+<hr />
+<p>Based on Dtrace Dynamic Tracing in Oracle Solaris, Mac OS X, And FreeBSD
+Brendan Gregg, Jim Mauro</p>
+<hr />
+<h3 id="get-type-of-object">Get type of object</h3>
+<p>Any translation should be defined in this directory <code>/usr/lib/dtrace/</code>.</p>
+<p>Examples below.</p>
+<h4 id="curthread-struct"><code>curthread</code> struct</h4>
+<p><code>curthread</code> is defined as a <code>struct thread</code>. How do I know?</p>
+<pre><code class="language-text">$ sudo dtrace -n 'profile-997hz { @[curthread-&gt;invalid_member] = count(); }'
+dtrace: invalid probe specifier profile-997hz { @[curthread-&gt;invalid_member] = count(); }: in action list: invalid_member is not a member of struct thread
+</code></pre>
+<h4 id="proc-struct"><code>proc</code> struct</h4>
+<pre><code class="language-text">$ sudo dtrace -n 'profile-997hz { @[(curthread-&gt;t_tro-&gt;tro_proc)-&gt;invalid_member] = count(); }'
+Password:
+dtrace: invalid probe specifier profile-997hz { @[(curthread-&gt;t_tro-&gt;tro_proc)-&gt;invalid_member] = count(); }: in action list: invalid_member is not a member of struct proc
+</code></pre>
+<h3 id="find-type-defintionfind-dtrace-type-tranlator">Find type defintion/Find dtrace type tranlator</h3>
+<p>Examples below</p>
+<h4 id="curthread-translator"><code>curthread</code> translator</h4>
+<p><strong>Hint</strong>: I added <code>grep translator</code> to show less output.<br />
+          I know about <code>translators</code> in dtrace now.<br />
+          I did not when I was looking for <code>curthread</code>.</p>
+<p><strong>Hint</strong>: I assumed <code>thread</code> is the same as <code>thread_t</code>.</p>
+<details><p>
+
+
+<pre><code class="language-text">$ grep -r thread /usr/lib/dtrace/ | grep translator
+/usr/lib/dtrace/darwin.d: * kthread_t-to-psinfo_t translator, below.
+/usr/lib/dtrace/darwin.d:translator psinfo_t &lt; thread_t T &gt; {
+/usr/lib/dtrace/darwin.d:translator lwpsinfo_t &lt; thread_t T &gt; {
+
+$ grep -rFA 25 'translator lwpsinfo_t &lt; thread_t T &gt;' /usr/lib/dtrace/
+/usr/lib/dtrace/darwin.d:translator lwpsinfo_t &lt; thread_t T &gt; {
+/usr/lib/dtrace/darwin.d-       pr_flag = 0; /* lwp flags (DEPRECATED; do not use) */
+/usr/lib/dtrace/darwin.d-       pr_lwpid = (id_t)T-&gt;thread_id;
+/usr/lib/dtrace/darwin.d-       pr_addr = (uintptr_t)T;
+/usr/lib/dtrace/darwin.d-       pr_wchan = (uintptr_t)(((uthread_t)&amp;T[1])-&gt;uu_wchan);
+/usr/lib/dtrace/darwin.d-
+/usr/lib/dtrace/darwin.d-       pr_stype = SOBJ_NONE; /* XXX Undefined synch object (or none) XXX */
+/usr/lib/dtrace/darwin.d-       pr_state = curproc-&gt;p_stat;
+/usr/lib/dtrace/darwin.d-       pr_sname = (curproc-&gt;p_stat == SIDL) ? 'I' :
+/usr/lib/dtrace/darwin.d-                       (curproc-&gt;p_stat == SRUN) ? 'R' :
+/usr/lib/dtrace/darwin.d-                       (curproc-&gt;p_stat == SSLEEP) ? 'S' :
+/usr/lib/dtrace/darwin.d-                       (curproc-&gt;p_stat == SSTOP) ? 'T' :
+/usr/lib/dtrace/darwin.d-                       (curproc-&gt;p_stat == SZOMB) ? 'Z' : '?';
+/usr/lib/dtrace/darwin.d-
+/usr/lib/dtrace/darwin.d-       pr_syscall = ((uthread_t)&amp;T[1])-&gt;uu_code;
+/usr/lib/dtrace/darwin.d-       pr_pri = T-&gt;sched_pri;
+/usr/lib/dtrace/darwin.d-
+/usr/lib/dtrace/darwin.d-       pr_clname = (T-&gt;sched_mode &amp; 0x0001) ? &quot;RT&quot; :
+/usr/lib/dtrace/darwin.d-                       (T-&gt;sched_mode &amp; 0x0002) ? &quot;TS&quot; : &quot;SYS&quot;;
+/usr/lib/dtrace/darwin.d-
+/usr/lib/dtrace/darwin.d-       pr_onpro = (T-&gt;last_processor == PROCESSOR_NULL) ? -1 : T-&gt;last_processor-&gt;cpu_id;
+/usr/lib/dtrace/darwin.d-       pr_bindpro = -1; /* Darwin does not bind threads to processors. */
+/usr/lib/dtrace/darwin.d-       pr_bindpset = -1; /* Darwin does not partition processors. */
+/usr/lib/dtrace/darwin.d-       pr_thstate = T-&gt;state;
+/usr/lib/dtrace/darwin.d-};
+</code></pre>
+
+
+</p></details>
+
+<h5 id="check-if-this-translator-is-the-one-we-are-looking-for">Check if this translator is the one we are looking for</h5>
+<details><p>
+
+
+<pre><code class="language-text">$ sudo dtrace -n 'profile-997hz { @[curthread-&gt;last_processor] = count(); }'
+dtrace: description 'profile-997hz ' matched 1 probe
+^C
+
+    -549391900872              210
+     -45001752392              210
+     -45001741232              210
+     -45001730072              210
+     -45001718912              210
+     -45001707752              210
+     -45001696592              210
+     -45001685432              210
+     -45001674272              210
+     -45001663112              210
+     -45001651952              210
+     -45001640792              210
+
+$ sudo dtrace -n 'profile-997hz { @[curthread-&gt;state] = count(); }'
+dtrace: description 'profile-997hz ' matched 1 probe
+^C
+
+       13                1
+        4              657
+      132             1166
+
+$ sudo dtrace -n 'profile-997hz { @[curthread-&gt;thread_id] = count(); }'
+dtrace: description 'profile-997hz ' matched 1 probe
+^C
+
+              853                1
+          8793325               76
+          8793464               78
+              102               87
+              173              104
+...
+</code></pre>
+
+
+</details>
+</p>
+<h4 id="proc-struct-translator"><code>proc</code> struct translator</h4>
+<pre><code class="language-text">$ grep -r 'proc ' /usr/lib/dtrace/
+/usr/lib/dtrace/darwin.d:inline struct proc * curproc =
+/usr/lib/dtrace/darwin.d:       ((struct proc *)(curthread-&gt;t_tro-&gt;tro_proc)) != NULL ? ((struct proc *)(curthread-&gt;t_tro-&gt;tro_proc)) :
+/usr/lib/dtrace/darwin.d:translator psinfo_t &lt; struct proc * P &gt; {
+</code></pre>
+<pre><code class="language-text">translator psinfo_t &lt; struct proc * P &gt; {
+        pr_nlwp =       ((struct task *)(P-&gt;task))-&gt;thread_count;
+        pr_pid =        P-&gt;p_pid;
+        pr_ppid =       P-&gt;p_ppid;
+        pr_pgid =       P-&gt;p_pgrp.__hazard_ptr-&gt;pg_id;
+
+...
+};
+</code></pre>
+<h5 id="resolve-something-in-the-proc-struct">Resolve something in the <code>proc</code> struct</h5>
+<p>Get <code>thread_count</code> for the task of the process <code>curthread</code> is running in</p>
+<p><strong>Hint</strong>: <code>task</code> in <code>tro_proc</code> has to be casted, otherwise the <code>task</code> member
+          will be <code>void *</code>. Dtrace requires type info to access members of objects.</p>
+<p><strong>Hint</strong>: This is how I knew how to cast the the <code>task</code> object:</p>
+<p><code>text
+  $ grep -rF 'task ' /usr/lib/dtrace/
+  /usr/lib/dtrace/darwin.d:       taskid_t pr_taskid; /* task id */
+  /usr/lib/dtrace/darwin.d:       pr_nlwp =       ((struct task *)(P-&gt;task))-&gt;thread_count;</code></p>
+<h6 id="cast-to-struct-task-pointer">Cast to struct task pointer</h6>
+<pre><code class="language-text">sudo dtrace -n 'profile-997hz { @[((struct task *)curthread-&gt;t_tro-&gt;tro_proc-&gt;task)-&gt;thread_count] = count(); }'
+</code></pre>
+<h3 id="cast-dtrace-object-casting-dtrace-object">Cast dtrace object | Casting dtrace object</h3>
+<p><a href="#cast-to-struct-task-pointer">Example</a></p>
+<h2 id="find-origin-of-read-system-call-in-mpv-on-darwin">Find origin of <code>read</code> system call in mpv on Darwin</h2>
+<h3 id="check-if-there-is-a-read-system-call-get-pid">Check if there is a <code>read</code> system call + get PID</h3>
+<p>probefunc = syscall in this case</p>
+<pre><code class="language-text">sudo dtrace -n 'syscall:::entry /execname == &quot;mpv&quot;/ { @[pid, probefunc] = count(); }'
+</code></pre>
+<h3 id="list-functions-to-trace-for-read">List functions to trace for <code>read</code></h3>
+<p>Checked if <code>syscall::*read*:entry</code> would find more read syscalls for this process. It did not.</p>
+<pre><code class="language-text">sudo dtrace -n 'syscall::read:entry /execname == &quot;mpv&quot;/ { @[ustack()] = count(); }'
+              libsystem_kernel.dylib`read+0xa
+              mpv`stream_read_unbuffered+0x41
+              mpv`stream_read_more+0xe5
+              mpv`stream_read_partial+0x91
+              mpv`mp_read+0x2e
+              libavformat.58.dylib`0x000000010d4e5f5d+0x13
+                2
+</code></pre>
+<p>We will take a look at where <code>stream_read_unbuffered</code> leads us.</p>
+<h3 id="what-does-stream_read_unbuffered-do">What does <code>stream_read_unbuffered</code> do?</h3>
+<hr />
+<p>Based on <code>Dtrace Review</code> by Brian Cantrill
+https://www.youtube.com/watch?v=TgmA48fILq8</p>
+<hr />
+<p>The pid provider traces every instruction in a given PID.
+We filter by function.<br />
+Detect every function entry:</p>
+<pre><code class="language-text">sudo dtrace -n 'pid56141::stream_read_unbuffered:entry'
+</code></pre>
+<p>Show timestamp for function entry:</p>
+<pre><code class="language-text">sudo dtrace -n 'pid56141::stream_read_unbuffered:entry { printf(&quot;Called stream_read_unbuffered at %Y&quot;, walltimestamp); }'
+CPU     ID                    FUNCTION:NAME
+  6   2099     stream_read_unbuffered:entry Called stream_read_unbuffered at 2022 Sep  5 03:36:32
+  8   2099     stream_read_unbuffered:entry Called stream_read_unbuffered at 2022 Sep  5 03:36:33
+  2   2099     stream_read_unbuffered:entry Called stream_read_unbuffered at 2022 Sep  5 03:36:34
+  5   2099     stream_read_unbuffered:entry Called stream_read_unbuffered at 2022 Sep  5 03:36:35
+^C
+</code></pre>
+<p>Follow all instructions in the process after they passed through <code>stream_read_unbuffered</code> (<a href="./d-scripts/mpv-trace-stream_read_unbuffered.d">mpv-trace-stream_read_unbuffered</a>):</p>
+<pre><code class="language-text">dtrace: script './mpv-trace-stream_read_unbuffered.d' matched 67031 ([] probes
+CPU FUNCTION
+  0  -&gt; stream_read_unbuffered
+  0    -&gt; mp_cancel_test
+  0    &lt;- mp_cancel_test
+  0    -&gt; read
+  0    &lt;- read
+  0  &lt;- stream_read_unbuffered
+  4  -&gt; stream_read_unbuffered
+  4    -&gt; mp_cancel_test
+  4    &lt;- mp_cancel_test
+  4    -&gt; read
+  4    &lt;- read
+  4  &lt;- stream_read_unbuffered
+  6  -&gt; stream_read_unbuffered
+  6    -&gt; mp_cancel_test
+  6    &lt;- mp_cancel_test
+  6    -&gt; read
+  6    &lt;- read
+  6  &lt;- stream_read_unbuffered
+</code></pre>
+<p>Follow every action stream_read_unbuffered triggered in the kernel (<a href="./d-scripts/mpv-trace-stream_read_unbuffered-in-the-kernel.d">mpv-trace-stream_read_unbuffered-in-the-kernel</a>):</p>
+<details><p>
+
+
+<pre><code class="language-text">dtrace: script './mpv-trace-stream_read_unbuffered.d' matched 193402 probes
+ 10  -&gt; lck_rw_done
+ 10  &lt;- lck_rw_done
+ 10  &lt;- user_trap
+ 10  -&gt; unix_syscall64
+ 10    -&gt; proc_ucred
+ 10    &lt;- proc_ucred
+ 10    -&gt; audit_syscall_enter
+ 10    &lt;- audit_syscall_enter
+ 10    -&gt; read
+ 10      -&gt; lck_mtx_unlock_slow
+ 10      &lt;- lck_mtx_unlock_slow
+ 10      -&gt; vfs_context_current
+ 10      &lt;- vfs_context_current
+ 10      -&gt; uio_addiov
+ 10      &lt;- uio_addiov
+ 10      -&gt; lck_mtx_unlock_slow
+ 10      &lt;- lck_mtx_unlock_slow
+ 10      -&gt; vnode_getiocount
+ 10      &lt;- vnode_getiocount
+ 10      -&gt; lck_mtx_unlock_slow
+ 10      &lt;- lck_mtx_unlock_slow
+ 10      -&gt; mac_vnode_check_read
+ 10      &lt;- mac_vnode_check_read
+ 10      -&gt; apfs_vnop_read
+ 10        -&gt; uio_resid
+ 10        &lt;- uio_resid
+ 10        -&gt; uio_offset
+ 10        &lt;- uio_offset
+ 10        -&gt; vnode_mount
+ 10        &lt;- vnode_mount
+ 10        -&gt; vfs_fsprivate
+ 10        &lt;- vfs_fsprivate
+ 10        -&gt; vnode_fsnode
+ 10        &lt;- vnode_fsnode
+ 10        -&gt; _ZN18APFSOSNumberAtomic8addValueEx
+ 10        &lt;- _ZN18APFSOSNumberAtomic8addValueEx
+ 10        -&gt; is_operation_allowed
+ 10        &lt;- is_operation_allowed
+ 10        -&gt; apfs_decmpfs_file_is_compressed
+ 10        &lt;- apfs_decmpfs_file_is_compressed
+ 10        -&gt; apfs_should_scan_for_fragmentation
+ 10        &lt;- apfs_should_scan_for_fragmentation
+ 10        -&gt; lck_rw_lock_shared
+ 10        &lt;- lck_rw_lock_shared
+ 10        -&gt; lck_rw_lock_shared
+ 10        &lt;- lck_rw_lock_shared
+ 10        -&gt; apfs_get_file_size
+ 10        &lt;- apfs_get_file_size
+ 10        -&gt; lck_rw_unlock_shared
+ 10          -&gt; lck_rw_done
+ 10          &lt;- lck_rw_done
+ 10        &lt;- lck_rw_unlock_shared
+ 10        -&gt; cluster_read
+ 10        &lt;- cluster_read
+ 10        -&gt; cluster_read_ext
+ 10          -&gt; lck_mtx_try_lock
+ 10          &lt;- lck_mtx_try_lock
+ 10          -&gt; memory_object_control_uiomove
+ 10            -&gt; vm_object_lock
+ 10            &lt;- vm_object_lock
+ 10            -&gt; lck_rw_lock_exclusive
+ 10            &lt;- lck_rw_lock_exclusive
+ 10            -&gt; vm_page_lookup
+ 10            &lt;- vm_page_lookup
+ 10            -&gt; vm_page_lookup
+ 10            &lt;- vm_page_lookup
+ 10            -&gt; vm_page_lookup
+ 10            &lt;- vm_page_lookup
+ 10            -&gt; vm_page_lookup
+ 10            &lt;- vm_page_lookup
+ 10            -&gt; vm_page_lookup
+ 10            &lt;- vm_page_lookup
+ 10            -&gt; vm_page_lookup
+ 10            &lt;- vm_page_lookup
+ 10            -&gt; vm_page_lookup
+ 10            &lt;- vm_page_lookup
+ 10            -&gt; vm_page_lookup
+ 10            &lt;- vm_page_lookup
+ 10            -&gt; vm_page_lookup
+ 10            &lt;- vm_page_lookup
+ 10            -&gt; vm_page_lookup
+ 10            &lt;- vm_page_lookup
+ 10            -&gt; vm_page_lookup
+ 10            &lt;- vm_page_lookup
+ 10            -&gt; vm_page_lookup
+ 10            &lt;- vm_page_lookup
+ 10            -&gt; vm_page_lookup
+ 10            &lt;- vm_page_lookup
+ 10            -&gt; vm_page_lookup
+ 10            &lt;- vm_page_lookup
+ 10            -&gt; vm_page_lookup
+ 10            &lt;- vm_page_lookup
+ 10            -&gt; vm_page_lookup
+ 10            &lt;- vm_page_lookup
+ 10            -&gt; vm_page_lookup
+ 10            &lt;- vm_page_lookup
+ 10            -&gt; lck_rw_done
+ 10            &lt;- lck_rw_done
+ 10            -&gt; uiomove64
+ 10              -&gt; uio_update
+ 10              &lt;- uio_update
+ 10            &lt;- uiomove64
+ 10            -&gt; uiomove64
+ 10              -&gt; uio_update
+ 10              &lt;- uio_update
+ 10            &lt;- uiomove64
+ 10            -&gt; uiomove64
+ 10              -&gt; uio_update
+ 10              &lt;- uio_update
+ 10            &lt;- uiomove64
+ 10            -&gt; uiomove64
+ 10              -&gt; uio_update
+ 10              &lt;- uio_update
+ 10            &lt;- uiomove64
+ 10            -&gt; uiomove64
+ 10              -&gt; uio_update
+ 10              &lt;- uio_update
+ 10            &lt;- uiomove64
+ 10            -&gt; uiomove64
+ 10              -&gt; uio_update
+ 10              &lt;- uio_update
+ 10            &lt;- uiomove64
+ 10            -&gt; uiomove64
+ 10              -&gt; uio_update
+ 10              &lt;- uio_update
+ 10            &lt;- uiomove64
+ 10            -&gt; uiomove64
+ 10              -&gt; uio_update
+ 10              &lt;- uio_update
+ 10            &lt;- uiomove64
+ 10            -&gt; uiomove64
+ 10              -&gt; uio_update
+ 10              &lt;- uio_update
+ 10            &lt;- uiomove64
+ 10            -&gt; uiomove64
+ 10              -&gt; uio_update
+ 10              &lt;- uio_update
+ 10            &lt;- uiomove64
+ 10            -&gt; uiomove64
+ 10              -&gt; uio_update
+ 10              &lt;- uio_update
+ 10            &lt;- uiomove64
+ 10            -&gt; uiomove64
+ 10              -&gt; uio_update
+ 10              &lt;- uio_update
+ 10            &lt;- uiomove64
+ 10            -&gt; uiomove64
+ 10              -&gt; uio_update
+ 10              &lt;- uio_update
+ 10            &lt;- uiomove64
+ 10            -&gt; uiomove64
+ 10              -&gt; uio_update
+ 10              &lt;- uio_update
+ 10            &lt;- uiomove64
+ 10            -&gt; uiomove64
+ 10              -&gt; uio_update
+ 10              &lt;- uio_update
+ 10            &lt;- uiomove64
+ 10            -&gt; uiomove64
+ 10              -&gt; uio_update
+ 10              &lt;- uio_update
+ 10            &lt;- uiomove64
+ 10            -&gt; uiomove64
+ 10              -&gt; uio_update
+ 10              &lt;- uio_update
+ 10            &lt;- uiomove64
+ 10            -&gt; vm_object_lock
+ 10            &lt;- vm_object_lock
+ 10            -&gt; lck_rw_lock_exclusive
+ 10            &lt;- lck_rw_lock_exclusive
+ 10            -&gt; vm_page_lru
+ 10            &lt;- vm_page_lru
+ 10            -&gt; vm_page_lru
+ 10              -&gt; vm_page_queues_remove
+ 10                -&gt; vm_page_balance_inactive
+ 10                &lt;- vm_page_balance_inactive
+ 10              &lt;- vm_page_queues_remove
+ 10            &lt;- vm_page_lru
+ 10            -&gt; vm_page_enqueue_inactive
+ 10            &lt;- vm_page_enqueue_inactive
+ 10            -&gt; vm_page_lru
+ 10              -&gt; vm_page_queues_remove
+ 10                -&gt; vm_page_balance_inactive
+ 10                &lt;- vm_page_balance_inactive
+ 10              &lt;- vm_page_queues_remove
+ 10            &lt;- vm_page_lru
+ 10            -&gt; vm_page_enqueue_inactive
+ 10            &lt;- vm_page_enqueue_inactive
+ 10            -&gt; vm_page_lru
+ 10              -&gt; vm_page_queues_remove
+ 10                -&gt; vm_page_balance_inactive
+ 10                &lt;- vm_page_balance_inactive
+ 10              &lt;- vm_page_queues_remove
+ 10            &lt;- vm_page_lru
+ 10            -&gt; vm_page_enqueue_inactive
+ 10            &lt;- vm_page_enqueue_inactive
+ 10            -&gt; vm_page_lru
+ 10              -&gt; vm_page_queues_remove
+ 10                -&gt; vm_page_balance_inactive
+ 10                &lt;- vm_page_balance_inactive
+ 10              &lt;- vm_page_queues_remove
+ 10            &lt;- vm_page_lru
+ 10            -&gt; vm_page_enqueue_inactive
+ 10            &lt;- vm_page_enqueue_inactive
+ 10            -&gt; vm_page_lru
+ 10              -&gt; vm_page_queues_remove
+ 10                -&gt; vm_page_balance_inactive
+ 10                &lt;- vm_page_balance_inactive
+ 10              &lt;- vm_page_queues_remove
+ 10            &lt;- vm_page_lru
+ 10            -&gt; vm_page_enqueue_inactive
+ 10            &lt;- vm_page_enqueue_inactive
+ 10            -&gt; vm_page_lru
+ 10              -&gt; vm_page_queues_remove
+ 10                -&gt; vm_page_balance_inactive
+ 10                &lt;- vm_page_balance_inactive
+ 10              &lt;- vm_page_queues_remove
+ 10            &lt;- vm_page_lru
+ 10            -&gt; vm_page_enqueue_inactive
+ 10            &lt;- vm_page_enqueue_inactive
+ 10            -&gt; vm_page_lru
+ 10              -&gt; vm_page_queues_remove
+ 10                -&gt; vm_page_balance_inactive
+ 10                &lt;- vm_page_balance_inactive
+ 10              &lt;- vm_page_queues_remove
+ 10            &lt;- vm_page_lru
+ 10            -&gt; vm_page_enqueue_inactive
+ 10            &lt;- vm_page_enqueue_inactive
+ 10            -&gt; vm_page_lru
+ 10              -&gt; vm_page_queues_remove
+ 10                -&gt; vm_page_balance_inactive
+ 10                &lt;- vm_page_balance_inactive
+ 10              &lt;- vm_page_queues_remove
+ 10            &lt;- vm_page_lru
+ 10            -&gt; vm_page_enqueue_inactive
+ 10            &lt;- vm_page_enqueue_inactive
+ 10            -&gt; vm_page_lru
+ 10              -&gt; vm_page_queues_remove
+ 10                -&gt; vm_page_balance_inactive
+ 10                &lt;- vm_page_balance_inactive
+ 10              &lt;- vm_page_queues_remove
+ 10            &lt;- vm_page_lru
+ 10            -&gt; vm_page_enqueue_inactive
+ 10            &lt;- vm_page_enqueue_inactive
+ 10            -&gt; vm_page_lru
+ 10              -&gt; vm_page_queues_remove
+ 10                -&gt; vm_page_balance_inactive
+ 10                &lt;- vm_page_balance_inactive
+ 10              &lt;- vm_page_queues_remove
+ 10            &lt;- vm_page_lru
+ 10            -&gt; vm_page_enqueue_inactive
+ 10            &lt;- vm_page_enqueue_inactive
+ 10            -&gt; vm_page_lru
+ 10              -&gt; vm_page_queues_remove
+ 10                -&gt; vm_page_balance_inactive
+ 10                &lt;- vm_page_balance_inactive
+ 10              &lt;- vm_page_queues_remove
+ 10            &lt;- vm_page_lru
+ 10            -&gt; vm_page_enqueue_inactive
+ 10            &lt;- vm_page_enqueue_inactive
+ 10            -&gt; vm_page_lru
+ 10              -&gt; vm_page_queues_remove
+ 10                -&gt; vm_page_balance_inactive
+ 10                &lt;- vm_page_balance_inactive
+ 10              &lt;- vm_page_queues_remove
+ 10            &lt;- vm_page_lru
+ 10            -&gt; vm_page_enqueue_inactive
+ 10            &lt;- vm_page_enqueue_inactive
+ 10            -&gt; vm_page_lru
+ 10              -&gt; vm_page_queues_remove
+ 10                -&gt; vm_page_balance_inactive
+ 10                &lt;- vm_page_balance_inactive
+ 10              &lt;- vm_page_queues_remove
+ 10            &lt;- vm_page_lru
+ 10            -&gt; vm_page_enqueue_inactive
+ 10            &lt;- vm_page_enqueue_inactive
+ 10            -&gt; vm_page_lru
+ 10              -&gt; vm_page_queues_remove
+ 10                -&gt; vm_page_balance_inactive
+ 10                &lt;- vm_page_balance_inactive
+ 10              &lt;- vm_page_queues_remove
+ 10            &lt;- vm_page_lru
+ 10            -&gt; vm_page_enqueue_inactive
+ 10            &lt;- vm_page_enqueue_inactive
+ 10            -&gt; vm_page_lru
+ 10              -&gt; vm_page_queues_remove
+ 10                -&gt; vm_page_balance_inactive
+ 10                &lt;- vm_page_balance_inactive
+ 10              &lt;- vm_page_queues_remove
+ 10            &lt;- vm_page_lru
+ 10            -&gt; vm_page_enqueue_inactive
+ 10            &lt;- vm_page_enqueue_inactive
+ 10            -&gt; vm_page_lru
+ 10              -&gt; vm_page_queues_remove
+ 10                -&gt; vm_page_balance_inactive
+ 10                &lt;- vm_page_balance_inactive
+ 10              &lt;- vm_page_queues_remove
+ 10            &lt;- vm_page_lru
+ 10            -&gt; vm_page_enqueue_inactive
+ 10            &lt;- vm_page_enqueue_inactive
+ 10            -&gt; lck_mtx_unlock_slow
+ 10            &lt;- lck_mtx_unlock_slow
+ 10            -&gt; pmap_lock_phys_page
+ 10            &lt;- pmap_lock_phys_page
+ 10            -&gt; pmap_unlock_phys_page
+ 10            &lt;- pmap_unlock_phys_page
+ 10            -&gt; pmap_lock_phys_page
+ 10            &lt;- pmap_lock_phys_page
+ 10            -&gt; pmap_unlock_phys_page
+ 10            &lt;- pmap_unlock_phys_page
+ 10            -&gt; pmap_lock_phys_page
+ 10            &lt;- pmap_lock_phys_page
+ 10            -&gt; pmap_unlock_phys_page
+ 10            &lt;- pmap_unlock_phys_page
+ 10            -&gt; pmap_lock_phys_page
+ 10            &lt;- pmap_lock_phys_page
+ 10            -&gt; pmap_unlock_phys_page
+ 10            &lt;- pmap_unlock_phys_page
+ 10            -&gt; pmap_lock_phys_page
+ 10            &lt;- pmap_lock_phys_page
+ 10            -&gt; pmap_unlock_phys_page
+ 10            &lt;- pmap_unlock_phys_page
+ 10            -&gt; pmap_lock_phys_page
+ 10            &lt;- pmap_lock_phys_page
+ 10            -&gt; pmap_unlock_phys_page
+ 10            &lt;- pmap_unlock_phys_page
+ 10            -&gt; pmap_lock_phys_page
+ 10            &lt;- pmap_lock_phys_page
+ 10            -&gt; pmap_unlock_phys_page
+ 10            &lt;- pmap_unlock_phys_page
+ 10            -&gt; pmap_lock_phys_page
+ 10            &lt;- pmap_lock_phys_page
+ 10            -&gt; pmap_unlock_phys_page
+ 10            &lt;- pmap_unlock_phys_page
+ 10            -&gt; pmap_lock_phys_page
+ 10            &lt;- pmap_lock_phys_page
+ 10            -&gt; pmap_unlock_phys_page
+ 10            &lt;- pmap_unlock_phys_page
+ 10            -&gt; pmap_lock_phys_page
+ 10            &lt;- pmap_lock_phys_page
+ 10            -&gt; pmap_unlock_phys_page
+ 10            &lt;- pmap_unlock_phys_page
+ 10            -&gt; pmap_lock_phys_page
+ 10            &lt;- pmap_lock_phys_page
+ 10            -&gt; pmap_unlock_phys_page
+ 10            &lt;- pmap_unlock_phys_page
+ 10            -&gt; pmap_lock_phys_page
+ 10            &lt;- pmap_lock_phys_page
+ 10            -&gt; pmap_unlock_phys_page
+ 10            &lt;- pmap_unlock_phys_page
+ 10            -&gt; pmap_lock_phys_page
+ 10            &lt;- pmap_lock_phys_page
+ 10            -&gt; pmap_unlock_phys_page
+ 10            &lt;- pmap_unlock_phys_page
+ 10            -&gt; pmap_lock_phys_page
+ 10            &lt;- pmap_lock_phys_page
+ 10            -&gt; pmap_unlock_phys_page
+ 10            &lt;- pmap_unlock_phys_page
+ 10            -&gt; pmap_lock_phys_page
+ 10            &lt;- pmap_lock_phys_page
+ 10            -&gt; pmap_unlock_phys_page
+ 10            &lt;- pmap_unlock_phys_page
+ 10            -&gt; pmap_lock_phys_page
+ 10            &lt;- pmap_lock_phys_page
+ 10            -&gt; pmap_unlock_phys_page
+ 10            &lt;- pmap_unlock_phys_page
+ 10            -&gt; task_update_logical_writes
+ 10            &lt;- task_update_logical_writes
+ 10            -&gt; lck_rw_done
+ 10            &lt;- lck_rw_done
+ 10          &lt;- memory_object_control_uiomove
+ 10          -&gt; vm_object_range_op
+ 10            -&gt; lck_rw_lock_exclusive
+ 10            &lt;- lck_rw_lock_exclusive
+ 10            -&gt; vm_page_lookup
+ 10            &lt;- vm_page_lookup
+ 10            -&gt; lck_rw_done
+ 10            &lt;- lck_rw_done
+ 10          &lt;- vm_object_range_op
+ 10        &lt;- cluster_read_ext
+ 10        -&gt; lck_rw_lock_shared
+ 10        &lt;- lck_rw_lock_shared
+ 10        -&gt; update_atime
+ 10          -&gt; vfs_flags
+ 10          &lt;- vfs_flags
+ 10          -&gt; vnode_israge
+ 10          &lt;- vnode_israge
+ 10          -&gt; vfs_ctx_skipatime
+ 10            -&gt; get_bsdthreadtask_info
+ 10            &lt;- get_bsdthreadtask_info
+ 10          &lt;- vfs_ctx_skipatime
+ 10          -&gt; vfs_flags
+ 10          &lt;- vfs_flags
+ 10        &lt;- update_atime
+ 10        -&gt; uio_resid
+ 10        &lt;- uio_resid
+ 10        -&gt; _ZN18APFSOSNumberAtomic8addValueEx
+ 10        &lt;- _ZN18APFSOSNumberAtomic8addValueEx
+ 10        -&gt; _ZN18APFSOSNumberAtomic8addValueEx
+ 10        &lt;- _ZN18APFSOSNumberAtomic8addValueEx
+ 10        -&gt; lck_rw_unlock_shared
+ 10          -&gt; lck_rw_done
+ 10          &lt;- lck_rw_done
+ 10        &lt;- lck_rw_unlock_shared
+ 10        -&gt; lck_rw_unlock_shared
+ 10          -&gt; lck_rw_done
+ 10          &lt;- lck_rw_done
+ 10        &lt;- lck_rw_unlock_shared
+ 10      &lt;- apfs_vnop_read
+ 10      -&gt; lck_mtx_unlock_slow
+ 10      &lt;- lck_mtx_unlock_slow
+ 10      -&gt; lck_mtx_unlock_slow
+ 10      &lt;- lck_mtx_unlock_slow
+ 10      -&gt; lck_mtx_unlock_slow
+ 10      &lt;- lck_mtx_unlock_slow
+ 10    &lt;- read
+ 10    -&gt; user_trap
+ 10      -&gt; proc_ucred
+ 10      &lt;- proc_ucred
+ 10      -&gt; lck_rw_lock_shared
+ 10      &lt;- lck_rw_lock_shared
+</code></pre>
+
+
+</p></details>
+
+<p>Which files are read by the <code>read</code> syscall requested by <code>mpv</code>?</p>
+<pre><code class="language-text">$ sudo dtrace  -n 'syscall::read:entry /execname == &quot;mpv&quot;/ { @[fds[3].fi_pathname] = count(); @[fds[4].fi_pathname] = count(); }'
+dtrace: description 'syscall::read:entry ' matched 1 probe
+^C
+
+  ??/Logs/mpv.log                                                   1
+  ??/Movies/Dtrace Review [TgmA48fILq8].mp4                         1
+</code></pre>
+<pre><code class="language-text">$ sudo dtrace  -n 'syscall::read:entry /execname == &quot;mpv&quot;/ { @[fds[arg0].fi_pathname] = count(); }'
+^C
+
+  ??/Logs/mpv.log                                                   1
+  ??/Movies/Dtrace Review [TgmA48fILq8].mp4                         1
+</code></pre>
+<p>Which libraries does <code>mpv</code> load (well this shows more -&gt; any mmap file)?</p>
+<details><p>
+
+
+<pre><code class="language-text">$ sudo dtrace  -n 'syscall::mmap:entry /execname == &quot;mpv&quot;/ { @[fds[arg4].fi_pathname] = count(); }'
+dtrace: description 'syscall::mmap:entry ' matched 1 probe
+^C
+
+  ??/16777237_9765376/functions.data                                1
+  ??/31001/libraries.data                                           1
+  ??/AppExceptions.bundle/Exceptions.plist                          1
+  ??/C/com.apple.IntlDataCache.le.kbdx                              1
+  ??/Fonts/Helvetica.ttc                                            1
+  ??/Fonts/SFCompact.ttf                                            1
+  ??/Fonts/SFNS.ttf                                                 1
+  ??/Resources/AppleKeyboardLayouts-L.dat                           1
+  ??/Resources/Aqua.car                                             1
+  ??/Resources/Assets.car                                           1
+  ??/Resources/Exceptions.plist                                     1
+  ??/Resources/Extras2.rsrc                                         1
+  ??/Resources/FauxVibrantLight.car                                 1
+  ??/Resources/FunctionRowAppearance.car                            1
+  ??/Resources/SystemAppearance.car                                 1
+  ??/Resources/VibrantDark.car                                      1
+  ??/Resources/VibrantLight.car                                     1
+  ??/icu/icudt70l.dat                                               1
+  ??/io.mpv.savedState/window_1.data                                1
+  ??/lib/libobjc-trampolines.dylib                                  3
+  &lt;unknown (not a vnode)&gt;                                           4
+  ??/DisplayVendorID-610/DisplayProductID-a044                      4
+  ??/Overrides/Icons.plist                                          4
+  ??/lib/libarchive.13.dylib                                        4
+  ??/lib/libass.9.dylib                                             4
+  ??/lib/libavcodec.58.dylib                                        4
+  ??/lib/libavdevice.58.dylib                                       4
+  ??/lib/libavfilter.7.dylib                                        4
+  ??/lib/libavformat.58.dylib                                       4
+  ??/lib/libavresample.4.dylib                                      4
+  ??/lib/libavutil.56.dylib                                         4
+  ??/lib/libb2.1.dylib                                              4
+  ??/lib/libcrypto.1.1.dylib                                        4
+  ??/lib/libdav1d.5.dylib                                           4
+  ??/lib/libfontconfig.1.dylib                                      4
+  ??/lib/libfreetype.6.dylib                                        4
+  ??/lib/libfribidi.0.dylib                                         4
+  ??/lib/libglib-2.0.0.dylib                                        4
+  ??/lib/libgraphite2.3.dylib                                       4
+  ??/lib/libharfbuzz.0.dylib                                        4
+  ??/lib/libintl.8.dylib                                            4
+  ??/lib/liblcms2.2.dylib                                           4
+  ??/lib/liblua.5.1.dylib                                           4
+  ??/lib/liblz4.1.dylib                                             4
+  ??/lib/liblzma.5.dylib                                            4
+  ??/lib/libmujs.so                                                 4
+  ??/lib/libogg.0.dylib                                             4
+  ??/lib/libopenjp2.7.dylib                                         4
+  ??/lib/libopus.0.dylib                                            4
+  ??/lib/libpcre.1.dylib                                            4
+  ??/lib/libpng16.16.dylib                                          4
+  ??/lib/libpostproc.55.dylib                                       4
+  ??/lib/librubberband.2.dylib                                      4
+  ??/lib/libsamplerate.0.dylib                                      4
+  ??/lib/libsoxr.0.dylib                                            4
+  ??/lib/libsrt.1.4.dylib                                           4
+  ??/lib/libssh.4.dylib                                             4
+  ??/lib/libssl.1.1.dylib                                           4
+  ??/lib/libswresample.3.dylib                                      4
+  ??/lib/libswscale.5.dylib                                         4
+  ??/lib/libtheoradec.1.dylib                                       4
+  ??/lib/libtheoraenc.1.dylib                                       4
+  ??/lib/libuchardet.0.dylib                                        4
+  ??/lib/libvorbis.0.dylib                                          4
+  ??/lib/libvorbisenc.2.dylib                                       4
+  ??/lib/libvpx.7.dylib                                             4
+  ??/lib/libzimg.2.dylib                                            4
+  ??/lib/libzstd.1.dylib                                            4
+  ??/MacOS/AMDRadeonX6000GLDriver                                   5
+  ??/MacOS/CoreAudio                                                5
+  &lt;none&gt;                                                          137
+</code></pre>
+
+
+</details>
+</p>
+<h3 id="python-provider">python provider</h3>
+<hr />
+<p>Taken from <code>Dtrace Review</code> by Brian Cantrill
+<a href="https://www.youtube.com/watch?v=TgmA48fILq8">https://www.youtube.com/watch?v=TgmA48fILq8</a></p>
+<hr />
+<h3 id="list-probes">List probes</h3>
+<pre><code class="language-text">$ sudo dtrace -l -P pyth\*
+   ID   PROVIDER            MODULE                          FUNCTION NAME
+16797 python14473            Python                         sys_audit audit
+16798 python14473            Python                  sys_audit_tstate audit
+16799 python14473            Python          _PyEval_EvalFrameDefault function-entry
+16800 python14473            Python             dtrace_function_entry function-entry
+16801 python14473            Python          _PyEval_EvalFrameDefault function-return
+16802 python14473            Python            dtrace_function_return function-return
+16803 python14473            Python                   gc_collect_main gc-done
+16804 python14473            Python                   gc_collect_main gc-start
+16805 python14473            Python  PyImport_ImportModuleLevelObject import-find-load-done
+16806 python14473            Python  PyImport_ImportModuleLevelObject import-find-load-start
+16807 python14473            Python          _PyEval_EvalFrameDefault line
+16808 python14473            Python                 maybe_dtrace_line line
+16929 python14419            Python                         sys_audit audit
+16930 python14419            Python                  sys_audit_tstate audit
+16931 python14419            Python          _PyEval_EvalFrameDefault function-entry
+16932 python14419            Python             dtrace_function_entry function-entry
+16933 python14419            Python          _PyEval_EvalFrameDefault function-return
+16934 python14419            Python            dtrace_function_return function-return
+16935 python14419            Python                   gc_collect_main gc-done
+16936 python14419            Python                   gc_collect_main gc-start
+16937 python14419            Python  PyImport_ImportModuleLevelObject import-find-load-done
+16938 python14419            Python  PyImport_ImportModuleLevelObject import-find-load-start
+16939 python14419            Python          _PyEval_EvalFrameDefault line
+16940 python14419            Python                 maybe_dtrace_line line
+71546 python94111            Python                         sys_audit audit
+71547 python94111            Python                  sys_audit_tstate audit
+71548 python94111            Python          _PyEval_EvalFrameDefault function-entry
+71549 python94111            Python             dtrace_function_entry function-entry
+71550 python94111            Python          _PyEval_EvalFrameDefault function-return
+71551 python94111            Python            dtrace_function_return function-return
+71552 python94111            Python                   gc_collect_main gc-done
+71553 python94111            Python                   gc_collect_main gc-start
+71554 python94111            Python  PyImport_ImportModuleLevelObject import-find-load-done
+71555 python94111            Python  PyImport_ImportModuleLevelObject import-find-load-start
+71556 python94111            Python          _PyEval_EvalFrameDefault line
+71557 python94111            Python                 maybe_dtrace_line line
+71678 python94025            Python                         sys_audit audit
+71679 python94025            Python                  sys_audit_tstate audit
+71680 python94025            Python          _PyEval_EvalFrameDefault function-entry
+71681 python94025            Python             dtrace_function_entry function-entry
+71682 python94025            Python          _PyEval_EvalFrameDefault function-return
+71683 python94025            Python            dtrace_function_return function-return
+71684 python94025            Python                   gc_collect_main gc-done
+71685 python94025            Python                   gc_collect_main gc-start
+71686 python94025            Python  PyImport_ImportModuleLevelObject import-find-load-done
+71687 python94025            Python  PyImport_ImportModuleLevelObject import-find-load-start
+71688 python94025            Python          _PyEval_EvalFrameDefault line
+71689 python94025            Python                 maybe_dtrace_line line
+</code></pre>
+<h3 id="show-module-name-function-name-for-python">show module name &amp; function name for Python</h3>
+<pre><code class="language-text">$ sudo dtrace  -n 'python*:::function-entry { printf(&quot;%s %s\n&quot;, copyinstr(arg0), copyinstr(arg1)) }'
+ 10   2911 dtrace_function_entry:function-entry /tmp/test-signal.py run_default_behavior
+
+  6   2911 dtrace_function_entry:function-entry /tmp/test-signal.py sigint_handler
+</code></pre>
+<h2 id="pre-written-dtrace-scriptspre-provided-dtrace-scripts">Pre-written dtrace scripts/Pre-provided dtrace scripts</h2>
+<h3 id="where-to-find-them-on-mac-os">Where to find them on Mac OS</h3>
+<details><p>
+
+
+<pre><code class="language-text">$ find / -executable -type f -exec sh -c 'grep -m 1 -H -F &quot;/usr/sbin/dtrace&quot; &quot;$0&quot; 2&gt;/dev/null' {} \; 2&gt;/dev/null
+/usr/bin/loads.d:#!/usr/sbin/dtrace -s
+/usr/bin/syscallbypid.d:#!/usr/sbin/dtrace -s
+/usr/bin/fddist:/usr/sbin/dtrace -n '
+/usr/bin/iofileb.d:#!/usr/sbin/dtrace -s
+/usr/bin/errinfo:/usr/sbin/dtrace -n '
+/usr/bin/topsyscall:/usr/sbin/dtrace -n '
+/usr/bin/iofile.d:#!/usr/sbin/dtrace -s
+/usr/bin/iotop:/usr/sbin/dtrace -n '
+/usr/bin/cpuwalk.d:#!/usr/sbin/dtrace -s
+/usr/bin/dispqlen.d:#!/usr/sbin/dtrace -s
+/usr/bin/lastwords:/usr/sbin/dtrace -n '
+/usr/bin/syscallbyproc.d:#!/usr/sbin/dtrace -s
+/usr/bin/timer_analyser.d:/usr/sbin/dtrace -n &quot;$dtrace&quot; $1
+/usr/bin/execsnoop:/usr/sbin/dtrace -n '
+/usr/bin/opensnoop:/usr/sbin/dtrace -n '
+/usr/bin/newproc.d:#!/usr/sbin/dtrace -s
+/usr/bin/syscallbysysc.d:#!/usr/sbin/dtrace -s
+/usr/bin/pathopens.d:#!/usr/sbin/dtrace -s
+/usr/bin/rwbytype.d:#!/usr/sbin/dtrace -s
+/usr/bin/timerfires:    /usr/sbin/dtrace -xdisallow_dsym -Cqn &quot;$dtrace&quot; | /usr/bin/perl -w -e &quot;$aggregator&quot;
+/usr/bin/dtruss:#       /usr/sbin/dtrace -x dynvarsize=$buf -x evaltime=postinit -n &quot;$dtrace&quot; \
+/usr/bin/kill.d:#!/usr/sbin/dtrace -qs
+/usr/bin/imptrace:      /usr/sbin/dtrace -s $SCRIPTFILE
+/usr/bin/priclass.d:#!/usr/sbin/dtrace -s
+/usr/bin/topsysproc:/usr/sbin/dtrace -n '
+/usr/bin/seeksize.d:#!/usr/sbin/dtrace -s
+/usr/bin/setuids.d:#!/usr/sbin/dtrace -s
+/usr/bin/bitesize.d:#!/usr/sbin/dtrace -s
+/usr/bin/iosnoop:/usr/sbin/dtrace -n '
+/usr/bin/iopending:/usr/sbin/dtrace -n '
+/usr/bin/rwbypid.d:#!/usr/sbin/dtrace -s
+/usr/bin/procsystime:   /usr/sbin/dtrace -n &quot;$dtrace&quot; -x evaltime=exec -c &quot;$command&quot; &gt;&amp;2
+/usr/bin/pridist.d:#!/usr/sbin/dtrace -s
+/usr/bin/sigdist.d:#!/usr/sbin/dtrace -s
+/usr/bin/dappprof:      /usr/sbin/dtrace -x dynvarsize=$buf -x evaltime=preinit -Z -n &quot;$dtrace&quot; \
+/usr/bin/rwsnoop:/usr/sbin/dtrace -n '
+/usr/bin/creatbyproc.d:#!/usr/sbin/dtrace -s
+/usr/bin/pidpersec.d:#!/usr/sbin/dtrace -s
+/usr/bin/sampleproc:/usr/sbin/dtrace -n '
+/usr/bin/filebyproc.d:#!/usr/sbin/dtrace -s
+/usr/bin/cpu_profiler.d:/usr/sbin/dtrace -n &quot;$dtrace&quot;
+/usr/bin/iopattern:/usr/sbin/dtrace -n '
+/usr/bin/hotspot.d:#!/usr/sbin/dtrace -s
+/usr/bin/dapptrace:     /usr/sbin/dtrace -x dynvarsize=$buf -x evaltime=preinit -Z -n &quot;$dtrace&quot; \
+/usr/libexec/dtrace/vm_map_delete_permanent_deny.d:#!/usr/sbin/dtrace -s
+/usr/libexec/dtrace/log_unnest_badness.d:#!/usr/sbin/dtrace -s
+/usr/libexec/dtrace/vm_object_ownership.d:#!/usr/sbin/dtrace -s
+/usr/libexec/dtrace/vm_map_delete_permanent.d:#!/usr/sbin/dtrace -s
+/usr/libexec/dtrace/vm_map_delete_permanent_prot_none.d:#!/usr/sbin/dtrace -s
+/usr/libexec/dtrace/smbtrace.d:#! /usr/sbin/dtrace -C -s
+/usr/libexec/dtrace/suspicious_task_vm_info_count.d:#!/usr/sbin/dtrace -s
+/System/Library/Extensions/autofs.kext/Contents/Resources/watch_for_automounts:#!/usr/sbin/dtrace -s
+/System/Library/Extensions/IOHIDFamily.kext/Contents/PlugIns/IOHIDLib.plugin/Contents/Resources/hiddtraceutil:validEventProbe=$(echo $(/usr/sbin/dtrace -l | grep $grepStrEvent | cut -d' ' -f 2) | cut -d' ' -f 1)
+</code></pre>
+
+
+</details>
+</p>
+<h3 id="show-files-openend-by-process">Show files openend by process</h3>
+<pre><code class="language-text">$ sudo opensnoop -p 63183
+Password:
+
+
+  UID    PID COMM          FD PATH
+  501  63183 rsync          0 Compiler programming livestreams/53 Scope speedup, part 1-RsuZx8TxCpk.mp4
+  501  63183 rsync          0 Compiler programming livestreams/54 Scope speedup, part 2-Jc1X3sdv9-k.mp4
+</code></pre>
+<h1 id="display-network-activity-via-read-and-write-system-calls">Display network activity via read and write system calls</h1>
+<p>Note: Obviously these calls can be either local or remote write/reads.
+      This only works if you know the applications talks to the network.
+      Otherwise you need to also display the path it is reading from or
+      writing to.</p>
+<p>Show last 20 syscalls in the last 10 seconds including the buffer size
+they operated on</p>
+<pre><code class="language-text">$ sudo dtrace -p &quot;$(ps -ef | grep -v grep | grep kubectl | awk '{ print $2 }')&quot;  -n 'syscall::read:entry,syscall::write:entry /pid == $target/ { @iosize[probefunc, timestamp] = sum(arg2); } tick-10sec { trunc(@iosize, 20); printa(@iosize); }'
+dtrace: description 'syscall::read:entry,syscall::write:entry ' matched 3 probes
+CPU     ID                    FUNCTION:NAME
+  0 500833                      :tick-10sec
+  read                                                   414573712695            40870
+  read                                                   414574224934            40870
+  read                                                   413613772247            40872
+  read                                                   413614178744            40872
+  read                                                   420176099965            40872
+  read                                                   420177271532            40872
+  read                                                   416930462730            40930
+  read                                                   416931065835            40930
+  read                                                   416473476100            40932
+  read                                                   416474150262            40932
+  read                                                   415871678372            40934
+  read                                                   415872751171            40934
+  read                                                   415369604460            40936
+  read                                                   415370663830            40936
+  read                                                   414513020823            40938
+  read                                                   414514626577            40938
+  read                                                   413516276239            40940
+  read                                                   413516325316            40940
+  read                                                   420070217621            40940
+  read                                                   420070275581            40940
+
+  write                                                  420972849369               23
+  write                                                  420972858378             9569
+  write                                                  420959001064            24576
+  write                                                  420342166732            32768
+  write                                                  420395788760            32768
+  write                                                  420466818116            32768
+  write                                                  420496814581            32768
+  write                                                  420546572194            32768
+  write                                                  420594005810            32768
+  write                                                  420626161704            32768
+  write                                                  420680709445            32768
+  write                                                  420726899148            32768
+  write                                                  420791960338            32768
+  write                                                  420864622197            32768
+  write                                                  420929456447            32768
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="special-types-of-tracing/" class="btn btn-neutral float-right" title="Special types of tracing in Dtrace">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../../tmux/tmux_copycat/" class="btn btn-neutral" title="Predefined searches"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../../tmux/tmux_copycat/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="special-types-of-tracing/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
