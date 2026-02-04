@@ -84,3 +84,10 @@ $ while read -r f; do unescaped="$(echo -n "$f" | python -c 'import shlex; _in=i
 -rw-r--r-- 1 florian.sorko staff 24M Feb  2 06:37 'Favorite Tools/./065 Tested Favorite Tools： Hot Wire Foam Carving Set!.mp4'
 ...
 ```
+
+### Run a command once the queue is empty
+
+```text
+while true; do queued="$(pueue status -j | jq '.tasks[] | select(.status | has("Queued")) | .id' | wc -l)"; echo "$(dt): Queued tasks: $queued"; if [ "$queued" -gt 0 ]; then sleep 200; else break; fi; done ; rsync --dry-run  xyz
+```
+
