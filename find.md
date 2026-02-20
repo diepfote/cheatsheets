@@ -46,3 +46,11 @@ Use exiftool instead of `find -newer ... -! o newer ...`
 exiftool -r -if '$CreateDate =~ /^2024:06:15 14:04/' -filename -createdate 2024-07-*
 ```
 
+## Find empty folder - find exclude .git folder
+
+```text
+# find empty directories
+# exclude anything in .git/
+find <path> -type d -empty  -not -path '*.git*'
+```
+
