@@ -2,7 +2,7 @@
 
 ## EFI
 
-TBD
+[efi](../efi/index.html)
 
 ## BIOS
 

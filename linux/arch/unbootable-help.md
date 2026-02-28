@@ -57,7 +57,7 @@ mkinitcpio -P
 
 ### Reinstall Grub
 
-TBD
+[link](../reinstall-grub/index.html)
 
 ### Re-create Grub Config
 
