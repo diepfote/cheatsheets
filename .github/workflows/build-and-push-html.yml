@@ -37,7 +37,7 @@ jobs:
         run: |
           cd site
 
-          grep -r -l -F 'edit/master/docs' | xargs sed -i -r 's#(edit/master/)docs/(.*)#\1\2#'
+          grep -r -l -F 'edit/master/docs' | xargs sed -i -r 's#(edit/master/)docs/(.*)#\1\2#'  || true
 
           git init
           git config user.name "GitHub Actions Bot"
