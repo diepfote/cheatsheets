@@ -16,7 +16,7 @@ find ~/ -type f ! -executable \( -name '*vaultfile' -o -name '*ansible*vault'  \
 
 # find all .txt and .log files in the current directory and its subdirectories,
 # but exclude files containing "temp" or "backup" in their names
-# snatched from https://www.perplexity.ai/search/find-command-specify-multiple-ELFJQESZRrCW6Ynp8OnwQg#0
+#
 find . \( -name "*.txt" -o -name "*.log" \) ! -name "*temp*" ! -name "*backup*"
 ```
 
