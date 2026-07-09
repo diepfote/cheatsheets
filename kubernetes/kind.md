@@ -11,10 +11,10 @@ Failed to pull image "docker.io/istio/pilot:1.26.3": failed to pull and unpack i
 
 ```text
 # create cluster first
-kind create cluster --name dev
+kind create cluster --name demo
 
 # control plane node(s)
-docker cp corp-proxy-ca.crt dev-control-plane:/usr/local/share/ca-certificates/corp-proxy-ca.crt
+docker cp corp-proxy-ca.crt demo-control-plane:/usr/local/share/ca-certificates/corp-proxy-ca.crt
 docker exec demo-control-plane update-ca-certificates
 
 ## worker nodes, if any
