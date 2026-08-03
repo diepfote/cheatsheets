@@ -1,0 +1,61 @@
+syscall tracing a dynamic-linked 'Hello World' program with 1 format argument
+maizure.org
+
+$strace ./printf1
+1  - execve("./printf1", ["./printf1"], [/* 47 vars */]) = 0
+2  - brk(NULL)                               = 0x1dde000
+3  - mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7f59bce82000
+4  - access("/etc/ld.so.preload", R_OK)      = -1 ENOENT (No such file or directory)
+5  - open("/etc/ld.so.cache", O_RDONLY|O_CLOEXEC) = 3
+6  - fstat(3, {st_mode=S_IFREG|0644, st_size=83694, ...}) = 0
+7  - mmap(NULL, 83694, PROT_READ, MAP_PRIVATE, 3, 0) = 0x7f59bce6d000
+8  - close(3)                                = 0
+9  - open("/lib64/libc.so.6", O_RDONLY|O_CLOEXEC) = 3
+10 - read(3, "\177ELF\2\1\1\3\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0\20\35\2\0\0\0\0\0"..., 832) = 832
+11 - fstat(3, {st_mode=S_IFREG|0755, st_size=2127336, ...}) = 0
+12 - mmap(NULL, 3940800, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7f59bc89f000
+13 - mprotect(0x7f59bca57000, 2097152, PROT_NONE) = 0
+14 - mmap(0x7f59bcc57000, 24576, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x1b8000) = 0x7f59bcc57000
+15 - mmap(0x7f59bcc5d000, 16832, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x7f59bcc5d000
+16 - close(3)                                = 0
+17 - mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7f59bce6c000
+18 - mmap(NULL, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7f59bce6a000
+19 - arch_prctl(ARCH_SET_FS, 0x7f59bce6a740) = 0
+20 - mprotect(0x7f59bcc57000, 16384, PROT_READ) = 0
+21 - mprotect(0x600000, 4096, PROT_READ)     = 0
+22 - mprotect(0x7f59bce83000, 4096, PROT_READ) = 0
+23 - munmap(0x7f59bce6d000, 83694)           = 0
+24 - fstat(1, {st_mode=S_IFCHR|0620, st_rdev=makedev(136, 0), ...}) = 0
+25 - mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7f59bce81000
+26 - write(1, "Hello World 1\n", 14Hello World 1)         = 14
+27 - exit_group(0) = ?
++++ exited with 0 +++
+
+Line 1  - Program is forked from bash and calls execve() to load ./printf1 with the default argument of program name.
+Line 2  - Program calls brk() to find the current end of the data segment, which is 0x1dde000. If this program wanted
+          space on the heap, there would be subsequent calls to brk() using higher values. That's not the case this time.
+Line 3  - Memory maps a page of read-write memory that is not backed by a file (all 0s) and not sharable. At 0x7f59bce82000
+Line 4  - Checks permissions of user-specified shared libraries. There are none, so this access attempt fails.
+Line 5  - Opens the file containing the list of directors to search for shared libraries. Returned as file descriptor 3.
+Line 6  - Checks the status of the new file descriptor. File is 21 pages of memory size (83694 bytes, 4096 bytes per page).
+Line 7  - Memory maps the directory list as private and read-only. It now lives between 0x7f59bce6d000 - 0x7f59bce81000.
+Line 8  - Closes the shared-library directory list, file descriptor 3 is available again
+Line 9  - Opens the symbolic link to the shared standard library (libc.so.6) as file descriptor 3.
+Line 10 - Reads the first 832 bytes of the library, header + extras for 64-bit. Success, with 832 bytes read.
+Line 11 - Gets the file data for the shared library. Size is 2127336 (520 pages of memory)
+Line 12 - Memory map the standard library as read-able and executable, but not writable. It will live at 0x7f59bc89f000.
+Line 13 - Removes all access to ~2MB of memory after libc code (likely guard pages)
+Line 14 - Memory maps 6 more pages from libc (pages 440-445) as read-write. Scratch space?
+Line 15 - Maps four more pages of generic read-write memory between 0x7f59bcc5d000 and 0x7f59bcc62000
+Line 16 - Closes the shared standard library file. File descriptor 3 is now available again.
+Line 17 - Memory maps a page of read-write memory, probably to suppose thread usage.
+Line 18 - Memory maps another 2 pages of memory for read and write. This is probably used for thread local storage
+Line 19 - Sets FS to the newly reserved thread local storage area
+Line 20 - Sets 4 pages of the standard library to read only
+Line 21 - Sets the read-only data application segment (subsequent page is .BSS)
+Line 22 - Sets a page of the dynamic linker library to read-only
+Line 23 - Unmaps the shared library directory memory space, since the library has been loaded
+Line 24 - Get's the status of the stdout file descriptor (/dev/pts/0)
+Line 25 - Memory maps a page used in printf's temporary buffer for format resolution
+Line 26 - Printf's write syscall for Hello World 1
+Line 27 - Exit with status 0
